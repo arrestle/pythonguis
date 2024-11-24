@@ -109,7 +109,10 @@ class MainWindow(QMainWindow):
         column1_sliders = [MirageSlider(10, "Filter Kbd Tracker"), 
                   MirageSlider(99, "Relative Filter Freq"), 
                   MirageSlider(99, "Max Filter Freq"), 
-                  MirageSlider(31, "Filter Attack")]
+                  MirageSlider(31, "Filter Attack"),
+                  MirageSlider(31, "Filter Peak"),
+                  MirageSlider(31, "Filter Decay"),
+                  MirageSlider(31, "Filter Sustain"),]
         
         for s in column1_sliders:
             column1_layout.addWidget(s)
@@ -121,10 +124,13 @@ class MainWindow(QMainWindow):
         column2_layout.setSpacing(0)
         column2_layout.setContentsMargins(0, 0, 0, 0)
 
-        column2_sliders = [MirageSlider(99, "Filter Cutoff"), 
+        column2_sliders = [MirageSlider(31, "Filter Release"), 
+                  MirageSlider(99, "Filter Cutoff"), 
                   MirageSlider(31, "Filter Attack Vel"), 
                   MirageSlider(31, "Filter Peak Vel"), 
-                  MirageSlider(31, "Filter Decay Scaled")]
+                  MirageSlider(31, "Filter Decay Scaled"),
+                  MirageSlider(31, "Filter Sustain Vel"),
+                  MirageSlider(31, "Filter Release Vel"),]
         
         for s in column2_sliders:
             column2_layout.addWidget(s)

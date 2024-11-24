@@ -7,3 +7,5 @@
 * app-4.py rerpresents [A Quick Demo: PySide6 Widgets](https://www.pythonguis.com/tutorials/pyside6-widgets/)
 
 * app-5.py rerpresents a Mockup of Sliders for Ensoniq Mirage Controller using a Custom Slider.
+
+* app-6.py Cleaned up version of app-5.py with helper functions.
