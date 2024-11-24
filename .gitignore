@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+.VENV/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox/
+.nox/
+*.coverage
+.cache
+pytest_cache/
+junit*.xml
+
+# MyPy type check reports
+.mypy_cache/
+
+# PyInstaller files
+#  Usually created when packaging PySide6 apps
+*.spec
+
+# PySide6 specific files
+#  PySide6 UI compiled files
+*.pyi
+*.pyside6-uic
+
+# IDE settings
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Exclude generated resources
+# For example, if you use `pyside6-uic` or `pyside6-rcc`
+resources_rc.py
+ui_*.py
+
+# Exclude backups and lock files
+*.swp
+*.lock
