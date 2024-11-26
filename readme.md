@@ -6,6 +6,11 @@
 3. Use pyenv to install Python 3.12.0 (3.13 is newer but doesn't support rtmidi yet) 
 4. Use python to install the other prerequisites using `pip install pyside6`, etc...
 5. Install VS Code from [Download](https://code.visualstudio.com/download) for your system. It's a large IDE with a lot of functionality, but well supported.
+
+### Why QT and Python?
+1. I chose Python because I needed to learn it for a new position I'm starting in December, 2024
+2. I chose QT because it provides professional quality User Interfaces with a Python wrapper called PySide6 for easy programming and is cross platform, meaning one program works on Linux, Windows and Mac OS laptops.
+4. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are simpler.
  
 
 ### Investigation into QT using PySide6.
