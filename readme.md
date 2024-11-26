@@ -1,4 +1,6 @@
-## [PythonGUIs](https://www.pythonguis.com) Want to create GUI applications with Python? 
+## 1. QT and Pyside6: [PythonGUIs](https://www.pythonguis.com) GUI applications with Python
+
+First thing I needed to do to was figure out how to build the sliders in the template [MirageProgramTemplate.png](./Mirage-docs/MirageProgramTemplate.png). After much searching and trying out Maui and some others decided on Pyside6
 
 ### Steps to install development environment
 1. Install the qt framework from [Qt Software Downloads](https://www.qt.io/download-dev)
@@ -11,9 +13,12 @@
 1. I chose Python because I needed to learn it for a new position I'm starting in December, 2024
 2. I chose QT because it provides professional quality User Interfaces with a Python wrapper called PySide6 for easy programming and is cross platform, meaning one program works on Linux, Windows and Mac OS laptops.
 4. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are simpler.
+5. There was a choice between PySide6 and PyQt for Python wrappers for QT but for licensing reasons went with PySide6. They are extremely similar though.
  
 
 ### Investigation into QT using PySide6.
+
+This all worked fine with Python 3.13.0
 
 * app-1.py represents [Creating your first app with PySide6](https://www.pythonguis.com/tutorials/pyside6-creating-your-first-window/)
 * app-2.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Button signals.
@@ -27,9 +32,13 @@
 * app-6.py Cleaned up version of app-5.py with helper functions.
 
 
-## Working with [python-rtmidi 1.5.8 ](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/)
+## 2. MIDI: [python-rtmidi 1.5.8 ](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/) without Qt.
 
-Switch to Python 3.12.0 `Press Ctrl + Shift + P and select "Python: Select Interpreter".`
+This is where I learned I needed to back up and use Python 3.12.0, here's how to do that:
+
+In VS Code switch to Python 3.12.0 `Press Ctrl + Shift + P and select "Python: Select Interpreter".`
+
+I had to find and install the python wheel from [pypi](https://pypi.org/project/python-rtmidi/). You'll need to find the one for your architecture. 
 
 ```bash
 pyenv install 3.12.0
@@ -37,14 +46,17 @@ pyenv global 3.12.0
 pyenv rehash
 pyenv shell 3.12.0
 
-python -m pip install --upgrade pip
-pip install python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl --force-reinstall
+python -m pip install --upgrade pip # downgrade the installer.
+pip install python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl --force-reinstall # if you have the whl file.
+# --or-- should work as well.
+pip install python-rtmidi==1.5.8
 ```
 
-* midi-app-1.py
-* midi-app-2.py
 ### mido library
-* midi-app-3.py
+
+* midi-app-1.py - simple programs to see if midi is working. Plays a few notes and prints out the midi ports available.
+* midi-app-2.py - start exercising the SysEx functionality and printing out the messages in hex.
+
 
 ## Mirage Documentation
 * Wikipedia explains [Samplers](https://en.wikipedia.org/wiki/Sampler_(musical_instrument))
@@ -74,3 +86,9 @@ sysex_message = [0xF0, 0x0E, 0x01, 0x22, 0x64, 0xF7]  # Adjust filter cutoff to 
 with mido.open_output("Your MIDI Port Name") as midi_out:
     midi_out.send(mido.Message('sysex', data=sysex_message))
 ```
+
+
+## Mirage Programs with UI and MIDI both
+
+* mirage.py - working version of user interface.
+* mirage-2.py - starting to add in midi sysex messages to user interface.

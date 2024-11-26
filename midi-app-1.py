@@ -24,7 +24,7 @@ with midiout:
     # Send "Note On" messages for all three notes
     midiout.send_message(note_c)
     midiout.send_message(note_d)
-    midiout.send_message(note_e)r
+    midiout.send_message(note_e)
     
     # Wait for 1 second
     time.sleep(1.0)
