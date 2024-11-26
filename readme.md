@@ -14,10 +14,9 @@ First thing I needed to do to was figure out how to build the sliders in the tem
 
 ### Why QT and Python?
 1. I chose Python because I needed to learn it for a new position I'm starting in December, 2024
-2. I chose QT because it provides professional quality User Interfaces with a Python wrapper called PySide6 for easy programming and is cross platform, meaning one program works on Linux, Windows and Mac OS laptops.
-4. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are simpler.
+2. I chose QT because it provides professional quality User Interfaces with a Python wrapper called PySide6 for easy programming and is cross platform, meaning one program works on Linux, Windows and Mac OS laptops, a requirement for musicians is Windows and Mac OS.
+4. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are a simpler choice.
 5. There was a choice between PySide6 and PyQt for Python wrappers for QT but for licensing reasons went with PySide6. They are extremely similar though.
- 
 
 ### Investigation into QT using PySide6.
 
@@ -76,11 +75,24 @@ More incomprehensible documents I found but not sure what to do with.
 * [Mirage Chart](./Mirage-docs/miragecharts.png)  
 
 
-## 4. MIDI SysEx Structure
-On the plus side MIDI seems pretty straightforward. 
+## 4. MIDI SysEx Structure and python libraries
 
 * Wikipedia explains [Midi System Exclusive Message](https://en.wikipedia.org/wiki/MIDI#System_Exclusive_messages) which are specific to each manufacturer and model. Original spec [archived](https://web.archive.org/web/20160601121904/https://www.midi.org/specifications).
 * Ensoniq manufacturer is `0F` as defined on [MIDI Manufacturer IDs](https://electronicmusic.fandom.com/wiki/List_of_MIDI_Manufacturer_IDs) list.
+
+On the plus side MIDI using mido is the most straightforward. Here are the other libraries for comparison.
+
+| Library          | Real-Time MIDI | MIDI File I/O | Advanced Features          | Use Case                                               |
+|-------------------|----------------|---------------|----------------------------|-------------------------------------------------------|
+| [**Mido**](https://pypi.org/project/mido/)         | Yes            | Yes           | Basic                      | General MIDI tasks                                     |
+| [**pygame.midi**](https://pypi.org/project/pygame/)  | Yes            | No            | Limited                    | Real-time MIDI for games                              |
+| [**pretty_midi**](https://pypi.org/project/pretty-midi/)  | No             | Yes           | High-level analysis tools  | Music analysis and machine learning                  |
+| [**py-midi**](https://pypi.org/project/py-midi/)      | No             | Yes           | Basic                      | Simple MIDI file handling                             |
+| [**midiutil**](https://pypi.org/project/MIDIUtil/)     | No             | Yes           | File creation              | Generating MIDI files programmatically               |
+| [**pyFluidSynth**](https://pypi.org/project/pyFluidSynth/) | Yes (playback) | No            | Soundfont synthesis        | MIDI playback with soundfonts                        |
+| [**python-rtmidi**](https://pypi.org/project/python-rtmidi/) | Yes            | No            | Low-level real-time MIDI   | Low-latency real-time MIDI communication             |
+| [**mingus**](https://pypi.org/project/mingus/)       | No             | Limited       | Music theory integration   | Score creation and musical constructs                |
+
 ```
 F0 <Manufacturer ID> <Device ID> <Command/Function> <Data Bytes> F7
 F0 0E 01 20 7F F7
