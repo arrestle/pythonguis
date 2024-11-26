@@ -137,4 +137,4 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
 * mirage.py - working version of user interface copied from app-6.py as a starting point.
 * mirage-2.py - starting to add in midi sysex messages to user interface.
 
-May need at actual Mirage at this point. 
+May need an actual Mirage at this point. 
