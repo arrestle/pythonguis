@@ -1,6 +1,9 @@
 ## 1. QT and Pyside6: [PythonGUIs](https://www.pythonguis.com) GUI applications with Python
 
-First thing I needed to do to was figure out how to build the sliders in the template [MirageProgramTemplate.png](./Mirage-docs/MirageProgramTemplate.png). After much searching and trying out Maui and some others decided on Pyside6
+First thing I needed to do to was figure out how to build the sliders in the template [MirageProgramTemplate.png](./Mirage-docs/MirageProgramTemplate.png). After much searching and trying out Maui and some others decided on Pyside6.
+
+![Mirage Program](./Mirage-docs/MirageProgram.png)
+
 
 ### Steps to install development environment
 1. Install the qt framework from [Qt Software Downloads](https://www.qt.io/download-dev)
