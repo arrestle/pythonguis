@@ -61,20 +61,31 @@ pip install python-rtmidi==1.5.8
 * midi-app-2.py - start exercising the SysEx functionality and printing out the messages in hex.
 
 
-## Mirage Documentation
-* Wikipedia explains [Samplers](https://en.wikipedia.org/wiki/Sampler_(musical_instrument))
-* [Filter Attack](https://www.manualslib.com/manual/612718/Mirage-Mirage-Dsk-1.html?page=48&term=Filter+Attack&selected=1#manual)
-* [Mirage DSK-1 Musicians Manua](https://deepsonic.ch/deep/docs_manuals/ensoniq_mirage_dsk-1_dsk-8_musicians_manual.pdf) see page 49
-* [Ensoniq Corporation - Mirage Musician's Manual](http://www.midimanuals.com/manuals/ensoniq/mirage/musicians_manual/) [download](http://www.midimanuals.com/manuals/ensoniq/mirage/musicians_manual/mirage_dsk-1_musicians_manual.pdf)
+## 3. What is a Ensoniq Mirage Sampler anyway?
+This explains what a Sampler is and where I started to realize I was in over my head.
 
-### MIDI SysEx Structure
+* Wikipedia explains [Samplers](https://en.wikipedia.org/wiki/Sampler_(musical_instrument)) in general and is quite readable.
+* [Parameter Reference](./Mirage-docs/mirage-parameter-cards.pdf) With some luck this may include the SysEx `command_id` parameters. 
+* [Filter Attack](https://www.manualslib.com/manual/612718/Mirage-Mirage-Dsk-1.html?page=48&term=Filter+Attack&selected=1#manual) Explains just one of the parameters. This is when I started to get worried.
+
+More incomprehensible documents I found but not sure what to do with.
+* [Mirage DSK-1 Musicians Manual](https://deepsonic.ch/deep/docs_manuals/ensoniq_mirage_dsk-1_dsk-8_musicians_manual.pdf) see page 49
+* [Ensoniq Corporation - Mirage Musician's Manual](http://www.midimanuals.com/manuals/ensoniq/mirage/musicians_manual/) Website.
+* [mirage_dsk-1_musicians_manual](./Mirage-docs/mirage_dsk-1_musicians_manual.pdf) 
+* [ensoniq_mirage_dsk-1_dsk-8_musicians_manual.pdf](./Mirage-docs/ensoniq_mirage_dsk-1_dsk-8_musicians_manual.pdf.pdf)
+* [Mirage Chart](./Mirage-docs/miragecharts.png)  
+
+
+## 4. MIDI SysEx Structure
+On the plus side MIDI seems pretty straightforward. 
+
 * Wikipedia explains [Midi System Exclusive Message](https://en.wikipedia.org/wiki/MIDI#System_Exclusive_messages) which are specific to each manufacturer and model. Original spec [archived](https://web.archive.org/web/20160601121904/https://www.midi.org/specifications).
 * Ensoniq manufacturer is `0F` as defined on [MIDI Manufacturer IDs](https://electronicmusic.fandom.com/wiki/List_of_MIDI_Manufacturer_IDs) list.
 ```
 F0 <Manufacturer ID> <Device ID> <Command/Function> <Data Bytes> F7
 F0 0E 01 20 7F F7
 F0: Start of SysEx.
-0E: Manufacturer ID for Ensoniq.
+0F: Manufacturer ID for Ensoniq.
 01: Device ID (usually 01 if there's only one device in the chain).
 20: Command for a parameter (e.g., filter cutoff).
 7F: Data byte representing the parameter value.
@@ -85,13 +96,33 @@ Python
 import mido
 
 # Example SysEx message for filter cutoff
-sysex_message = [0xF0, 0x0E, 0x01, 0x22, 0x64, 0xF7]  # Adjust filter cutoff to 100
+sysex_message = [0xF0, 0x0F, 0x01, 0x22, 0x64, 0xF7]  # Adjust filter cutoff to 100
 with mido.open_output("Your MIDI Port Name") as midi_out:
     midi_out.send(mido.Message('sysex', data=sysex_message))
 ```
 
 
-## Mirage Programs with UI and MIDI both
+## 5. Mirage Programs with UI and MIDI both
 
-* mirage.py - working version of user interface.
+# Create a constant for manufacturer_ID
+```python
+MANUFACTURER_ID = 0x0F
+DEVICE_ID = 0x01
+MIDI_PORT_NAME = 'ENSONIQ' #tbd
+
+# Construct the SysEx message This one is supposed to be Filter Attack command (40) in the mirage-paramter-cards.pdf file.
+
+sysex_data = [MANUFACTURER_ID, DEVICE_ID, 0x40, 12 ] # verify whether command_id in chart is dec or hex.
+
+# Open a MIDI output port
+with mido.open_output(MIDI_PORT_NAME) as midi_out:
+    # note (0xF0 and 0xF7) are added by the mido library since we specified 'sysex' as the type.
+    midi_out.send(mido.Message('sysex', data=sysex_message))
+    # Print the message in hex format
+    sysex_message_hex = ' '.join(f'{byte:02X}' for byte in sysex_data)
+    print(f"Sent SysEx message in hex: F0 {sysex_message_hex} F7")
+```
+* mirage.py - working version of user interface copied from app-6.py as a starting point.
 * mirage-2.py - starting to add in midi sysex messages to user interface.
+
+May need at actual Mirage at this point. 

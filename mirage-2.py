@@ -3,16 +3,19 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QVBoxLayout, QWidget, QGroupBox, QHBoxLayout, QLabel, QPushButton, QSlider
 import mido
 
-# Create a constant for manufacturer_ID
+# Create a constant for midi interface
 MANUFACTURER_ID = 0x0F
 DEVICE_ID = 0x01
+MIDI_PORT_NAME = 'Microsoft GS Wavetable Synth 0' #tbd needs to be ensoniq
 
 
 class MirageSlider(QWidget):
-    def __init__(self, max_value, title, midi_cc, parent=None):
+    def __init__(self, midi_port, max_value, title, midi_sysex_command_id, parent=None):
         super().__init__(parent)
 
-        self.midi_cc = midi_cc  # MIDI Control Change number
+        self.midi_port = midi_port  # MIDI output port
+        self.title = title
+        self.sysex_command_id = midi_sysex_command_id  # MIDI Control Change number
         self.midi_channel = 0  # Default MIDI channel (0-based, corresponds to channel 1)
         self.midi_out = None  # MIDI output port to send messages
 
@@ -78,6 +81,7 @@ class MirageSlider(QWidget):
 
     def update_value(self, value):
         self.value_label.setText(str(value))
+        print(f"Slider {self.title} value changed to {value}")
         self.send_midi_message(value)
 
     def decrease_value(self):
@@ -91,10 +95,12 @@ class MirageSlider(QWidget):
             self.slider.setValue(current_value + 1)
 
     def send_midi_message(self, value):
-        if self.midi_out:
+        if self.midi_port:
             # Create and send a MIDI CC message
-            message = mido.Message('control_change', channel=self.midi_channel, control=self.midi_cc, value=value)
-            self.midi_out.send(message)
+            sysex_data = [MANUFACTURER_ID, DEVICE_ID, self.sysex_command_id, self.slider.value()]
+            self.midi_port.send(mido.Message('sysex', data=sysex_data))
+            sysex_message_hex = ' '.join(f'{byte:02X}' for byte in sysex_data)
+            print(f"Sent SysEx message in hex: F0 {sysex_message_hex} F7")
 
 
 class MainWindow(QMainWindow):
@@ -102,6 +108,14 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Ensoniq Mirage Controller with MIDI")
+
+        available_ports = mido.get_output_names()
+        print("Available MIDI Output Ports:", available_ports)
+
+        if available_ports:
+            self.midi_port = mido.open_output(available_ports[0])
+        else:
+            raise Exception("No available MIDI output ports.")
 
         # Central widget and layout
         central_widget = QWidget()
@@ -119,9 +133,6 @@ class MainWindow(QMainWindow):
         menu_bar.addMenu(wave_menu)
 
         main_layout = QHBoxLayout()
-
-        # MIDI Output Port
-        self.midi_out = mido.open_output(mido.get_output_names()[0])
 
         # Add two columns with sliders
         main_layout.addLayout(self.create_column_of_sliders([
@@ -155,8 +166,7 @@ class MainWindow(QMainWindow):
         column_layout.setSpacing(0)
         column_layout.setContentsMargins(0, 0, 0, 0)
         for title, max_value, midi_cc in sliders:
-            slider = MirageSlider(max_value, title, midi_cc)
-            slider.midi_out = self.midi_out
+            slider = MirageSlider(self.midi_port, max_value, title, midi_cc)
             column_layout.addWidget(slider)
         return column_layout
 
