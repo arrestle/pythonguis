@@ -1,4 +1,15 @@
 ## [PythonGUIs](https://www.pythonguis.com) Want to create GUI applications with Python? 
+
+### Steps to install development environment
+1. Install the qt framework from [Qt Software Downloads](https://www.qt.io/download-dev)
+2. Install [pyenv](https://github.com/pyenv/pyenv) so you can more easily switch versions of Python when needed.
+3. Use pyenv to install Python 3.12.0 (3.13 is newer but doesn't support rtmidi yet) 
+4. Use python to install the other prerequisites using `pip install pyside6`, etc...
+5. Install VS Code from [Download](https://code.visualstudio.com/download) for your system. It's a large IDE with a lot of functionality, but well supported.
+ 
+
+### Investigation into QT using PySide6.
+
 * app-1.py represents [Creating your first app with PySide6](https://www.pythonguis.com/tutorials/pyside6-creating-your-first-window/)
 * app-2.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Button signals.
 
