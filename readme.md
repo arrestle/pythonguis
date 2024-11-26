@@ -135,6 +135,6 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
     print(f"Sent SysEx message in hex: F0 {sysex_message_hex} F7")
 ```
 * mirage.py - working version of user interface copied from app-6.py as a starting point.
-* mirage-2.py - starting to add in midi sysex messages to user interface.
+* mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
 
 May need an actual Mirage at this point. 
