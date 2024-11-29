@@ -34,7 +34,7 @@ This all worked fine with Python 3.13.0
 * app-6.py Cleaned up version of app-5.py with helper functions.
 
 
-## 2. MIDI: [python-rtmidi 1.5.8 ](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/) without Qt.
+## 2. MIDI: [python-rtmidi 1.5.8](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/) without Qt.
 
 This is where I learned I needed to back up and use Python 3.12.0, here's how to do that:
 
@@ -49,8 +49,14 @@ pyenv rehash
 pyenv shell 3.12.0
 
 python -m pip install --upgrade pip # downgrade the installer.
+```
+
+from [pypi.org python-rtmidi #files](https://pypi.org/project/python-rtmidi/#files) -> **Built Distributions** you'll find a download link: [python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl](https://files.pythonhosted.org/packages/93/46/6af077d262f521ea2bf1ab60b8aad72f34fe6dd55af739176605369d449c/python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl) or use your own architecture to install the C# libraries you'll need.
+
+download and install with:
+```bash
 pip install python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl --force-reinstall # if you have the whl file.
-# --or-- should work as well.
+# --or-- might work as well.
 pip install python-rtmidi==1.5.8
 ```
 
