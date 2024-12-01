@@ -4,35 +4,29 @@ First thing I needed to do to was figure out how to build the sliders in the tem
 
 ![Mirage Program](./Mirage-docs/MirageProgram.png)
 
-
 ### Steps to install development environment
 1. Install the qt framework from [Qt Software Downloads](https://www.qt.io/download-dev)
 2. Install [pyenv](https://github.com/pyenv/pyenv) so you can more easily switch versions of Python when needed.
-3. Use pyenv to install Python 3.12.0 (3.13 is newer but doesn't support rtmidi yet) 
+3. Use pyenv to install Python 3.12.0 (3.13 is newer but doesn't support rtmidi yet)
 4. Use python to install the other prerequisites using `pip install pyside6`, etc...
 5. Install VS Code from [Download](https://code.visualstudio.com/download) for your system. It's a large IDE with a lot of functionality, but well supported.
 
 ### Why QT and Python?
 1. I chose Python because I needed to learn it for a new position I'm starting in December, 2024
 2. I chose QT because it provides professional quality User Interfaces with a Python wrapper called PySide6 for easy programming and is cross platform, meaning one program works on Linux, Windows and Mac OS laptops, a requirement for musicians is Windows and Mac OS.
-4. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are a simpler choice.
-5. There was a choice between PySide6 and PyQt for Python wrappers for QT but for licensing reasons went with PySide6. They are extremely similar though.
+3. Note I implemented this UI in Python using [QT Widgets](https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html), and not [QML](https://doc.qt.io/qtforpython-6/tutorials/basictutorial/qml.html). QML would be a good choice if you needed a tablet interface or were working with a separate UX team. As that is not the case here widgets are a simpler choice.
+4. There was a choice between PySide6 and PyQt for Python wrappers for QT but for licensing reasons went with PySide6. They are extremely similar though.
 
 ### Investigation into QT using PySide6.
 
-This all worked fine with Python 3.13.0
+This all worked fine with Python 3.12.0
 
 * app-1.py represents [Creating your first app with PySide6](https://www.pythonguis.com/tutorials/pyside6-creating-your-first-window/)
 * app-2.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Button signals.
-
 * app-3.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Connecting widgets together directly.
-
-* app-4.py rerpresents [A Quick Demo: PySide6 Widgets](https://www.pythonguis.com/tutorials/pyside6-widgets/)
-
-* app-5.py rerpresents a Mockup of Sliders for Ensoniq Mirage Controller using a Custom Slider.
-
+* app-4.py represents [A Quick Demo: PySide6 Widgets](https://www.pythonguis.com/tutorials/pyside6-widgets/)
+* app-5.py represents a Mockup of Sliders for Ensoniq Mirage Controller using a Custom Slider.
 * app-6.py Cleaned up version of app-5.py with helper functions.
-
 
 ## 2. MIDI: [python-rtmidi 1.5.8](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/) without Qt.
 
@@ -119,7 +113,6 @@ with mido.open_output("Your MIDI Port Name") as midi_out:
     midi_out.send(mido.Message('sysex', data=sysex_message))
 ```
 
-
 ## 5. Test Programs with UI and MIDI both
 
 # Create a constant for manufacturer_ID
@@ -147,8 +140,17 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
 
 Created additional folder to allow unit testing of mirage_slider via:
 ```bash
-pip install pytest pytest-qt
+pip install pytest pytest-qt coverage
 pytest
+coverage run --source=ensoniq -m pytest
+coverage report
+coverage html # open htmlcov\index.html for details.
 ```
-Made a modification to display the Hex command id on the custom sliders, and pass the command ids in Hex. This should make it easier to match up the correct hex commandid to the right slider title.
+Made a modification to display the Hex command id on the custom sliders, and pass the command ids in Hex. This should make it easier to match up the correct hex commandid to the right slider title. To run the new version: 
+```bash
+python ensoniq\mirage_main.py
+```
+**note:** The program will require configuration once the actual ensoniq is connected. Just choose the correct port from the output of the program currently `Available MIDI Output Ports: ['Microsoft GS Wavetable Synth 0']` and modify File `ensoniq/config.py` with the correct `MIDI_PORT_NAME` and possibly `DEVICE_ID`. 
+
+Title is also configurable. Other labels and turning on and off display of hex control ids can be added later, if needed. 
 

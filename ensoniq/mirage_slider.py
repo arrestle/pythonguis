@@ -18,7 +18,7 @@ class MirageSlider(QWidget):
         layout = QVBoxLayout()
 
         # Group box for the slider
-        self.group_box = QGroupBox(f"{title} (0x{midi_sysex_command_id:02X})")
+        self.group_box = QGroupBox(f"{title}  0x{midi_sysex_command_id:02X}  ")
         group_box_layout = QVBoxLayout()
 
         # Horizontal layout for min and max labels

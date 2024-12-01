@@ -22,7 +22,7 @@ def test_slider_value_change(qapp, qtbot, mock_midi_port):
 
     slider.slider.setValue(50)
     assert slider.value_label.text() == "50"
-    assert slider.group_box.title() == "Test Slider (0x42)"
+    assert slider.group_box.title() == "Test Slider  0x42  "
 
 def test_slider_decrement(qapp, qtbot, mock_midi_port):
     """Test decrementing the slider value."""
@@ -32,6 +32,23 @@ def test_slider_decrement(qapp, qtbot, mock_midi_port):
     slider.slider.setValue(100)
     slider.decrease_value()
     assert slider.slider.value() == 99
+
+def test_slider_increment(qapp, qtbot, mock_midi_port):
+    """Test incrementing the slider value."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    qtbot.addWidget(slider)
+
+    slider.slider.setValue(0)
+    slider.increase_value()
+    assert slider.slider.value() == 1
+
+
+def test_tick_interval(qapp, mock_midi_port):
+    """Test the tick interval for the slider."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    assert slider.get_tick_interval(10) == 1
+    assert slider.get_tick_interval(32) == 5
+    assert slider.get_tick_interval(100) == 10
 
 def test_send_midi_message(qapp, mock_midi_port):
     """Test sending MIDI messages."""
