@@ -120,7 +120,7 @@ with mido.open_output("Your MIDI Port Name") as midi_out:
 ```
 
 
-## 5. Mirage Programs with UI and MIDI both
+## 5. Test Programs with UI and MIDI both
 
 # Create a constant for manufacturer_ID
 ```python
@@ -143,4 +143,12 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
 * mirage.py - working version of user interface copied from app-6.py as a starting point.
 * mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
 
-May need an actual Mirage at this point. 
+## 6. ensoniq folder with pytest and module
+
+Created additional folder to allow unit testing of mirage_slider via:
+```bash
+pip install pytest pytest-qt
+pytest
+```
+Made a modification to display the Hex command id on the custom sliders, and pass the command ids in Hex. This should make it easier to match up the correct hex commandid to the right slider title.
+
