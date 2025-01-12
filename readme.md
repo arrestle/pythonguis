@@ -154,9 +154,28 @@ python ensoniq\mirage_main.py
 
 Title is also configurable. Other labels and turning on and off display of hex control ids can be added later, if needed. 
 
-# 7 venv and Fedora
+# 7 venv
+You'll need to install Python 3.12 to begin from python.org/downloads
+```
+#Fedora
 python -m venv .venv
 source .venv/bin/activate
-pip install pyside6
-https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-manylinux_2_28_x86_64.whl
-sudo dnf install timidity++
+download https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-manylinux_2_28_x86_64.whl
+update the requirements.txt file with the correct whl file.
+pip install -r  mirage/requirements.txt
+sudo dnf install timidity++ # or other midi program. 
+```
+```
+#Windows
+python -m venv .venv
+. .venv/bin/activate
+download  https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl 
+update the requirements.txt file with the correct whl file.
+pip install -r .\ensoniq\requirements.txt
+```
+
+```
+# Both
+# update the ensoniq/config.py with the correct MIDI_PORT_NAME (the last one takes effect)
+pytest . # to run tests
+python ensoniq\mirage_main.py

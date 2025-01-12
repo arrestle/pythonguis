@@ -1,6 +1,7 @@
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QVBoxLayout, QWidget, QGroupBox, QHBoxLayout, QLabel, QPushButton, QSlider, QGridLayout
 import mido, time
+from ensoniq.config import MANUFACTURER_ID, DEVICE_ID, MIDI_PORT_NAME
 
 class MirageSlider(QWidget):
     def __init__(self, midi_port, max_value, title, midi_sysex_command_id, parent=None):
@@ -80,15 +81,19 @@ class MirageSlider(QWidget):
 
     def play_sound(self):
         print(f"Playing sound for {self.title} slider...")
+
+        note1 = self.sysex_command_id +20
+        note2 = note1+2
+        note3 = note1+4
         
         # Define MIDI messages for notes
-        note_c = mido.Message('note_on', channel=0, note=60, velocity=127)  # Channel 1, Middle C, Velocity 127
-        note_d = mido.Message('note_on', channel=0, note=62, velocity=60)   # D
-        note_e = mido.Message('note_on', channel=0, note=64, velocity=30)   # E
+        note_c = mido.Message('note_on', channel=0, note=note1, velocity=127)  # Channel 1, Middle C, Velocity 127
+        note_d = mido.Message('note_on', channel=0, note=note2, velocity=60)   # D
+        note_e = mido.Message('note_on', channel=0, note=note3, velocity=30)   # E
 
-        note_off_c = mido.Message('note_off', channel=0, note=60, velocity=127)
-        note_off_d = mido.Message('note_off', channel=0, note=62, velocity=127)
-        note_off_e = mido.Message('note_off', channel=0, note=64, velocity=127)
+        note_off_c = mido.Message('note_off', channel=0, note=note1, velocity=127)
+        note_off_d = mido.Message('note_off', channel=0, note=note2, velocity=127)
+        note_off_e = mido.Message('note_off', channel=0, note=note3, velocity=127)
 
         # Send "Note On" messages
         print("Sending Note On messages...")
@@ -185,3 +190,18 @@ class MirageSlider(QWidget):
         current_value = self.slider.value()
         if current_value < self.slider.maximum():
             self.slider.setValue(current_value + 1)
+
+    def send_midi_message(self, value):
+        self.midi_port.send(mido.Message('sysex', channel=self.midi_channel, control=self.sysex_command_id, value=value))
+        note_c = mido.Message('note_on', channel=0, note=60, velocity=127) 
+
+        
+    def send_midi_message(self, value):
+        if self.midi_port:
+            # Create and send a MIDI CC message
+            sysex_data = [MANUFACTURER_ID, DEVICE_ID, self.sysex_command_id, value]
+            self.midi_port.send(mido.Message('sysex', data=sysex_data))
+            sysex_message_hex = ' '.join(f'{byte:02X}' for byte in sysex_data)
+            print(f"Sent SysEx message in hex: F0 {sysex_message_hex} F7")
+
+
