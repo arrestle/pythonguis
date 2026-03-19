@@ -21,12 +21,12 @@ First thing I needed to do to was figure out how to build the sliders in the tem
 
 This all worked fine with Python 3.12.0
 
-* app-1.py represents [Creating your first app with PySide6](https://www.pythonguis.com/tutorials/pyside6-creating-your-first-window/)
-* app-2.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Button signals.
-* app-3.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Connecting widgets together directly.
-* app-4.py represents [A Quick Demo: PySide6 Widgets](https://www.pythonguis.com/tutorials/pyside6-widgets/)
-* app-5.py represents a Mockup of Sliders for Ensoniq Mirage Controller using a Custom Slider.
-* app-6.py Cleaned up version of app-5.py with helper functions.
+* qt/app-1.py represents [Creating your first app with PySide6](https://www.pythonguis.com/tutorials/pyside6-creating-your-first-window/)
+* qt/app-2.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Button signals.
+* qt/app-3.py represents [PySide6 Signals, Slots & Events](https://www.pythonguis.com/tutorials/pyside6-signals-slots-events/) Connecting widgets together directly.
+* qt/app-4.py represents [A Quick Demo: PySide6 Widgets](https://www.pythonguis.com/tutorials/pyside6-widgets/)
+* qt/app-5.py represents a Mockup of Sliders for Ensoniq Mirage Controller using a Custom Slider.
+* qt/app-6.py Cleaned up version of app-5.py with helper functions.
 
 ## 2. MIDI: [python-rtmidi 1.5.8](https://pypi.org/project/python-rtmidi/) from [GitHub](https://github.com/SpotlightKid/python-rtmidi/tree/master) and [Docs](https://spotlightkid.github.io/python-rtmidi/) without Qt.
 
@@ -56,8 +56,8 @@ pip install python-rtmidi==1.5.8
 
 ### mido library
 
-* midi-app-1.py - simple programs to see if midi is working. Plays a few notes and prints out the midi ports available.
-* midi-app-2.py - start exercising the SysEx functionality and printing out the messages in hex.
+* qt/midi-app-1.py - simple programs to see if midi is working. Plays a few notes and prints out the midi ports available.
+* qt/midi-app-2.py - start exercising the SysEx functionality and printing out the messages in hex.
 
 
 ## 3. What is a Ensoniq Mirage Sampler anyway?
@@ -133,8 +133,8 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
     sysex_message_hex = ' '.join(f'{byte:02X}' for byte in sysex_data)
     print(f"Sent SysEx message in hex: F0 {sysex_message_hex} F7")
 ```
-* mirage.py - working version of user interface copied from app-6.py as a starting point.
-* mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
+* qt/mirage.py - working version of user interface copied from app-6.py as a starting point.
+* qt/mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
 
 ## 6. ensoniq folder with pytest and module
 
