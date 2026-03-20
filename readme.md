@@ -1,3 +1,21 @@
+## 0. Quick start (recommended)
+
+- **Python:** 3.12.x (see [`.python-version`](./.python-version)).
+- **Install & run** (with [uv](https://docs.astral.sh/uv/)) from the repo root:
+
+  ```bash
+  uv sync
+  uv run mirage-gui
+  ```
+
+  Or: `uv run python ensoniq/mirage_main.py`
+
+- **Dev deps (tests):** `uv sync --extra dev` then `uv run pytest`.
+- **Windows-only notes:** [readme-windows.md](./readme-windows.md).
+- **Changelog / version:** [CHANGELOG.md](./CHANGELOG.md) (current package version is in [`pyproject.toml`](./pyproject.toml)).
+
+---
+
 ## 1. QT and Pyside6: [PythonGUIs](https://www.pythonguis.com) GUI applications with Python
 
 First thing I needed to do to was figure out how to build the sliders in the template [MirageProgramTemplate.png](./Mirage-docs/MirageProgramTemplate.png). After much searching and trying out Maui and some others decided on Pyside6.
@@ -136,46 +154,47 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
 * qt/mirage.py - working version of user interface copied from app-6.py as a starting point.
 * qt/mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
 
-## 6. ensoniq folder with pytest and module
+## 6. `ensoniq` package — GUI, pytest, MIDI
 
-Created additional folder to allow unit testing of mirage_slider via:
+The Mirage controller lives under **`ensoniq/`** (`mirage_main.py`, `mirage_slider.py`, `config.py`).
+
+**Run the app**
+
 ```bash
-pip install pytest pytest-qt coverage
-pytest
-coverage run --source=ensoniq -m pytest
-coverage report
-coverage html # open htmlcov\index.html for details.
+uv run mirage-gui
+# or
+uv run python ensoniq/mirage_main.py
 ```
-Made a modification to display the Hex command id on the custom sliders, and pass the command ids in Hex. This should make it easier to match up the correct hex commandid to the right slider title. To run the new version: 
+
+**Tests** (after `uv sync --extra dev`):
+
 ```bash
-python ensoniq\mirage_main.py
+uv run pytest
+uv run coverage run --source=ensoniq -m pytest
+uv run coverage report
+uv run coverage html   # open htmlcov/index.html
 ```
-**note:** The program will require configuration once the actual ensoniq is connected. Just choose the correct port from the output of the program currently `Available MIDI Output Ports: ['Microsoft GS Wavetable Synth 0']` and modify File `ensoniq/config.py` with the correct `MIDI_PORT_NAME` and possibly `DEVICE_ID`. 
 
-Title is also configurable. Other labels and turning on and off display of hex control ids can be added later, if needed. 
+Sliders show **hex SysEx command IDs** to match [mirage-parameter-cards.pdf](./Mirage-docs/mirage-parameter-cards.pdf).
 
-# 7 venv
-You'll need to install Python 3.12 to begin from python.org/downloads
-```
-#Fedora
+**Hardware:** When a Mirage (or MIDI interface) is connected, pick the port printed at startup and set **`MIDI_PORT_NAME`** (and if needed **`DEVICE_ID`**) in **`ensoniq/config.py`**. **`TITLE`** is also configurable there.
+
+## 7. Virtualenv without `uv`
+
+Install **Python 3.12** from [python.org](https://www.python.org/downloads/).
+
+```bash
 python -m venv .venv
+# Linux/macOS:
 source .venv/bin/activate
-download https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-manylinux_2_28_x86_64.whl
-update the requirements.txt file with the correct whl file.
-pip install -r  mirage/requirements.txt
-sudo dnf install timidity++ # or other midi program. 
-```
-```
-#Windows
-python -m venv .venv
-. .venv/bin/activate
-download  https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl 
-update the requirements.txt file with the correct whl file.
-pip install -r .\ensoniq\requirements.txt
+# Windows PowerShell:
+# .\.venv\Scripts\Activate.ps1
+
+pip install -e ".[dev]"
+# or: pip install -r ensoniq/requirements.txt
+
+pytest
+python ensoniq/mirage_main.py
 ```
 
-```
-# Both
-# update the ensoniq/config.py with the correct MIDI_PORT_NAME (the last one takes effect)
-pytest . # to run tests
-python ensoniq\mirage_main.py
+Linux MIDI playback for testing: e.g. `timidity++` (Fedora: `sudo dnf install timidity++`). See [§2](#2-midi-python-rtmidi-158-from-github-and-docs-without-qt) for `python-rtmidi` wheels on PyPI if you need a specific platform build.

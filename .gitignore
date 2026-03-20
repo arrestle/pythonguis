@@ -66,6 +66,9 @@ Desktop.ini
 resources_rc.py
 ui_*.py
 
-# Exclude backups and lock files
+# Exclude backups and editor swap files
 *.swp
+
+# Lock files (keep uv.lock for reproducible installs)
 *.lock
+!uv.lock

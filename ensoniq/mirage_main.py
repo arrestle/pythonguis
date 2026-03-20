@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox, QLabel
+from PySide6.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QVBoxLayout, QWidget, QHBoxLayout
 import mido
 from ensoniq.mirage_slider import MirageSlider
 from ensoniq.config import MANUFACTURER_ID, DEVICE_ID, MIDI_PORT_NAME, TITLE
@@ -85,17 +85,10 @@ class MainWindow(QMainWindow):
             column_layout.addWidget(slider)
         return column_layout
 
-# Move application startup to a function
-def main():
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec())
-
-if __name__ == "__main__":
-    main()
 
 class MirageMain:
+    """Small helper used by tests; not required for the GUI entrypoint."""
+
     def __init__(self, midi_port):
         self.midi_port = midi_port
         self.slider = MirageSlider(midi_port, 100, "Test Slider", 0x42)
@@ -108,17 +101,13 @@ class MirageMain:
         if self.slider:
             self.slider.hide()
 
-class MirageSlider(QWidget):
-    def __init__(self, midi_port, max_value, title, midi_sysex_command_id, parent=None):
-        super().__init__(parent)
-        self.midi_port = midi_port
-        self.max_value = max_value
-        self.title = title
-        self.midi_sysex_command_id = midi_sysex_command_id
-        self.group_box = QGroupBox()
-        layout = QHBoxLayout()
-        layout.addWidget(QLabel(title))
-        layout.addStretch()
-        layout.addWidget(QLabel(f"0x{midi_sysex_command_id:02X}"))
-        self.group_box.setLayout(layout)
-        # ...existing code...
+
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
