@@ -18,6 +18,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QSizePolicy,
     QSlider,
+    QSpinBox,
     QVBoxLayout,
     QWidget,
 )
@@ -60,7 +61,7 @@ class ParmRow(QWidget):
             self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
         layout = QHBoxLayout()
-        layout.setContentsMargins(4, 2, 4, 2)
+        layout.setContentsMargins(4, 2, 6, 2)
 
         self._label = QLabel(
             f"<b>{spec.command_id}</b>&nbsp;{text} "
@@ -97,7 +98,7 @@ class ParmRow(QWidget):
         )
         self._slider.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self._slider.setTracking(True)
-        self._slider.valueChanged.connect(self._on_value)
+        self._slider.valueChanged.connect(self._on_slider_value)
         if spec.range_note:
             self._slider.setToolTip(spec.range_note)
 
@@ -110,9 +111,13 @@ class ParmRow(QWidget):
         self._min_lbl.setMinimumWidth(18)
         self._min_lbl.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
 
-        self._value_lbl = QLabel(str(spec.min_value))
-        self._value_lbl.setMinimumWidth(22)
-        self._value_lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self._value_spin = QSpinBox()
+        self._value_spin.setRange(spec.min_value, spec.max_value)
+        self._value_spin.setValue(spec.min_value)
+        self._value_spin.setFixedWidth(46 if not compact else 40)
+        self._value_spin.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self._value_spin.setButtonSymbols(QSpinBox.ButtonSymbols.NoButtons)
+        self._value_spin.valueChanged.connect(self._on_spin_value)
 
         self._max_lbl = QLabel(str(spec.max_value))
         self._max_lbl.setMinimumWidth(20)
@@ -124,12 +129,21 @@ class ParmRow(QWidget):
         layout.addWidget(self._slider, stretch=1)
         layout.addWidget(inc)
         layout.addWidget(self._max_lbl)
-        layout.addWidget(self._value_lbl)
+        layout.addWidget(self._value_spin)
         self.setLayout(layout)
         self.setObjectName("ParameterRow")
 
-    def _on_value(self, value: int) -> None:
-        self._value_lbl.setText(str(value))
+    def _on_slider_value(self, value: int) -> None:
+        self._value_spin.blockSignals(True)
+        self._value_spin.setValue(value)
+        self._value_spin.blockSignals(False)
+        print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
+        send_mirage_parameter(self._midi_port, self._spec.command_id, value)
+
+    def _on_spin_value(self, value: int) -> None:
+        self._slider.blockSignals(True)
+        self._slider.setValue(value)
+        self._slider.blockSignals(False)
         print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
         send_mirage_parameter(self._midi_port, self._spec.command_id, value)
 
@@ -391,6 +405,7 @@ class ParameterCard(QGroupBox):
 
         outer = QVBoxLayout()
         outer.setSpacing(6)
+        outer.setContentsMargins(6, 4, 6, 6)
 
         if spec.card_id == "wavesample_program":
             # Description is long; tooltip only — saves a big block under the group title.
@@ -433,11 +448,6 @@ class ParameterCard(QGroupBox):
         elif spec.card_id == "wavesample_program":
             # One column, narrow rows — fits the slim yellow column next to ENVELOPE.
             self.setMaximumWidth(WAVESAMPLE_PROGRAM_CARD_MAX_WIDTH_PX)
-            # Prefer content height only; row uses AlignTop so we don’t stretch with ENVELOPE.
-            self.setSizePolicy(
-                QSizePolicy.Policy.Preferred,
-                QSizePolicy.Policy.Preferred,
-            )
             for p in spec.params:
                 outer.addWidget(
                     ParmRow(midi_port, p, narrow=True, narrow_columns=2),
@@ -482,6 +492,10 @@ class ParameterCard(QGroupBox):
             if spec.card_id in ("sampling", "program"):
                 preview.setStyleSheet("font-size: 10px; padding: 4px 8px;")
             outer.addWidget(preview)
+
+        pol = self.sizePolicy()
+        if pol.verticalPolicy() != QSizePolicy.Policy.Maximum:
+            self.setSizePolicy(pol.horizontalPolicy(), QSizePolicy.Policy.MinimumExpanding)
 
         self.setLayout(outer)
 

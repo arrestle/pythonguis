@@ -2,7 +2,7 @@
 
 import sys
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QMargins, Qt
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import (
     QApplication,
@@ -77,9 +77,17 @@ class MainWindow(QMainWindow):
         menu_bar.addMenu(QMenu("Wave", self))
 
         scroll = QScrollArea()
+        scroll.setObjectName("mirageParmScroll")
         scroll.setWidgetResizable(True)
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        # Inset content from the viewport edge so group box borders aren’t clipped; avoid H-scroll gap.
+        scroll.setViewportMargins(QMargins(0, 0, 14, 0))
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         inner = QWidget()
+        inner.setObjectName("mirageParmScrollInner")
+        inner.setSizePolicy(
+            QSizePolicy.Policy.Ignored,
+            QSizePolicy.Policy.MinimumExpanding,
+        )
         v = QVBoxLayout()
         v.setContentsMargins(6, 4, 6, 6)
         v.setSpacing(9)
@@ -102,6 +110,10 @@ class MainWindow(QMainWindow):
                 )
                 if cid in _COMPACT_HEADER_IDS:
                     wrap = QWidget()
+                    wrap.setSizePolicy(
+                        QSizePolicy.Policy.Preferred,
+                        QSizePolicy.Policy.MinimumExpanding,
+                    )
                     wl = QVBoxLayout(wrap)
                     wl.setContentsMargins(0, 0, 0, 0)
                     wl.setSpacing(0)
@@ -109,19 +121,11 @@ class MainWindow(QMainWindow):
                     wl.addStretch(1)
                     row.addWidget(wrap, stretch=0)
                 elif row_has_wavesample and cid in _WAVESAMPLE_IDS:
-                    row.addWidget(
-                        card,
-                        stretch=_WAVESAMPLE_STRETCH,
-                        alignment=Qt.AlignmentFlag.AlignTop,
-                    )
+                    row.addWidget(card, stretch=_WAVESAMPLE_STRETCH)
                 elif row_has_wavesample:
-                    row.addWidget(
-                        card,
-                        stretch=_WAVESAMPLE_NEIGHBOR_STRETCH,
-                        alignment=Qt.AlignmentFlag.AlignTop,
-                    )
+                    row.addWidget(card, stretch=_WAVESAMPLE_NEIGHBOR_STRETCH)
                 else:
-                    row.addWidget(card, stretch=1, alignment=Qt.AlignmentFlag.AlignTop)
+                    row.addWidget(card, stretch=1)
             v.addLayout(row)
 
         add_card_row(_RED_PANEL_ROW1, "red")
@@ -180,6 +184,7 @@ class MainWindow(QMainWindow):
                 border-radius: 6px;
                 margin-top: 4px;
                 padding-top: 2px;
+                padding-right: 6px;
                 background-color: palette(base);
             }
             QGroupBox#YellowParameterCard::title,
@@ -201,6 +206,10 @@ class MainWindow(QMainWindow):
                 border-radius: 6px;
                 margin-top: 4px;
                 padding-top: 2px;
+                padding-right: 6px;
+            }
+            QScrollArea#mirageParmScroll {
+                background-color: palette(window);
             }
             QGroupBox#ParameterCard::title {
                 subcontrol-origin: margin;
