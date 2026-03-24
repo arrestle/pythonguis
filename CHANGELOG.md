@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.2 — 2026-03-19
+
+### Added
+- **`mirage_parm/`** — parameter-**card** UI (`mirage_parm/parameters.py`, `widgets.py`, `main.py`) aligned with **`Mirage-docs/mirage-parameter-cards.pdf`**: full **Filter** card (14 params); placeholder cards **Program**, **Wavesample**, **Sampling** to fill from the PDF.
+- Console script **`mirage-parm`** → `mirage_parm.main:main`.
+- **`shared/sysex.py`** — `send_mirage_parameter()`; **`mirage_orig.mirage_slider`** uses it for SysEx sends.
+
+## 0.2.1 — 2026-03-19
+
+### Changed
+- Split **shared** vs **original UI** packages: **`shared/`** (config + `open_midi_output_port`), **`mirage_orig/`** (main window + `MirageSlider`). **`ensoniq/`** remains a thin compatibility layer (`mirage_main.py`, `mirage_slider.py`, `config.py` re-exports).
+
 ## 0.2.0 — 2026-03-19
 
 ### Added

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ensoniq"
-version = "0.2.0"
+version = "0.2.2"
 description = "Ensoniq Mirage controller GUI (PySide6 + MIDI)"
 readme = "readme.md"
 requires-python = ">=3.12,<3.13"
@@ -20,13 +20,20 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "coverage==7.6.10",
+    "pillow>=11.0",
+    "pypdf>=6.0",
+    "pytesseract>=0.3.13",
     "pytest==8.3.4",
     "pytest-qt==4.4.0",
 ]
 
 [project.scripts]
 mirage-gui = "ensoniq.mirage_main:main"
+mirage-parm = "mirage_parm.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["ensoniq"]
+include = ["ensoniq", "shared", "mirage_orig", "mirage_parm"]
+
+[tool.setuptools.package-data]
+mirage_parm = ["parameter_cards.json"]

@@ -16,21 +16,21 @@ def mock_slider():
 
 def test_main_initialization(qapp, mock_midi_port, mock_slider):
     """Test main initialization."""
-    with patch('ensoniq.mirage_main.MirageSlider', return_value=mock_slider):
+    with patch("mirage_orig.main.MirageSlider", return_value=mock_slider):
         main = MirageMain(mock_midi_port)
         assert main.midi_port == mock_midi_port
         assert main.slider == mock_slider
 
 def test_main_start(qapp, mock_midi_port, mock_slider):
     """Test starting the main application."""
-    with patch('ensoniq.mirage_main.MirageSlider', return_value=mock_slider):
+    with patch("mirage_orig.main.MirageSlider", return_value=mock_slider):
         main = MirageMain(mock_midi_port)
         main.start()
         assert mock_slider.show.called
 
 def test_main_stop(qapp, mock_midi_port, mock_slider):
     """Test stopping the main application."""
-    with patch('ensoniq.mirage_main.MirageSlider', return_value=mock_slider):
+    with patch("mirage_orig.main.MirageSlider", return_value=mock_slider):
         main = MirageMain(mock_midi_port)
         main.start()
         main.stop()

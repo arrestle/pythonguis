@@ -8,11 +8,22 @@
   uv run mirage-gui
   ```
 
-  Or: `uv run python ensoniq/mirage_main.py`
+  Or: `uv run python ensoniq/mirage_main.py` · parameter cards: `uv run mirage-parm`
 
 - **Dev deps (tests):** `uv sync --extra dev` then `uv run pytest`.
 - **Windows-only notes:** [readme-windows.md](./readme-windows.md).
 - **Changelog / version:** [CHANGELOG.md](./CHANGELOG.md) (current package version is in [`pyproject.toml`](./pyproject.toml)).
+
+### Project layout
+
+| Path | Role |
+|------|------|
+| **`shared/`** | **Shared** MIDI + config: `shared/config.py` (port name, SysEx IDs, window title), `shared/midi.py` (`open_midi_output_port`). Use this for new UIs (e.g. parameter cards). |
+| **`mirage_orig/`** | **Original** two-column slider UI: `mirage_orig/main.py` (window + `main`), `mirage_orig/mirage_slider.py`. On disk the folder is `mirage_orig` (Python import name); conceptually **mirage-orig**. |
+| **`mirage_parm/`** | **Parameter-card** layout (see `Mirage-docs/mirage-parameter-cards.pdf`): `mirage_parm/main.py`, `parameter_cards.json`, `widgets.py`. Run: `uv run mirage-parm`. **Window size** uses the primary screen’s **available** area (minus margins), **width capped** (~900px) so the grid fits typical laptops; **maximize** for full width. Centered on open. |
+| **`ensoniq/`** | **Compatibility**: thin re-exports so `python ensoniq/mirage_main.py`, `from ensoniq.mirage_slider import …`, and tests keep working. |
+
+You can also run the original UI directly: `uv run python -m mirage_orig.main`.
 
 ---
 
@@ -154,9 +165,9 @@ with mido.open_output(MIDI_PORT_NAME) as midi_out:
 * qt/mirage.py - working version of user interface copied from app-6.py as a starting point.
 * qt/mirage-2.py - starting to add in midi sysex messages to user interface. This does work but is just using the first port it finds. Not sure how to find the Ensoniq Mirage port. This does operate and send out sysex  messages, but of course it doesn't do anything useful with out the actual sampler to talk to. 
 
-## 6. `ensoniq` package — GUI, pytest, MIDI
+## 6. `ensoniq` / `mirage_orig` — GUI, pytest, MIDI
 
-The Mirage controller lives under **`ensoniq/`** (`mirage_main.py`, `mirage_slider.py`, `config.py`).
+The **original** Mirage controller UI lives under **`mirage_orig/`**; **`ensoniq/`** keeps backward-compatible entrypoints and imports (see [Project layout](#project-layout) above).
 
 **Run the app**
 
@@ -164,6 +175,8 @@ The Mirage controller lives under **`ensoniq/`** (`mirage_main.py`, `mirage_slid
 uv run mirage-gui
 # or
 uv run python ensoniq/mirage_main.py
+# parameter-card layout (mirage_parm):
+uv run mirage-parm
 ```
 
 **Tests** (after `uv sync --extra dev`):
@@ -177,7 +190,9 @@ uv run coverage html   # open htmlcov/index.html
 
 Sliders show **hex SysEx command IDs** to match [mirage-parameter-cards.pdf](./Mirage-docs/mirage-parameter-cards.pdf).
 
-**Hardware:** When a Mirage (or MIDI interface) is connected, pick the port printed at startup and set **`MIDI_PORT_NAME`** (and if needed **`DEVICE_ID`**) in **`ensoniq/config.py`**. **`TITLE`** is also configurable there.
+**MIDI / sound:** Slider moves send **Ensoniq SysEx** (`F0 0F …`), not normal notes. **Microsoft GS Wavetable Synth** (and most soft synths) **will not** play Mirage filter/program changes—you need a **real Mirage** (or a MIDI monitor) to hear/see the right behavior. The **Play Sound** button sends **note on/off** test notes, which *can* be heard on a GM synth if volume/routing are OK.
+
+**Hardware:** When a Mirage (or MIDI interface) is connected, pick the port printed at startup and set **`MIDI_PORT_NAME`** (and if needed **`DEVICE_ID`**) in **`shared/config.py`** (or the shim **`ensoniq/config.py`**). **`TITLE`** is also configurable there.
 
 ## 7. Virtualenv without `uv`
 

@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QVBoxLayout, QWidget, QGroupBox, QHBoxLayout, QLabel, QPushButton, QSlider
-from ensoniq.config import MANUFACTURER_ID, DEVICE_ID, MIDI_PORT_NAME
+from shared.config import MANUFACTURER_ID, DEVICE_ID, MIDI_PORT_NAME
 import mido
 
 

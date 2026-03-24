@@ -1,0 +1,30 @@
+# Extracted from: mirage-parameter-cards.pdf
+# Pages: 1
+
+## Page 1
+
+PROGRAM
+The values of these program parameters
+(except GENERAL KEYBOARD) can be
+saved on diskette as any of four
+programs  assignable to each sound.
+KEYBOARD/PROGRAM
+ENVELOPE
+FILTERAMPLITUDE
+GENERAL KEYBOARD
+FILTERAMPLITUDE
+ENVELOPE MODULATION
+WAVESAMPLE
+SAMPLING
+The WAVESAMPLE parameters apply only
+to the currently selected wavesample.
+The SAMPLING CONFIG, GENERAL
+KEYBOARD and CONFIGURATION
+parameters can be saved using
+parameter 14.
+SAMPLING CONFIG.
+CONFIGURATION
+COMMAND
+WAVESAMPLE
+PARAMETER REFERENCE
+

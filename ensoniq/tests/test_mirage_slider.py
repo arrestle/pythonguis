@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
 
-from ensoniq.mirage_slider import MirageSlider
+from mirage_orig.mirage_slider import MirageSlider
 
 @pytest.fixture
 def mock_midi_port():

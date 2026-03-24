@@ -169,13 +169,24 @@ Open **Command Prompt** and run:
 
 ---
 
+## MIDI test sound (“Play Sound” / Microsoft GS Wavetable)
+
+The **Speakers (Realtek)** vs **monitor HDMI** menu only picks where **most apps** play audio. **Microsoft GS Wavetable Synth** normally uses the **same default playback device** as other desktop audio, but Windows keeps MIDI on a **separate path**—if you hear nothing:
+
+1. **Confirm the app is sending MIDI** — run the GUI from a terminal and click **Play Sound**. You should see lines like `Play Sound: sending Note On…` and `Play Sound: done.` If you see `Play Sound: MIDI send failed` and a traceback, paste that into an issue.
+2. **Volume mixer** — **Settings → System → Sound → Volume mixer** (Windows 11). Make sure **nothing is muted** and system volume is up. Some setups don’t show “MIDI” separately; the synth still routes to your default output (e.g. Realtek).
+3. **Try another MIDI port** — On some Windows 11 builds the built-in **GS Wavetable** is flaky. Install something like **VirtualMIDISynth** (CoolSoft), pick its **MIDI output** in the list printed at startup, and set `MIDI_PORT_NAME` in **`shared/config.py`** to match that name.
+4. **Exclusive / spatial audio** — Rarely, driver “enhancements” affect synth output; try toggling spatial audio or testing with headphones on the same Realtek device.
+
+---
+
 ## Run the Mirage controller GUI
 
 ```powershell
 python .\ensoniq\mirage_main.py
 ```
 
-Update `ensoniq\config.py` (`MIDI_PORT_NAME`, etc.) as described in [readme.md](./readme.md).
+Update **`shared/config.py`** (or shim **`ensoniq/config.py`**) for `MIDI_PORT_NAME`, etc., as in [readme.md](./readme.md).
 
 ### Deactivate the venv
 

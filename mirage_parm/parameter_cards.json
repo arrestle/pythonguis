@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "description": "Mirage laminated parameter cards — edit ranges/labels here (loaded at startup).",
+  "cards": [
+    {
+      "id": "sampling",
+      "title": "SAMPLING",
+      "description": "The WAVESAMPLE Parameters apply only to the currently selected wavesample. The SAMPLING CONFIG, GENERAL KEYBOARD and CONFIGURATION parameters can be saved with parameter 14.",
+      "params": []
+    },
+    {
+      "id": "sampling_config",
+      "title": "SAMPLING CONFIG",
+      "description": "Red panel — parameters 73–77 and 93 (two columns on card).",
+      "params": [
+        {"id": 73, "label": "SAMPLE TIME ADJ.", "min": 30, "max": 99},
+        {"id": 74, "label": "INPUT FILTER FREQ.", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 75, "label": "LINE/MIC LEVEL INPUT", "kind": "toggle"},
+        {"id": 76, "label": "SAMPLING THRESHOLD", "min": 0, "max": 63, "range_note": "00-63"},
+        {"id": 77, "label": "USER MULTISAMPLING", "kind": "toggle"},
+        {"id": 93, "label": "EXTERNAL INPUT FILTER FREQUENCY", "min": 0, "max": 99, "range_note": "00-99"}
+      ]
+    },
+    {
+      "id": "command",
+      "title": "COMMAND",
+      "description": "Red panel — parameters 11–16: save/copy operations (two columns).",
+      "params": [
+        {"id": 11, "label": "SAVE LOWER KBD. SOUND (SL)", "min": 0, "max": 127},
+        {"id": 12, "label": "SAVE UPPER KBD. SOUND (SU)", "min": 0, "max": 127},
+        {"id": 13, "label": "SAVE BOTH KBD. SOUNDS (SA)", "min": 0, "max": 127},
+        {"id": 14, "label": "SAVE CONFIG. PARAMS (SP)", "min": 0, "max": 127},
+        {"id": 15, "label": "COPY PROGRAM TO LOWER (CL)", "min": 0, "max": 127},
+        {"id": 16, "label": "COPY PROGRAM TO UPPER (CU)", "min": 0, "max": 127}
+      ]
+    },
+    {
+      "id": "configuration",
+      "title": "CONFIGURATION",
+      "description": "Red panel — MIDI/sequencer globals 81–89 (two columns).",
+      "params": [
+        {"id": 81, "label": "MIDI OMNI MODE", "kind": "toggle"},
+        {"id": 82, "label": "MIDI CHANNEL SELECT", "min": 0, "max": 15, "range_note": "01-16 (UI)"},
+        {"id": 83, "label": "MIDI THRU MODE", "kind": "toggle"},
+        {"id": 84, "label": "MIDI CONTROLLER ENABLE", "kind": "toggle"},
+        {"id": 85, "label": "EXT. SEQUENCER CLOCK", "kind": "toggle"},
+        {"id": 86, "label": "EXT. CLOCK JACK SELECT", "kind": "toggle"},
+        {"id": 87, "label": "INTERNAL CLOCK RATE", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 88, "label": "SEQUENCER LOOP SWITCH", "kind": "toggle"},
+        {"id": 89, "label": "SEQ. FT. SW./SUS. PEDAL", "kind": "toggle"}
+      ]
+    },
+    {
+      "id": "wavesample_sampling",
+      "title": "WAVESAMPLE (sampling)",
+      "description": "Red panel — 26–28 (same as yellow WAVESAMPLE) then loop/sample points 60–72 only on this card (three columns).",
+      "params": [
+        {"id": 26, "label": "WAVESAMPLE SELECT", "min": 0, "max": 7, "range_note": "01-08"},
+        {"id": 27, "label": "INITIAL WAVESAMPLE", "min": 0, "max": 7, "range_note": "01-08"},
+        {"id": 60, "label": "WAVESAMPLE START", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 61, "label": "WAVESAMPLE END", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 62, "label": "LOOP START", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 63, "label": "LOOP END", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 64, "label": "LOOP END FINE ADJ.", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 65, "label": "LOOP SWITCH", "kind": "toggle"},
+        {"id": 66, "label": "WAVESAMPLE ROTATE", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 67, "label": "RELATIVE TUNING — COARSE", "min": 0, "max": 7, "range_note": "00-07"},
+        {"id": 68, "label": "RELATIVE TUNING — FINE", "min": 0, "max": 255, "range_note": "00-FF"},
+        {"id": 69, "label": "RELATIVE AMPLITUDE", "min": 0, "max": 63, "range_note": "00-63"},
+        {"id": 70, "label": "RELATIVE FILTER FREQ.", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 71, "label": "MAXIMUM FILTER FREQ.", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 72, "label": "TOP KEY", "min": 0, "max": 60, "range_note": "01-61"}
+      ]
+    },
+    {
+      "id": "program",
+      "title": "PROGRAM",
+      "description": "The values of these program parameters (except GENERAL KEYBOARD) can be saved on diskette as any of four programs assignable to each sound.",
+      "params": []
+    },
+    {
+      "id": "keyboard_program",
+      "title": "KEYBOARD/PROGRAM",
+      "description": "Yellow panel — first row, two columns; parameters 29, 31–32, 36–38.",
+      "params": [
+        {"id": 29, "label": "MONOPHONIC MODE", "kind": "toggle"},
+        {"id": 31, "label": "LFO FREQ. (SPEED)", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 32, "label": "LFO DEPTH", "min": 0, "max": 99, "range_note": "00-99, 00=ModWheel"},
+        {"id": 36, "label": "FILTER CUTOFF FREQUENCY", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 37, "label": "FILTER RESONANCE (Q)", "min": 0, "max": 40, "range_note": "00-40"},
+        {"id": 38, "label": "FILTER KBD. TRACKING", "min": 0, "max": 4, "range_note": "00-04"}
+      ]
+    },
+    {
+      "id": "general_keyboard",
+      "title": "GENERAL KEYBOARD",
+      "description": "Yellow panel — first row; parameters 21–25 (two columns).",
+      "params": [
+        {"id": 21, "label": "MASTER TUNE", "kind": "toggle"},
+        {"id": 22, "label": "PITCH BEND RANGE", "kind": "toggle"},
+        {"id": 23, "label": "KEYBOARD VEL. SENS.", "min": 0, "max": 99, "range_note": "00-99, 00=ModWheel"},
+        {"id": 24, "label": "KEYBOARD BALANCE", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 25, "label": "U/L PROGRAM LINK", "min": 0, "max": 40, "range_note": "00-40"}
+      ]
+    },
+    {
+      "id": "wavesample_program",
+      "title": "WAVESAMPLE (program)",
+      "description": "Yellow panel — second row, single column: 26, 27, 28, 33, 34, 35 (26–28 same SysEx as red WAVESAMPLE). 60–72 only on red WAVESAMPLE.",
+      "params": [
+        {"id": 26, "label": "WAVESAMPLE SELECT", "min": 0, "max": 7, "range_note": "01-08"},
+        {"id": 27, "label": "INITIAL WAVESAMPLE", "min": 0, "max": 7, "range_note": "01-08"},
+        {"id": 28, "label": "MIX MODE", "kind": "toggle", "range_note": "On/Off"},
+        {"id": 33, "label": "OSC. 2 DETUNE", "min": 0, "max": 99, "range_note": "00-99"},
+        {"id": 34, "label": "OSC. MIX", "min": 0, "max": 63, "range_note": "00-63"},
+        {"id": 35, "label": "OSC. MIX — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31, 00=ModWheel"}
+      ]
+    },
+    {
+      "id": "envelope",
+      "title": "ENVELOPE / ENVELOPE MODULATION",
+      "description": "Yellow panel — second row. One FILTER column (40–49) and one AMPLITUDE column (50–59): envelope first, then modulation per stage.",
+      "params": [
+        {"id": 40, "label": "FILTER — ATTACK", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 41, "label": "FILTER — PEAK", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 42, "label": "FILTER — DECAY", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 43, "label": "FILTER — SUSTAIN", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 44, "label": "FILTER — RELEASE", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 45, "label": "FILTER — ATTACK — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 46, "label": "FILTER — PEAK — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 47, "label": "FILTER — DECAY — KBD. SCALED", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 48, "label": "FILTER — SUSTAIN — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 49, "label": "FILTER — RELEASE — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 50, "label": "AMPLITUDE — ATTACK", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 51, "label": "AMPLITUDE — PEAK", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 52, "label": "AMPLITUDE — DECAY", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 53, "label": "AMPLITUDE — SUSTAIN", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 54, "label": "AMPLITUDE — RELEASE", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 55, "label": "AMPLITUDE — ATTACK — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 56, "label": "AMPLITUDE — PEAK — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 57, "label": "AMPLITUDE — DECAY — KBD. SCALED", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 58, "label": "AMPLITUDE — SUSTAIN — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"},
+        {"id": 59, "label": "AMPLITUDE — RELEASE — VEL. SENS.", "min": 0, "max": 31, "range_note": "00-31"}
+      ]
+    }
+  ]
+}
