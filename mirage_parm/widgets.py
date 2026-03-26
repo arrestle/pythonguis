@@ -158,20 +158,33 @@ class ParmRow(QWidget):
             self._slider.setValue(v + 1)
 
 
-def _play_gm_test(midi_port) -> None:
-    """Short GM chord for card-level MIDI sanity check (same idea as MirageSlider)."""
+def _play_gm_test(midi_port, *, port_name: str | None = None) -> None:
+    """Short GM arpeggio for card-level MIDI sanity check (same idea as MirageSlider)."""
     ch = 0
+    label = port_name or "(unknown port)"
+    print(f"Play test MIDI (GM): sending to {label!r}", flush=True)
     try:
+        # Channel volume — some drivers/synths ignore notes when volume is 0.
+        midi_port.send(mido.Message("control_change", channel=ch, control=7, value=127))
+        time.sleep(0.03)
+        # Acoustic Grand (GM program 0). GS Wavetable often stays silent without program_change.
         midi_port.send(mido.Message("program_change", channel=ch, program=0))
-        time.sleep(0.05)
-        for note, vel in ((60, 110), (64, 95), (67, 95)):
-            midi_port.send(mido.Message("note_on", channel=ch, note=note, velocity=vel))
-            time.sleep(0.15)
-        time.sleep(0.35)
-        for note in (60, 64, 67):
+        time.sleep(0.08)
+
+        note1, note2, note3 = 60, 64, 67
+        print("Play test MIDI: note on (C major arpeggio)…", flush=True)
+        midi_port.send(mido.Message("note_on", channel=ch, note=note1, velocity=120))
+        time.sleep(0.2)
+        midi_port.send(mido.Message("note_on", channel=ch, note=note2, velocity=100))
+        time.sleep(0.2)
+        midi_port.send(mido.Message("note_on", channel=ch, note=note3, velocity=100))
+        time.sleep(0.45)
+        print("Play test MIDI: note off…", flush=True)
+        for note in (note1, note2, note3):
             midi_port.send(mido.Message("note_off", channel=ch, note=note, velocity=64))
+        print("Play test MIDI: done.", flush=True)
     except Exception:
-        print("Card preview MIDI failed:", file=sys.stderr)
+        print("Play test MIDI failed:", file=sys.stderr)
         traceback.print_exc()
 
 
@@ -389,6 +402,7 @@ class ParameterCard(QGroupBox):
         *,
         panel: PanelKind = "default",
         show_play_preview: bool = False,
+        midi_port_name: str | None = None,
         parent=None,
     ):
         super().__init__(spec.title, parent)
@@ -486,8 +500,17 @@ class ParameterCard(QGroupBox):
                 outer.addWidget(ParmRow(midi_port, p))
 
         self._midi_port = midi_port
+        self._midi_port_name = midi_port_name
         if show_play_preview:
             preview = QPushButton("Play test MIDI (GM)")
+            preview.setToolTip(
+                "Sends General MIDI (program 0 + short notes) to the MIDI output "
+                "set in shared/config.py (MIDI_PORT_NAME).\n"
+                "Use a software synth (e.g. “Microsoft GS Wavetable Synth” on Windows) to hear "
+                "audio on this PC. The synth’s sound goes to the OS default playback device "
+                "(headphones, speakers, etc.) — change Output in Windows/macOS Sound settings, "
+                "not in this app. If you send only to a Mirage or USB interface, listen to that hardware."
+            )
             preview.clicked.connect(self._on_preview_clicked)
             if spec.card_id in ("sampling", "program"):
                 preview.setStyleSheet("font-size: 10px; padding: 4px 8px;")
@@ -500,4 +523,8 @@ class ParameterCard(QGroupBox):
         self.setLayout(outer)
 
     def _on_preview_clicked(self, checked: bool = False) -> None:
-        threading.Thread(target=lambda: _play_gm_test(self._midi_port), daemon=True).start()
+        name = self._midi_port_name
+        threading.Thread(
+            target=lambda: _play_gm_test(self._midi_port, port_name=name),
+            daemon=True,
+        ).start()

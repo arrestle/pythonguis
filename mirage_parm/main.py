@@ -2,8 +2,8 @@
 
 import sys
 
-from PySide6.QtCore import QMargins, Qt
-from PySide6.QtGui import QGuiApplication
+from PySide6.QtCore import QEvent, QMargins, Qt
+from PySide6.QtGui import QAction, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QApplication,
     QFrame,
@@ -11,12 +11,14 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QMenuBar,
     QMenu,
+    QPushButton,
     QScrollArea,
     QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
 
+from mirage_parm.diagnostics import show_diagnostics_dialog
 from mirage_parm.parameters import CARDS, CardSpec
 from mirage_parm.widgets import PanelKind, ParameterCard
 from shared.config import MIDI_PORT_NAME
@@ -42,27 +44,6 @@ _WAVESAMPLE_IDS = frozenset({"wavesample_sampling", "wavesample_program"})
 _WAVESAMPLE_STRETCH = 2
 _WAVESAMPLE_NEIGHBOR_STRETCH = 5  # WAVESAMPLE ~2/7 of row slack; ENVELOPE a bit narrower on laptop
 
-# Default width cap tuned so three-column rows + ENVELOPE fit without horizontal scroll on ~1366px laptops.
-_LAPTOP_WINDOW_MAX_WIDTH_PX = 900
-
-
-def _fit_main_window_to_screen(win: QMainWindow) -> None:
-    """Size and place the window to use the primary screen’s work area (typical laptop)."""
-    screen = QGuiApplication.primaryScreen()
-    if screen is None:
-        win.resize(720, 600)
-        return
-    g = screen.availableGeometry()
-    mx, my = 12, 20
-    w_avail = g.width() - mx * 2
-    w = max(600, min(w_avail, _LAPTOP_WINDOW_MAX_WIDTH_PX))
-    h = max(480, g.height() - my * 2)
-    win.resize(w, h)
-    x = g.x() + max(0, (g.width() - w) // 2)
-    y = g.y() + max(0, (g.height() - h) // 2)
-    win.move(x, y)
-
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -72,9 +53,48 @@ class MainWindow(QMainWindow):
 
         menu_bar = QMenuBar(self)
         self.setMenuBar(menu_bar)
-        menu_bar.addMenu(QMenu("View", self))
+
+        file_menu = menu_bar.addMenu("&File")
+        act_quit = QAction("&Quit", self)
+        act_quit.setShortcut(QKeySequence.StandardKey.Quit)
+        act_quit.triggered.connect(QApplication.instance().quit)
+        file_menu.addAction(act_quit)
+
+        view_menu = menu_bar.addMenu("&View")
+        self._act_exit_full_screen = QAction("E&xit Full Screen", self)
+        self._act_exit_full_screen.setShortcut(QKeySequence(Qt.Key.Key_Escape))
+        self._act_exit_full_screen.triggered.connect(self._leave_full_screen)
+        view_menu.addAction(self._act_exit_full_screen)
+
+        self._act_enter_full_screen = QAction("&Enter Full Screen", self)
+        self._act_enter_full_screen.triggered.connect(self.showFullScreen)
+        view_menu.addAction(self._act_enter_full_screen)
+
         menu_bar.addMenu(QMenu("Param", self))
         menu_bar.addMenu(QMenu("Wave", self))
+
+        help_menu = menu_bar.addMenu("&Help")
+        act_diagnostics = QAction("&Diagnostics…", self)
+        act_diagnostics.triggered.connect(
+            lambda: show_diagnostics_dialog(self, opened_output_name=self.midi_port_name)
+        )
+        help_menu.addAction(act_diagnostics)
+
+        self._full_screen_close_button = QPushButton("\u00d7")
+        self._full_screen_close_button.setObjectName("fullScreenCloseButton")
+        self._full_screen_close_button.setFixedSize(40, 32)
+        self._full_screen_close_button.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+        self._full_screen_close_button.setToolTip("Close")
+        self._full_screen_close_button.clicked.connect(QApplication.instance().quit)
+        self._full_screen_close_wrap = QWidget()
+        close_wrap_layout = QHBoxLayout(self._full_screen_close_wrap)
+        close_wrap_layout.setContentsMargins(0, 0, 14, 0)
+        close_wrap_layout.setSpacing(0)
+        close_wrap_layout.addWidget(self._full_screen_close_button)
+        menu_bar.setCornerWidget(self._full_screen_close_wrap, Qt.Corner.TopRightCorner)
+
+        shortcut_quit = QShortcut(QKeySequence.StandardKey.Quit, self)
+        shortcut_quit.activated.connect(QApplication.instance().quit)
 
         scroll = QScrollArea()
         scroll.setObjectName("mirageParmScroll")
@@ -107,6 +127,7 @@ class MainWindow(QMainWindow):
                     spec,
                     panel=panel,
                     show_play_preview=spec.card_id in ("sampling", "program"),
+                    midi_port_name=self.midi_port_name,
                 )
                 if cid in _COMPACT_HEADER_IDS:
                     wrap = QWidget()
@@ -142,6 +163,7 @@ class MainWindow(QMainWindow):
                     card,
                     panel="default",
                     show_play_preview=card.card_id in ("sampling", "program"),
+                    midi_port_name=self.midi_port_name,
                 )
             )
 
@@ -151,9 +173,24 @@ class MainWindow(QMainWindow):
         scroll.setFrameShape(QFrame.Shape.NoFrame)
 
         self.setCentralWidget(scroll)
-        _fit_main_window_to_screen(self)
 
         self._apply_card_style()
+        self._update_full_screen_menu_actions()
+
+    def changeEvent(self, event: QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QEvent.Type.WindowStateChange:
+            self._update_full_screen_menu_actions()
+
+    def _leave_full_screen(self) -> None:
+        if self.isFullScreen():
+            self.showMaximized()
+
+    def _update_full_screen_menu_actions(self) -> None:
+        fs = self.isFullScreen()
+        self._act_exit_full_screen.setVisible(fs)
+        self._act_enter_full_screen.setVisible(not fs)
+        self._full_screen_close_wrap.setVisible(fs)
 
     def _apply_card_style(self) -> None:
         self.setStyleSheet(
@@ -216,6 +253,20 @@ class MainWindow(QMainWindow):
                 left: 10px;
                 padding: 0 5px;
             }
+            QPushButton#fullScreenCloseButton {
+                font-size: 22px;
+                font-weight: bold;
+                border: 1px solid palette(mid);
+                border-radius: 4px;
+                background-color: palette(button);
+                padding: 0;
+            }
+            QPushButton#fullScreenCloseButton:hover {
+                background-color: palette(midlight);
+            }
+            QPushButton#fullScreenCloseButton:pressed {
+                background-color: palette(mid);
+            }
             """
         )
 
@@ -223,7 +274,7 @@ class MainWindow(QMainWindow):
 def main() -> None:
     app = QApplication(sys.argv)
     win = MainWindow()
-    win.show()
+    win.showFullScreen()
     sys.exit(app.exec())
 
 
