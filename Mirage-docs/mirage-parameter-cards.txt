@@ -1,65 +1,280 @@
-9] Go| G9/N9/ Ro] iigz | eeeeiesieaicel BESFE2
-Gy Bles|co/S9}5 Bg CY)“ 228 Fz
-i a "38 BESes
-a 2] 8] 8) 3 g> 0 Geee 2 3] §) §| §| § pi ||!)
-eeleslesloslieelsd goes slsslegiog|] *,. 22
-SSSSssisSiegcein 222 0] |SsSS\SsSS Ss) “22222 <||J
-Sale /Ss/8"/ SSS] 0 2B°2 Q S3)S3/S3/" 3/5 “288 0
-Se ggl> | 5223 a Ss §) gs) Slo 822 cif
-= s| 3S ses 2 gs) 8 | 8} |2 2°32 Z
-= v 2-52 Z 2 S| 2 823,33 0 Oo
-im Back ba a Sees
-= m BTEs = ga535
-Ss Bee Q gS2sz J
-c =:
-agaist
-| | | | @2|e0/N> vot beoed Del Do aizla
-B)Co/M| =| R|=|s5 §) 8) 5) 32 oye
-BE] §} 8) § 3 3] 3] § Saszlszs8O | § § §
-Bg §) 8) 3 s|_si5 SS8/SlS812 [os oss
-Sszsss|s [s* ISSISRISS|~ ~a/FslPS/F8] 9 SSISS/E3
-le je le |S ls [2 e=|SalS8| =| S| &) S|) |Sassiss
-Sis is fs |S fal fs ysgiss|z sx} g| S| sf Sasi?) U
-a} ls | 8) Sl “3 §) 5) Si) |) 3] §/2
-7 | S| 3/0 | 3 ' S| * z| >
-m is) - 7v
-= > D
-Zs zp us >
-< Zz
-8 ete |Z
-alaalenfan 15 [eolejeaia en |
-BS) oo/R3] =|) |] 2 2|63/9/RO| ~“S/9) m
-ae sia ale | zal aid RS] =|S)—] 0) al s/2] 4
-&] & S| S| = S| S| 2 s| s| si =| s 3)_3/<
-=|_ $I 8 3 =
-saissis is |s*2|\ jsslssiss|9 es Sloe od S3|$s/ 2} M
-S3/S3/S8 ©] 08) 3105/3 S\o5
-2 }8 [8 f& |S ja] isssglesis Se Se\SeS/s5 Sgrz/O| D
-a 3] 8] 3/< SERS FSP S| Sy | 2
-5 3} &| 3 sg) g] §} 3 S| §//| 0
-- 5] S| § S| 5) 3} Sl B| §
-3 | 3 m
+# OCR (Tesseract, 200 dpi) — source: mirage-parameter-cards.pdf
+
+--- Page 1 ---
+
+The WAVESAMPLE parameters apply only
+to the currently selected wavesample.
+The
+KEYBOARD — and
+parameters can be saved using
+parameter 14.
+
+ensonia
+
+SAMPLING
+
+SAMPLING CONFIG, GENERAL
+CONFIGURATION
+
+MIDI OMNI MODE
+On-Off
+
+MIDI CHANNEL SELECT
+O1-16
+
+MIDI THRU MODE
+On-Off
+
+MIDI CONTROLLER ENABLE
+On-Off
+
+CONFIGURATION
+
+7 SAMPLE TIME ADJ.
+
+30-99
+
+7 INPUT FILTER FREQ.
+
+00-99
+
+7 LINE/MIC LEVEL INPUT
+
+EXT. CLOCK JACK SELECT
+On-Off
+
+INTERNAL CLOCK RATE
+00-99
+
+SEQUENCER LOOP SWITCH
+On-Off
+
+SEQ. FT. SW./SUS. PEDAL
+On_!_ Off
+
+2
+2
+6
+6
+
+00-63
+
+USER MULTISAMPLING
+
+On-Off
+
+WAVESAMPLE SELECT
+01-08
+
+INITIAL WAVESAMPLE
+01-08
+
+WAVESAMPLE START
+00-FF
+
+WAVESAMPLE END
+00-FF
+
+PARAMETER REFERENCE
+
+SAMPLING CONFIG.
+
+SAMPLING THRESHOLD 1 SAVE LOWER KBD. SOUND
+
+SL
+
+1 SAVE UPPER KBD. SOUND
+
+SU
+
+1 SAVE BOTH KBD. SOUNDS
+
+SA
+
+6 LOOP END
+00-FF
+
+6 LOOP END FINE ADJ.
+00-FF
+6 LOOP SWITCH
+On-Off
+
+6 WAVESAMPLE ROTATE
+00-FF
+
+WAVESAMPLE
+
+Mirage
+
+COMMAND
+SAVE CONFIG. PARAMS
+
+I
+I
+I
+
+6
+6
 7
-m
->] >>) dad S| S| S2| >| S| Colnt|— D
-Slso|\cn co|Ro| = NS) G7) S| cofs OS) ) || mm
-=| el sl al = al =| = al sl sl sl gs] slg
-sassisrsiist)|0 |ssisalss Sa|SESS|SHSEM [SS/ESRZ || O
-a Sa|Ss|Ss Sa|Se|SS/S5)§ 3
-SaPs\S8SESaqle Ss|Ssis8/G Sgpegyseyegs [2 | gs) 3) 2) || m
-sl sl S| 3} sia}m iss} s] |z s| § 8 g| &| =
-S| SS) 7 S-1- rs] ® i| & ‘ z s/s] gs
-S| al & B15 |ke m sl > | 8) 8
-lS g > | 3 §| S/o
-= Fy 5 as) s
-zt & > Ee is e
-m is 2 in Z
-colenlenanien a rolrla ~]oo!o slalels
-| o0/Sa3/qq] |G a |2 RI |S] cS] c0] |) [O/SN= >
-a} sl si sf a} fc s} alo 3 al al 3 gl sls
-8 8 8 ale §| 35 38383) | Seual2
-SRSS|ST/SLSF]Z/> SEISS|> SSH SS|SHSS] |) PSH] || S?
-ele lee/eRlea] 3] 4 SE/Ss|/D & |SxSs2e|se 3 2) 3/9
-S| = 3
-5] 5) 8) | Fae 5 3] 3) 5) = §| | 5
-5 3) 5 co)
+7
+
+SP.
+
+COPY PROGRAM TO LOWER
+
+CL
+
+COPY PROGRAM TO UPPER
+
+CU
+
+RELATIVE TUNING — FINE
+00-FF
+
+RELATIVE AMPLITUDE
+00-63
+
+RELATIVE FILTER FREQ.
+00-99
+
+MAXIMUM FILTER FREQ.
+00-99
+
+8 EXT. SEQUENCER CLOCK 6 LOOP START 6 RELATIVE TUNING — COURSE 7 TOP KEY
+On-Off 00-FF 00-07 O1-61
+PROGRAM KEYBOARD/PROGRAM GENERAL KEYBOARD
+
+The values of these program parameters
+(except GENERAL KEYBOARD) can be
+saved on diskette as any of four
+programs assignable to each sound.
+
+2
+2
+2
+3
+
+WAVESAMPLE
+WAVESAMPLE SELECT
+01-08
+INITIAL WAVESAMPLE
+01-08
+MIX MODE
+
+On-Off
+
+OSC. 2 DETUNE
+00-99
+
+3 LFO DEPTH
+
+2 MONOPHONIC MODE
+
+On-Off
+
+3 LFO FREQ. (SpeeD, )
+
+On-Off
+
+00-99, 00=
+
+00-31
+
+Cr
+
+Mod. Wheel
+
+ENVELOPE
+rend
+
+4 ATTACK
+
+FILTER CUTOFF FREQUENCY
+
+00-99
+
+7 FILTER RESONANCE (Q)
+
+00-40
+
+FILTER KBD. TRACKING
+
+00-04
+
+AMPLITUDE
+
+ATTACK
+
+00-31
+
+Fi
+
+2 MASTER TUNE
+On-Off
+
+2 PITCH BEND RANGE
+On-Off
+
+2 KEYBOARD VEL. SENS.
+
+00-99, 00=Mod. Wheel
+
+4 ATTACK — VEL. SENS.
+00-31
+
+4 PEAK — VEL. SENS.
+00-31
+
+4 DECAY — KBD. SCALED
+00-31
+
+2
+2
+
+ENVELOPE MODULATION
+aren ————id
+
+KEYBOARD BALANCE
+00-99
+
+U/L PROGRAM LINK
+00-40
+
+AMPLITUDE
+
+)
+)
+
+ATTACK — VEL. SENS.
+00-31
+
+PEAK — VEL. SENS.
+00-31
+
+DECAY — KBD. SCALED
+00-31
+
+4 DECAY 5 DECAY
+00-31 00-31
+
+4 SUSTAIN 5 SUSTAIN 4 SUSTAIN — VEL. SENS. 5 SUSTAIN — VEL. SENS.
+00-31 00-31 00-31 00-31
+
+3 OSC. MIX
+00-63
+
+3 OSC. MIX— VEL. SENS. 4
+00-31, 00=Mod. Wheel
+
+RELEASE — VEL. SENS.
+
+RELEASE
+5 00-31
+
+RELEASE
+00-31 4
+
+RELEASE — VEL. SENS. 5
+00-31
+
+00-31

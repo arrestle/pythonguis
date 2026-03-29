@@ -1,0 +1,2438 @@
+# OCR (Tesseract, 200 dpi) — source: mirage_dsk-1_musicians_manual.pdf
+
+--- Page 1 ---
+
+
+
+--- Page 2 ---
+
+Whin Ul 0 Fils, Réad Ye Mantel...
+
+If you're like most of us, you've’probably already hooked up your Mirage” and reached
+soine level of limited suceess in making it work This manual is # simple and straightforward
+presentation of the Mirage that will take you to an /ntermediate level of sophistication. An
+Advanced Sampler’s Guide is available from your authorized Ensonig Dealer for those
+who wish to use the Mirage in technically and artistically complex situations.
+
+We suggest that you read the manual from front to back covers; including the GLOSSARY
+and APPENDIX. The terminology may seem abit unfamiliar to you at first, but ay you use
+the Mirage you'll quickly adapt to the terms and their definitions, The Mirage is a very. logi
+cal instrument and weve presented the information about it in a logical building block
+fashion,
+
+a eousesmumneseresecemunsecesmessiotih About the Manual 1 sgiwmnsnesiensese aeisaias Playback Parameters
+Os SaaS i wsnerarecaee ACen Introduction TS ceswinapniennesuarsioas re soee tines Changing Parameters
+Bsemresereineeyvieisipie sole sieges eeeeese > The Front Panel 10 serene ma CE rere ater Saving Sounds
+Bsivancom smears crapeeanenes ae All About Diskettes i cree Modifying Programs
+T SSnuisnyee PSs a Mee Inputs and Outputs eee «... Sampling
+8 iwesnuaesresnews eangnete Sree Getting Ready to Play .... Getting Ready to Sample
+sunscreen AA INOREG TENS Changing Sounds 20 srarplere eases Hee Single Wavesample Wavetables
+TD scopes + cae Re SoayRSEe Keme oce=aeeed Changing Programs Bh icmamcsvicaawesye Multiple Wavesample Wavetables
+I sama a RUSH eS ae - + The Sequencer BE mewn ASHES RESET .» «MIDE Connections
+P comcereraneseee=stiee . Sequencer Overdubs BA LS eemcRCeTeS TOS covawe ee sGlossary
+Bh cearwsinmnaeny . Saving and Loading Sequences AG sc ciniaee EPSRCEEETE SEER Parameter Appendix
+
+Page: 2/ The: Mancal
+
+--- Page 3 ---
+
+The Mirage is an eight-voice polyphonic digital sampling keyboard
+instrument —in many ways similar {o and in just-as many ways
+different from a synthesizer, The Mirage allows you to personally
+program sounds and also features an on-board sequencer, like many
+synthesizers, But in addition, the Mirage will permit you io sample
+just about any sound you hear and create music with it,
+
+It's best described as a comiputer specially designed to reproduce:and
+Process sound, Like all computers, it is a system consisting of two
+main parts—hardware and software, And here's where it differs
+most from synthesizers.
+
+LMiaikliipe
+
+Hardware
+‘The hardware of the Mirage is everthing that comes in the box with
+the exception of the information on the mini-diskettes. The hardware
+itself cannot make any sound. It’s an engine without fuel. What the
+hardware can do is reproduce. process and modify the sound
+information included on the diskettes.
+
+Software
+
+‘The information contained on the minivdiskettes is called software.
+This information consists of all the data necessary for the Mirage
+hardware to reproduce a sound. When this information is transferred
+—or loaded into the memory of the Mirage, the hardware is ready
+to reproduce that sound or modify it ina nearly unlimited number
+of ways.
+
+You, the user, can create your own-software by taking sounds you
+have recorded with the Mirage hardware and transferring that infor-
+mation onto a specially formatted Mirage diskette for future use. This
+process is called saving.
+
+Because all of the crucial sound information is included as software,
+your Mirage will never be obsolete. An ever-growing library of
+sounds and enhanced features is available from Ensoniq that will
+keep your Mirage fresh and new for years w come.
+
+Digital Sampling
+
+AS it applies to music, digital sampling is a computer term that
+basically means “recording”. In concept, it’s very similar to tape
+recording —an electronic representation of a sound. or audio signal.
+iS written down in some location where it can be read and changed
+back into a sound at some future time,
+
+‘Tape recording uses audio tape to swore the audio signal. Digital
+sampling uses sophisticated circuitry (and eventually computer
+diskettes) to store the signal, In digital sampling, the signal is stored
+as bits of computer information, While in this digital form, the signal
+can he modified in many ways, without deteriorating the audio
+quality and without the mechanical limitations of tape recording.
+
+introduction / Page 3
+
+--- Page 4 ---
+
+The Mirage control pane! contains 2 logical array of multi-function buttons and
+a status display that will show you all you need to know about what's going on
+inside the Mirage at any given time.
+
+Many modem digital and digital ‘analog ‘synthesizers utilize a multi-function
+control panel, so you may already be familiar with its use. If not, you ll find
+that you'll adapt to the concept rather quickly and you'll soon be. breezing
+across the panel like an expert.
+
+The following sections of the manual will give you detailed instructions on how
+to use the panel for specific functions. Here is a general description of the con
+
+trols and their function,
+
+]
+
+Page’4/ The Front Panel
+
+@ CONTROL
+This section of the panel contains the display
+and controls parameter values, switching func-
+tions and: commands.
+
+@ DISPLAY
+‘The display is alpha-numeric, that is, capable
+of displaying letters as well-as numbers) When
+sampling, the display also functions.as a peak
+
+level indicator, The APPENDIX of the manual
+
+contains all the specific information about
+reading and interpreting the display. Any
+flashing display means that the Mirage is
+asking you a question or telling you that
+something is wrong,
+
+@ PARAM
+Pressing this button will show you which
+parameter is cued and ready to be worked
+with. Parameter numbers can be changed
+using the SELECT keypad.
+
+@ PARAM INDICATOR
+When this LED is lit, the display is showing a
+parameter number.
+
+--- Page 5 ---
+
+@ VALUE
+Shows the value number of the parameter.
+Rather than knobs or switches, the Mirage
+uses a scale of numbers to describe the oper-
+ating range of any of the parameters.
+
+@® VALE INDICATOR
+When this LED is lit, the display is showing
+the value of the selected parameter.
+
+@ w —orF
+Pressing this button will decrease the param-
+eter value number, Pressing the button inter-
+mittently will decrease the value one digit at a
+time. Holding the button down will change the
+value at an accelerating rate, This is also the
+OFF button for switching functions,
+
+@® A—On
+Pressing this button will increase the param-
+eter value number. Pressing the button inter-
+miittently will increase the value one digit at a
+time. Holding the button down will increase
+the value at am accelerating rate. This is also
+the ON button for switching functions,
+
+@ SELECT
+The SELECT section gives you access to. many
+Mirage functions from parameter selection to.
+programming, sequencer, sampling and edit
+functions
+
+NUMERIC KEYPAD
+
+the numeric keypad is used to select param
+
+eters, sounds, patches and determine which
+sounds and patches will be transferred w the
+diskette,
+
+@ CANCEL/STOP ;
+This button is used to abort commands and
+halt functions such as sequencing, It is also
+used 10 cancel editing functions before they
+are catered into the Mirage memory. Virtually
+any-command or function can be cancelled
+with no harmful effect as long ay CANCEL/
+STOP is pressed before the event occurs.
+
+G@® 0/PROG
+Each sound. in the Mirage has four preset
+Parameter programs numbered | through 4.
+This key will display the current program and
+keyboard half containing that program, Press-
+ing the button repeatedly will alternately show
+the. current program on the other keyboard
+half. Pressing the button and then any
+number between 1 and 4 will change the pro-
+gram to that number for that keyboard half.
+
+@ ENTER/START
+This button is used to-begin the transfer of
+sounds between the Mirage memory and
+diskettes, to execute commands and to initiate
+sampling and sequencer functions. Any com-
+mand or function which dramatically alters
+the Mirage memory or diskette information
+will require you to press ENTER /START for
+final confirmation.
+
+@ SEN
+The buttons in the sequencer section arc used
+in conjunction with the start and stop buttons
+in the select section to record sequences,
+playback sequences, load sequences from
+diskettes into the Mirage memory and. save
+sequences on diskettes.
+
+@ Ree
+This button is used to record and overduh
+sequetices. Pressing the button twice will
+record a new sequence. while pressing the
+REC burton followed by the PLAY button will
+permit overdubbing a previous sequence.
+
+@ PLAY
+To play back a sequence, press the PLAY but-
+ton and the sequence will play back-as:
+recorded. The sequence can be interrupted at
+any time by pressing the CANCEL/STOP
+button.
+
+@ LOAD
+To load a sequence from a diskette into the
+Mirage memory, press the LOAD button and
+then the number of the sequence (1-8) you
+wish to load, Pressing the ENTER/ START
+button will start the loading process.
+
+@ SWE
+Yo save a sequence you have recorded by
+transferring it from the Mirage memory to
+diskette. fist insert an-Ensoniq Formatted
+Diskette into the drive: Then press the SAVE
+button. and the location number (1-8 on
+SELECT keypad) where you wish to store the
+sequence on the diskette. Pressing the ENTER /
+START button will begin the saving process:
+
+@ LOAD UPPER/LOWER
+These buttons are used ty load sounds from
+Ensoniq Sound Diskettes or your own sound
+library, Pressing cither or both hunons will
+instruct the Mirage to load the sounds into
+the memory for the upper. lower or both
+halves of the keyboard. After pressing the
+load button(s), select the sound you wish to
+load (1, 2, or 4) and then press
+ENTER/START.
+
+@ SAMPLE UPPER/LOWER
+
+These buttons are used to set np the Mirage
+to sample sounds, Consult the SAMPLING sec:
+tion of the manual for detailed instructions.
+
+The, Front Panel! Page S
+
+--- Page 6 ---
+
+The Mirage uses 342” micro floppy diskettes to store
+information. The diskettes are enclosed in a protective plas-
+ti¢ carrier with an automatic shatter to protect the diskette
+from physical damage It is important not to-alter this
+carrier in any way,
+
+Ensoniq Sound Diskettes aré shipped “‘write-protected”,
+that is. protected against accidental erasure while in the
+Mirage disk drive We recommend that you do not store
+sounds on a Sound Diskette without first making a backup
+copy of the Sound Diskette on an Enseniq Formatted
+Diskette, Formatted diskettes contain the Mirage operating
+system data, but do not contain any sound information.
+They can store up to three sounds with four programs
+each, and up to eight 333-note sequences. Note: In order
+to save sounds and sequences and make backup copies of
+Sound Diskettes, you must use Ensoniq Formatted
+Diskettes. Blank, unformatted and diskettes formatted for
+other systems: will not work in the Mirage.
+
+Formatted diskettes have a sliding write-protection tah, so
+that you can protect your own sounds and programs
+against accidental erasure. Sliding the red write protection
+tab in the fower left corner of the diskette so that the
+window is closed will allow you to store information on the
+diskette, Sliding the red tab so that the window is open
+will protect the diskette against over-writing and erasure.
+
+Page 6/ Diskettes
+
+' Diskettes should not be left in the disk drive
+
+00'S AND DON'TS
+
+Diskettes are a magnetic storage medium and should he
+treated with the same care that you'd give important audio
+tapes. Here are a few specifi do's and don'ts.
+
+© Keep diskettes away from magnetic fields. Exposure to
+magnetic energy can permanently damage the information
+on the diskette. Keep them away from speaker cabinets,
+tape decks, power cables, airline v-ray equipment, power
+amplifiers, IV sets.and any other source of magnetic energy.
+* Avoid extremes of temperature, ‘femiperatures below
+
+50° F and above [40° F can damage the plastic carrier,
+
+© Keep the carrier ean. Don't allow liquids to come in
+contact with the carrier or diskette and don’t touch the
+diskette ‘with your fingers.
+
+© We strongly advise that you keep a written cecord of the
+sounds, programs and sequences stored on your diskettes
+to facilitate loading the right sounds and to avoid writing
+over sounds and sequences you want tw save, For maxi-
+mum protection, always make back-up copies of your
+diskettes on Ensoniq Formatted Diskettes, available from
+your authorized Ensoniq dealer.
+
+‘when the Mirage ts switched on or switched off.
+Diskettes should not be inserted or removed while t
+the red disk drive light is on.
+
+--- Page 7 ---
+
+The back panel of the Mirage contains inputs and outputs for power, audio
+Signal and interface connections. Several of these connections have multiple
+functions that are controlled by parameters from the front panel Consult the
+
+Appendia for a complete description of the parameters.
+
+@ POWER
+
+Rocker switch to turn power on and off.
+‘@ UNE
+
+110 - [20VAC GDII2 - l0Amp Type SIT heavy
+duty detachable 2 meter cord with molded
+3 prong plug.
+
+@ EXTERNAL FUSE HOLDER
+
+®
+
+®
+
+External holder for 2.5Amp Fast Blow fuse.
+AUDIO OUT
+
+Low impedance, high gain audio output. Nom.
+output 800m. Impedance 600 ohms.
+
+AUDIO IN
+
+Audio: input switchable between line and mic
+levels. Parameter 75 (LINE INPUT ON, OFF) con-
+trols the level select. The line fevel input will
+
+accept signals of up to 1), impedance 10K ohmis.
+The mic level input will accept signals of up to
+100mV. impedance 20K ohms.
+
+@ EXPANSION PORT
+
+This isa connection for future Mirage expan
+sion products and external computers. tilling
+our and-mailing the warranty card will assure
+that you are notified of expansion modules as
+they become available, DO NOT CONNECT ANY
+EQUIPMENT TO THIS PORT UNLESS IT HAS
+BEEN SPECIFICALLY DESIGNED FOR USE WITH
+THE MIRAGE. SERIOUS DAMAGE TO EITHER
+OR BOTH UMTS CAN RESULT.
+
+MID! OUT/THRU
+
+‘This jack sends out MIDI information from
+the Mirage to other instruments and compu-
+ters. In the MIDI THRU MODE (parameter
+83), it alse: echoes all MIDI inputs
+
+MIDI IN
+
+‘The input for standard Musical Instrument
+Digital Interface (MIDI) information, The
+MIDI IN jack is controlled by parameter 81
+(MIDI OMNI MODE ON/OFF), and parameter
+82 (MIDI CHANNEL SELECT)
+
+@ SEQUENCER SYNC IN
+
+input for external clock source (sequencer,
+drum machine rhythm unit), Input function is
+controlied by parameter 85 (EXTERNAL
+SEQUENCER CLOCK) and parameter 86
+CENTERNAL SEQUENCER CLOCK JACK), NOTE:
+Externally synced units may also he connected
+through the MIDI IN jack.
+
+@ PEDAL/FOOTSWITCH
+
+This connection is for the optional Pedal/
+footswitch and is controlled by parameter 8%)
+(SUSTAIN PEDAL/ FOOTSWITCH SELECT),
+
+The: great majority of problems with any
+electronic instrument are in the connec
+tions. Il is only wise to use high quality
+cables and connectors and lo keep them in
+good condition, We also recommend that
+you double check all connections every time
+yOu set the Mirage up to, play.
+
+Inputs and. Outputs! Page 7
+
+--- Page 8 ---
+
+|
+
+Getting Feady p> Flaup
+
+‘The Mirage is a two-part instrument —hardware and software, By itself, the
+hardware won't make a Sound. It needs the information on the diskettes to
+start doing its work. Getting this information into the right location in the
+
+hardware is known as Loading.
+
+When you turn the Mirage on-and insert a diskette, the hardware will automat-
+ically load sound #1 and its four programs into the memory. You will have to
+follow a certain procedure when you wish to change sounds or diskettes. The
+procedure is quite simple and only takes:a few seconds, Here's the complete
+
+sequence.
+
+ip
+
+WHEN TURNING ON THE MIRAGE
+
+Here's what's happening, . .
+
+Turn power switch ON
+
+‘The electrical power that operates the hardware
+
+is ready,
+
+nd (no diskette) s ¢
+Flashing
+Pa ~
+
+i Insert Sound Diskette
+
+Push the diskette drive button in to open the slot.
+Hold the diskette with the arrow on top. facing
+forward, and insert in gently into the drive slot until it
+
+seats fully in and down.
+
+Display blank
+Drive light on
+
+Wait about 15 seconds
+
+The operational and sound information is now being
+
+transferred from the diskette to the hardware
+
+memory. Slight mechanical sounds will be heard
+
+coming from the drive,
+
+21 (MASTER
+TUNE)
+This paraineter
+
+will always show after the
+
+Page 8/ Getting Ready to Play
+
+first sound is loaded.
+
+--- Page 9 ---
+
+CHANGING SOUNDS
+
+Once the Mirage is. in this state, there is a slightly dif-
+ferent procedure to change sounds, cither loaded from
+the same diskette or from a different diskette,
+
+Do this... Here's what's happening... Display will show...
+Press LOAD button(s) either Before loading the actual sound information, you LU (load upper)
+UPPER, LOWER or both must select whether the sound will be available On or
+
+the upper half of the keyboard, the lower half,
+or the entire keyboard,
+
+LL (load lower)
+or LA (load all).
+Flashing
+
+7
+XN
+Press 1, 2 or 3 0n SELECT Each diskette has three sounds. Refer to the diskette 7
+
+LI (load 1) or
+keypad label for a description of each,
+
+[2 (load 2) or
+L3 (load 3).
+(Flashing )
+
+“t Li
+ye
+~
+
+I j
+a
+
+a" CANCEL/STOP If you change your mind about which sound you wish Previous param:
+vn 8 | to load, press CANCEL/STOP and begin again. eter belore
+ed & } OR pressing load
+soe ae button.
+
+Press: ENTER START
+
+This will initiate the transfer of information from the
+diskette to the Mirage memory.
+
+Display blank
+Drive light on
+
+Wait a maximum of 15 seconds
+
+NOTE
+
+Loading a sound into the memory of both halves of
+the keyboard will take a maximum, of 15 éeconds.
+
+If there is no sound stored for the number you have
+selected, the display will flash.
+
+When the process
+has been com-
+pleted, the number
+of the last used
+parameter will
+display,
+
+~“ 7
+NF (not found)
+ie ~
+
+Press any key. Adjust volume
+
+All the sound inforaiation is now in the hardware
+memory. You can now play the sound as loaded or pro
+ceed to modify it using any of the playback parameters
+
+Changing Sounds! Page 9
+
+--- Page 10 ---
+
+CHANGING PROGRAMS AND KEYBOARD HALVES
+
+Each sound loaded into the Mirage memory carries four
+distinct parameter programs along with it, Those pro-
+grams will always be based on the primary sound. For
+example, the four programs of the piano sound will be
+different, but they will all be piano sounds.
+
+Here's the procedure for changing programs.
+
+Do this... Here's what's happening... Display will show...
+Press 0/ PROG This will show you the current program and the L(1, 2)3:or 4) for 7
+cs keyboard half it is applied to, the lower keyboard, L H
+Bi: Flashing ~
+
+Serer
+
+Press ()/ PROG again Pressing 0/PROG a second time will show the
+program for the other keyboard half.
+
+UC, 2, 3 oF 4) for
+the upper keyboard
+
+Press 1, 2, 3 of 4 00 You are now telling the Mirage to change to the
+SELECT keypad desired program for that keyboard half,
+
+UG, 2. 3 or 4)
+
+Selecting parameter 25 (UPPER/LOWER PROGRAM LINK) and switch.
+ing it ON will connect the program select switch to both keyboard
+halves. So as you change the program for one keyboard half the otber
+
+will change automatically.
+
+Page 10) Changing Programs
+
+--- Page 11 ---
+
+‘The Mirage features a 333-note sequencer that willvallow you to record and
+
+save patterns and songs: Operating very much like a sound-on-sound tape
+
+recorder. the sequencer enables you to build up patterns and songs by over-
+
+dubbing previous: sequences.
+
+Ensoniq offers a Mirage Sequencer Expander Cartridge which increases the
+capacity of the sequencer by 1024 events. This cartridge plugs into the
+expansion port at the rear of the Mirage and is.a simple way to upgrade your %
+
+Sequences can be stored on Ensoniq Formatted Diskettes,
+
+Before using the sequencer, we suggest you review the sequencer parameters in &9
+
+Param, Function ,
+
+5 EXTERNAL SEQUENCER
+CLOCK SWITCH
+EXTERNAL CLOCK JACK SELECT
+by INTERNAL CLOCK RATE
+a8 SEQUENCER LOOP SWITCH
+SUSTAIN PEDAL/FOOTSWITCH
+
+the APPENDIX. Take particular note of the following: SELECT
+TO RECORD A NEW SEQUENCE
+Do this... Here's what's happening... Display will show...
+
+Press REC button
+
+Turns the sequencer on to standby and is awaiting
+
+TS (record-sequence}
+
+further instructions Hashing rc a
+Press REC button You're now telling the sequencer that this is a new ms Bs
+(2nd time) Sequence. Note that any sequence in the Mirage Not flashing
+
+memory will be erased as the new sequence is entered.
+Play any key Any of these “events” will start the recording Sr (sequence
+
+Press START button
+Move PITCH WHE!
+Move MOD WHEEL
+
+process. All notes, kev velocity and PITCH and
+MOD WHEEL changes will be recorded. Any
+delay between the first “event” and the first key played
+
+cording) cC
+recording 5
+
+Press FOOTSWITCH will also be: recorded.
+
+(param 89 “on )
+
+External Clock
+
+Press: STOP Sequencer will stop recording and end the sequence (last parameter
+—OR— at this point, number used)
+
+Press PLAY The sequencer will stop recording and immediately 24 —The initial
+—OR— begin to play the sequence from the beginning. value of param, 87
+
+Footswitch (with Parameter
+89 on)
+
+Press Aor Ww
+
+You may now accompany the playback without
+recording further.
+
+You can speed up or-slow down the playback of the
+sequence by changing this parameter value. Increasing
+the number will increase the tempo, decreasing the
+number will slow:down the tempo.
+
+INTERNAL CLOCK
+RATE
+
+Display shows new
+value of internal
+clock. rate,
+
+The: Sequencer/Page tt
+
+--- Page 12 ---
+
+TO OVERDUB A SEQUENCE
+
+Do this... Here's what's happening... Display will show ., .
+
+Press REC The sequencer is turned on to standby fS (record sequence } a
+and is awaiting further instructions. Flashing > se
+The previously recorded sequence will begin to play od (overdub) j
+back immediately and any notes you play will be over oid
+
+dubbed on top of the previous sequence, You can con te
+tinue to add overdubs until the memory is filled. Note
+
+that adding pitch bend or modulation will affect all pre-
+
+viously recorded tracks. and will use sequence memory
+
+as do getes. Also, Mirage is an-cight voice instrument,
+
+So No more than 8 notes cunsolind at any one time
+
+Overdubbing with the LOOP SWITCH “on™
+
+With the LOOP SWITCH “on™, the sequence will continue to play again
+and again. with subsequent overdubs layering on top of the previously
+played notes. This will continue until the STOP buttonas pressed,
+
+Overdubbing with the LOOP SWITCH “off”
+With the LOOP SWITCIE “off”, the sequence will play through once while
+overdubbing and then stop automatically,
+
+SAVING A SEQUENCE om
+
+Recorded sequences can be saved for posterity on Ensoniq Sound and Formatted
+Dixkettes. Each diskette can store 8 short sequences (without Expander
+Cartridge ) of three long sequences (with Expander Cartridge}. We highly
+recommend that you keep a written record of sequence names and their
+locations to help you find them more easily in the future and to avoid
+inadvertenily recording over them. When the Sequencer Expander Cartridge
+
+is used, cach long sequence saved will erase.two or more short sequences.
+Consult the Expander Cartridge instructions for details,
+
+Page 12/Sequencer Qvertuns
+
+--- Page 13 ---
+
+TO SAVE A SEQUENCE
+
+Do this... Here's what's happening... Display will show...
+Press. SAVE The sequencer is preparing to transter all recorded SS (save sequence) ™ 4
+sequence information to diskette. Flashing a o
+4 “
+] Press any button You are now choosing the location an the diskette S$ (1-28)
+| 1—8 on that the sequence will be transferred to. NOTE: Keep - |
+| SELECT keypad a written record of sequences and their locations, ai
+|
+Press ENTER The sequence information is now being transferred Blank (disk drive
+| To the assigned location on the diskvtte. light on)
+j NOTE; Any sequence previously saved in that Ingation
+will be erased.
+LOADING A SEQUENCE
+
+A sequence stored on diskette can he loaded into the Mirage sequencer memory
+in much the same manner thal it was saved The sequvace will play using what-
+ever sound is currently loaded into the Mirage.
+
+Note that any-sequence in the Mirage internal sequencer memory will be erased
+when the new sequence is loaded from the diskette
+
+TO LOAD A SEQUENCE
+
+Do this... Here's what's happening. .. Display will show...
+Press LOAD ‘The Mirage is now prepared ta réceive sequence LS (load sequence) 7
+information from the diskette into the internal memory. Flashing
+™
+Presy desired sequence You are now telling the Mirage which sequence LOL, 8)
+number | to 8 on information from the diskette you wish to load,
+
+SELECT keypad
+
+Press ENTER The sequence information is now being transferred
+from the diskette to the Mirage sequencer memory.
+
+Blank (Disk
+drive light on)
+
+\
+c~ ir
+Cow
+
+NOTE: /f there is no. sequence stored in the localion you've chosen. the
+display will flash nf” (not found).
+
+Saving and Loading Sequences! Page 13
+
+--- Page 14 ---
+
+Rather. than have knobs, faders and switches to control functions.
+the Mirage uses multi-function pushbuttons and a digital display
+to control the parameters of playing and sampling. Simply put. a
+parameter is-# variable for a specific function, Tuning, keyboard
+halunce, filter cutoff frequency and sampling time are cxamples of
+individual parameters,
+
+The parameters of the Mirage are divided into two iain cate-
+gorics — playback parameters and sampling parameters. The play-
+back parameters have to do with modifying or cahancing a’sound
+that's already in the Mirage memory. The sampling parameters
+deal with getting the sound from its source into the Mirage
+memory. We'll save the sampling parameters for later on in the
+manual and just talk about the playhack parameters here.
+
+HOW TO USE THE CONTROL PANEL
+
+In order to work with the-parameters, you ll need some familiari
+zation with the control panel. Since all parameter changes are
+made using the same pushbuttoils, you'll only aye to learn the
+procedure once
+
+First, here are Some Mifage parameter basics:
+
+© Pressing the PARAM button will always display the current
+parameter qumber. Refer to the parameter list in the manual or
+the parameter card to find out what each parameter does,
+
+© Parameter numbers can be changed only by keying the number
+on the SELECT keypad All parameters are two-digit numbers.
+After you enter the first digit, the dispiay will show a flashing “L”
+or “U", indicating which keyboard half the parametcr applies to.
+The “L” or “U” will be replaced by the second parameter digit as.
+you enter it.
+
+© Pressing the VALUE button will show you the current numeric
+vajue or status of the curremt parameter.
+
+© The value can be changed only by pressing the “AV” or “Ne”
+buttons below the display, When the parameter is a switch func-
+tion, these are the “ON-OFF” buttons, ,
+
+© While in the parameter mode, the parameter LED will be fit
+Pressing the “AX” or “~" button will-automatically switch to the
+value mode, While in the value mode, the value LED will be lit.
+
+Page 14 Playback Parameters
+
+Pressing any numeric hutton on the SELECT keypad will automati-
+cally switeh to the parameter mode,
+
+© Pressing the “A” or “\" buttons intermittently will change: the
+value one digit at a time. Holding the button down will cause the
+value to change at an accelerating rate. This will give you both
+coarse and fine control.
+
+© In order to hear the change in sound made by 4 parameter
+value, il is necessary to playa new note after each value change.
+A recommended procedure is to play one key repeatedly while
+changing the parameter value.
+
+© A complete description of all playback parameters is found in
+the APPENDIX.
+
+© Parameter values are not constant. The values will have a
+differeat. meaning for nearly every parameter. For example. the
+MASTER TUNE parameter values are 100 steps (0-99) of 1/20
+semitone each, while VELOCITY SENSITIVITY values are 32-steps
+(0-31) which merely describe the minimum and maximum sensi-
+tivity limits.
+
+* Parameters 11-19 are command parameters. They tell the
+Mirage to perform specific functions, such as saving @ particular
+program or sound, and Have no numeric value. Command
+parameters will always require you to press ENTER//STAR' to con-
+firm the command, or CANCEL/STOP to abort it. After executing
+the command, the Mirage will display the parameter number.
+
+--- Page 15 ---
+
+SELECTING AND CHANGING A PARAMETER
+Here's a quick rundown of the general procedure.
+
+Do this... Here's what's happening . - . Display will show...
+
+Press PARAM button The Mirage ts prepared to modify any one of the The number of the
+
+parameters. last used parameter.
+PARAM LED lit.
+
+Enter parameter number You're now telling the Mirage which parameter Parameter
+om SELECT keypad, Press you wish to work with number
+2-then 1, (20-99)
+
+Press VALUE button The Mirage will show you the current value of ui Current value
+parameter number, Value
+LED Tit.
+
+The value number
+will increase or
+decrease.
+
+For numeric values
+Press AW orw
+
+‘The Mirage will adjust the value of the parameter
+up or down as much as you wish.
+
+| For switeh functions
+J Press ON or OFF
+
+The Mirage will electronically and noisclessly switch
+the function,
+
+GENERAL PARAMETERS
+
+There-are four general playback parameters— MASTER TUNE,
+PITCH BEND RANGE, KEYBOARD VELOCITY SENSITIVITY and KEY-
+
+on OF OF es
+o\ngow
+23/KEYBOARD VELOCITY SENSITIVITY
+
+The KEYBOARD VELOCITY SENSITIVITY will automatically set itself
+(default) to the touch of the average player (VALUE 8). Players
+
+BOARD BALANCE. These parameters will always apply to the
+entire keyboard You needn't adjust them every time you turn the
+Mirage on —they will automatically come up as default values.
+For example, MASTER TUNE will he 440, PITCH BEND RANGE
+will be a minor 3rd up and down, KEYBOARD VELOCITY SENSI-
+TIVITY will be set for the average touch and KEYBOARD BALANCE
+will set equal levels for the upper-and lower halves
+
+21/MASTER TUNE
+
+The MASTER TUNE will automatically set itself (default) to Ai40
+(VALUE 50), It is adjustable over a five semitone range in incre-
+ments of 1/20 semitone.
+22/PITCH BEND RANGE
+The PITCH BEND RANGE will automatically set itself (default) to
+a minor $rd (VALUE 8). It is adjustable over a two octave range,
+
+(one octave up, One octave down) in increments of 1/20
+semitone,
+
+with a heavier than average touch should use the lower values
+and players with a light touch should use the higher values.
+
+24/KEYBOARD BALANCE
+
+The KEYBOARD BALANCE will automatically set equal levels for
+the upper and lower halves of the keyboard (VALUE $0). The
+parameter works very much like 2 pan pot with the higher
+numbers favoring the upper keyhoard and lower numbers favoring
+the lower keyboard,
+
+Changing Parameters / Page. 15
+
+--- Page 16 ---
+
+: As with a synthesizer, any sound you load into the Mirage can be modified
+
+extensively using the playback parameters. Before too long (probably later this
+evening), you'll want to save the programs you've personally created. To do
+myn? that, you'll need an Ensonig Formatted Diskette.
+
+M Yi Ensonig Sound Diskettes are shipped write protected to eliminate the possibil-
+ity of erasing any of the sound information. Also included with your Mirage is
+4 backup of the Sound Diskette that is not write protected, We suggest that
+you use the backup and keep the Sound Diskette in a safe place. Additional
+backup copies can be made on Ensoniq Formatted Diskettes by following the
+procedures for saving sounds outlined in this section. Formatted diskettes can
+store up to three sounds, with four programs. per sound,
+Here’s how to go about saving your sounds.
+
+SAVING A SOUND ON AN ENSONIQ FORMATTED DISKETTE Teed
+Each sound on an Ensoniq Sound Diskette carries four programs with it Once
+a sound is loaded into the Mirage memory, any or all of the programs can be
+modified. When you've modified the programs to your satisfaction, insert an
+Ensoniq Formatted Diskette and do the following:
+
+4
+
+Do this... Here’s what's happening... Display will show...
+Select parameter You're telling the Mirage which keyboard half SL (save lower \ a /
+11/'SAVE LOWER (or both) to save. sound) ke H
+12/SAVE UPPER SU (save upper a
+13/SAVE BOTH sound)
+
+SA (save both)
+Enter 1, 2 or 3 on You're telling the Mirage which location on the $1 (sound 1) :
+SELECT keypad diskette you want the sound transferred to. $2 (sound 2)
+
+$3 (sound 3)
+
+Press ENTER All the information about the sound and programs Display blank
+will now transfer to the assigned location on the Drive light on
+diskette.
+
+comes back on, the transfer of information has been
+completed, Remove and label the diskette.
+
+LABEL THE DISKETTE When the drive light goes’ out and the display 13 (save both)
+RD
+
+Page 16/ Saving Sounds
+
+--- Page 17 ---
+
+COPYING PROGRAMS INTERNALLY
+
+It's not unusual to want to modify 4 program, yet still retain the original. For
+example, let's say that you're not too fond of piano program #4 and would
+like to havea modified copy of piano program #1 in its place, while still
+retaining the original program #1,
+
+‘The Mirage will allow you to copy from program #1 into the #4 location. You
+can then modify it, ending up with programs #1, 2 and 3 intact and #4 as
+your personal modification of #1, Here's how w do it.
+
+Do this... Here's what's happening...
+
+Display will show . . .
+
+Select parameter
+15/COPY PROGRAM ‘10 LOWER or
+16/COPY PROGRAM TO UPPER
+
+You are preparing the Mirage to copy the current
+program into another location. In our case we will
+be copying the lower program #1 into the lower
+program #4 location,
+
+LC (lower copy)
+OR
+
+LC (upper copy)
+
+Flashing
+
+=——sater oF
+
+x
+
+‘%S
+
+Press 4 on You aré now telling the Mirage the location into
+SELECT KEYPAD which you will copy the current (#1) program.
+aces Press ENTER ‘The Mirage is now duplicating the program parameters
+ea of program #1 into the program #4 location.
+=
+
+You can now create a2 new program #4 by changing anv or all of the playback
+parameters, When you've finished your programming session, you are ready to
+save the entire sound on diskette in the previously outlined manner,
+
+L4 (to lower 4)
+OR i 1
+U4 (to upper 4)
+
+15 or 16 F
+(the copy bi
+parameter)
+
+Modifying Progrants/ Page 17
+
+--- Page 18 ---
+
+Sampling your own sounds with the Mirage is where the fun. really begins. Just about any sound can he a
+source of inspiration for you, since just about any sound can be recorded and processed with the Mirage.
+Acoustic sounds can be sampled using a microphone while electronic or recorded sounds can be connected
+
+— Lee directly to the Mirage.
+As you become more familiar with the Mirage and the sampling process, you'll begin to realize that your
+creative possibilitics are limited only by your imagination. First, here's a litte background to help you
+understand the process better.
+DIGITAL RECORDING Playing the sound back*is a matter of reversing the available for each; This reduces the actual time available
+
+As we hear them, sounds are energy patterns. In the
+air, this energy moves the parts of our cars, creating
+electrical impulses that our brains can decipher. In tape
+recording, this energy moves some part of a micro
+phone, creating electrical impulses that-are recorded
+electromagnetically on magnetic tape.
+
+In digital recording, the electrical impulses that repre-
+sent the sound are converted into information that is
+recorded in a computer memory
+
+The analog signal becomes 2 digital signal in the Analog,
+Digital Converter (ADC). The ADC is a sophisticated,
+Imagine, if you will, standing at the seaside with «
+ruler, stopwatch. pad and pencil. Now think of measur-
+ing the height of the incoming waves with the ruler
+every time the stopwatch dicks off a second, then writ-
+ing the measurement and the time down on the pad
+with your pencil.
+
+This would give you a rough idea of how to recreate
+the action of the waves at some future time, This is
+essentially what an ADC does, except that it's done
+while looking at 2 sound wave at the rate of 30,000
+measurements, or “samples” per second.
+
+The ADC records this. information in specific locations in
+the memory in the form of binary code numbers, The
+numbers and locations for one sample, which may be
+up to four seconds long, are called the WAVESAMPLE,
+
+Page 18/ Sampling
+
+above process, This requires a Digital/Analog Converter
+(DAC) that takes the digital information and re-assem
+bles the waveshape as voltage information that can he
+amplified and sent to the speakers.
+
+Digital Recording as @ Musical Instrument
+
+If we record a sound at-a sampling rate of $0,(M) sam-
+ples per second and then play the sound back at 60,000
+samples per second, the note would be one octave
+higher than the original. By precisely adjusting this
+playback rate with a keyboard controller, we can begin
+to create music.
+
+Like everything else, there are s few catches
+to digital sampling.
+
+There’s a limit to how miuch a sampled wave can be
+raised and lowered in pitch before it begins to sound
+like a squeak ora thud. Also, acoustic instruments have
+different dynamic and harmonic qualities at different
+pitch levels. :
+
+‘The solution then is ‘to sample a sound at different
+pitch intervals and not raise or lower the pitch too far
+from the pitch of the original wavesample, The Mirage
+van accommodate up to 8 separate wavesamples per
+keyboard half, requiring a pitch shift of only about two
+semitones in either direction. Because of this feature,
+very accurate reproduction of acoustic instruments is
+possible with the Mirage.
+
+Catch number two is the sampling time. There are a
+finite number of locations in the memory, and the
+greater the number of wavesamples, the less memory Is
+
+for each wavesample — sometimes less than’ half
+second.
+
+An effective solution to this situation is a process called
+LOOPING. Looping is the replaying —again and again
+without interruption —of a certain part of the wave:
+sample. In practice it’s very much like creating a tape
+loop. A part of the note is cut ont and the end is
+spliced to the beginning, resulting in an unending and
+uninterrupted sound.
+
+The magic of the Mirage digital circuitry lets you choose
+the loop and place it electronically. Now you can pre-
+serve the attack and decay portions of a note and loop
+the sustain portion, giving you a high quality note of
+infinite duration. The playback cavelope parameters can
+now tailor this looped sound so that it matches the
+original sound,
+
+When to call in reinforcements.
+
+There's more to the details of Mirage Sampling and
+programming than we'll address here. A yery extensive
+Advanced Sampler’s Guide is available from your
+authorized Ensoniq dealer that. will examine the capabil-
+ities of the Mirage in great detail.
+
+When you become familiar with the capabilities of the
+Mirage, we're sure you'll want to move into the
+advanced area. At that point, a personal computer will
+be a-great help in showing you exactly what's going on
+inside the Mirage and how you can best release its
+musical power. And conversely, the Mirage will be a
+great help in understanding and mastering your per-
+sonal computer.
+
+--- Page 19 ---
+
+HOW TO SAMPLE
+
+The Mirage sampling process is not much more complicated than making a
+good quality audio tape copy. It involves making the proper connections, set-
+ting the right levels and checking the results.
+
+The process is controlled by the sampling parameters-and gives you'a Breat
+deal of flexibility. To begin with, here is the recommended procedure to follow
+when sampling. Additional information and variations to the procedure are con-
+tained in the Advanced Sampler's Guide from your Authorized Ensoniq
+Dealer.
+
+GETTING READY TO SAMPLE
+
+The nature of the sound you will be sampling will have some effect on the
+results. Unfortunately there are no hard and fast rules governing different
+techniques for different sounds. As you use the Mirage you will quickly adapt
+to the procedure and develop your own methods for getting the best results.
+AS af example, Jet's use an electric guitar. We can connect the guitar directly to
+the input, use the ‘preamp out’ jack of an amplifier connected directly to the
+input of the Mirage, or we can mike the:speaker cabinet and plug the micro-
+phone into the Mirage. Let's use the latter case.
+
+Do this... Here's what's happening. . . Display will show...
+
+Select parameter 5 This is a switching parameter that will tell on (line input)
+
+LINE LEVEL INPUT the Mirage what type of signal will be coming oF (mic input) 0 F
+in. Line level inputs are from preamps, tape decks ‘and wnt
+
+mixers. Mic level inputs are from microphones, unampli-
+fied electric guitars and other low level sources.
+
+Press SAMPLE UPPER You ure telling the Mirage which keyboard half >
+or SAMPLE LOWER you wish the sample to apply to. This will also place
+the Mirage in the level detect mode so that the = ~
+
+strength of the incoming signal can be determined
+before the sample is actually taken,
+
+Press CANCEL/STOP This will exit the “level detect” mode.
+
+Play the sound to be Adjust the level of your source or no signal threshold
+sampled change the distance from the microphone until the
+
+top light bar barely flickers.
+Now you're ready to go. The next decision you'll have to make is the number
+
+_ ae ge ”
+of wavesamples there will be in your wavetable. Always use 0/PROG to
+
+verify that you are working on the correct keyboard half, Getting Ready to SamplefPage 19
+
+--- Page 20 ---
+
+SINGLE WAVESAMPLE WAVETABLES
+
+If you only need to take one wavesample in the lower or upper keyboard upper keyboard, You can use the RELATIVE COARSE TUNING parameter (67) or
+wavetable, the sampling parameters are automatically set at the proper fevel. RELATIVE FINE TUNING parameter (68) to correct the sample to any pitch you
+(Param 77-0ff). No matter where the pitch of the sample is. the Mirage will desire.
+play that pitch back at key #17E on the lewer keyboard or key #46A on the
+Do this... Here's what's happening. . . Display will show...
+Select parameter 77 This will set the automatic parameter settings for a of
+USER MULTI-SAMPLING single wavesample wavetable. oO
+Press OFF i
+Press SAMPLE LOWER You are instructing the Mirage to assign this sample to SL (sample lower ) cl
+the lower part-of the keyboard. Jt
+Press: ENTER/ START ‘The Mirage is now waiting for a signal to cross the Blank
+sampling threshold before it begins to sample.
+Play the-sample The Mirage is now sampling the sound. While its - SF (sampling
+sampling you'll see the middle bar and when the sample finished) & F
+is completed you'll see... ad
+MULTIPLE WAVESAMPLE WAVETABLES
+Oné wavetable can contain up to eight individual wavesamples. When more decimal system (base 16 to math buffs) of both numerals and alphabet
+
+than one wavesample is used, you must select the location in the memory for characters is used. See the note at the bottom of the Memory Chart for an
+cach wavesample. The-accompanying chart will suggest where to set the begin- —€xplanation of hexadecimal.
+
+ning and ending parameter values for each wavesample. In order to be able to Once you decide how many wavesamples your wavetable will have, setting the
+display all 256 segments in the memory on the two digit display, a hexa- parameters will follow the same procedure for cach wavesample-
+
+EXAMPLE: Creating 2 2 wavesample wavetable on the lower keyboard half
+
+Do this... Here’s what's happening... Display will show...
+
+Select parameter 77 — This will defeat the automatic parameter-settings on
+
+USER MULTI-SAMPLING for a single wavesample wavetable. on
+Press ON LS é
+Select parameter 27— Except in wcertain advanced cases, this parameter ol
+
+INITIAL WAVESAMPLE should abways be set at |
+
+Press A or N4 to set VALUE
+
+Page 20/Single-and Muttipie Wavesampies
+
+--- Page 21 ---
+
+Do this... Here's what's happening... Display will show...
+Select parameter 26— There are eight possible wavesamples to select o1 mis
+WAVESAMPLE SELECT Select #1 u i
+Press Avorw to set VALUE : |
+Select parameter 6) — Since this is. a Wavesample #1, it's best to. begin at (K) nin
+SAMPLE START the beginning of the memury. LL
+
+- Press Avorxg to set VALUE —
+Select parameter 6] — Since there will he two wavesamples in this wave- TF
+SAMPLE END table. you ll want to give half the memory tw each, 7 FE
+Press Avor Ww to set VALUE Looking on the Memory (hart across from “2 wave-
+
+samples" you'll lind the value TF.
+
+Select parameter 72— This will be the highest key assigned to this. wave 5
+
+TOP KEY
+Press A or w to set VALUE
+
+sample, Each keyboard half has 30 keys, so select key
+15 for wavesample #1
+
+PresseSAMPLE LOWER
+
+You are instructing the Mirage to assign this sample to
+
+SL (sample lower)
+
+the lower part of the keyboard. Flashing
+Press ENTER /START The Mirage is now waiting for a signal to cross the Blank
+Sampling Usreshold before it begins to sample.
+
+You're now ready to begin to sample wavesample#1, If you've selected the
+lower keyboard half and checked the input level, all youll have to do is play ERAS CNS
+the sound to be sampled. Number of  Wavesample Value of ‘Value ol Top Key Lower Top Key Upper
+Wavesample #2 will be entered in the memory in exactly the same way wave- Wavesamples Number Para. 60 = Para. 61 Para. 72 Para, 72
+sample #1 was with the following changes ia parameter values 1 1 00 FE 30 ot
+WAVESAMPLE SELECT (26) 02 3 1 ) ci 5 no
+INITIAL WAVESAMPLE (27) No change 2 RO IF - 30 Gt
+SAMPLE START (60) 80 1 1 00 SF 8 ®
+SAMPLE END (61) IF 2 ip WF 5 wh
+TOP KEY (72) 0 3 80 br P4,) St
+
+4 CO VF 40 Gt
+SAMPLING PARAMETERS 8 : 5 ur : ss
+
+. 4 ‘ ;
+
+In order to better understand the sampling process. we recommend that you 3 4 _ p =
+familiarize yoursclf with the Sampling Parameters listed in the PARAMETER A 60) =| 5 6
+APPENDIX beginning on page 26 of this manual, Understanding these param- 5 80) OF ig 50
+eters is your best help in obtaining good samples 6 AO he 34 34
+HEXADECIMAL NOTATION 7 se de cal a8
+The digits () through 9 represent themselves. However the numbers 10 through 8 co ft 30 bs
+
+15 are represented by letters in the following manner: A=10; b= 11; O=12; de 13;
+
+Kets; Fe,
+
+Multiple Wavesample Wavetables/ Page 27
+
+--- Page 22 ---
+
+The Mirage can be connected to other keyboards and equipment through a
+system known as MIDL MIDI, or Musical Instrument Digital Interface is an
+industry-wide set of computer communication standards that permits MIDI-
+equipped instruments to “talk” to cach other. Some of the benefits of MIDI
+include the ability to “remote contro!” more than one instrument from the
+same keyboard and to syne multiple keyboard setups from a single sequencer.
+In addition, non-MIDI sequencers and drum machines can he sync'd to the Mir-
+age through the external syac jack. Before connecting several instruments to-
+gether you should familiarize yourself with the MIDI codes in the APPENDIX
+and with the following parameters.
+
+Parameter No. Function
+$l MIDI OMNI MODE ON/OFF
+$2 MIDI CHANNEL SELECT
+83 MIDI THRU MODE
+Bi MIDI CONTROLLER ENABLE
+&5 SEQUENCER EXTERNAL CLOCK.
+86 EXTERNAL CLOCK
+JACK SELECT
+
+TYPICAL MIDI CONNECTIONS
+
+This configuration will permit notes played on Mirage A to also
+play on Mirage B. Conversely, notes played on Mirage B will also
+play on Mirage A
+
+MIDI IN MIDL OUT
+
+81/MiDL OMNI MODE—ON 81/MIDI OMNI MODE—ON
+62/Mi0l CHANNEL—1... 16 62/MIDI CHANNEL—1... 16
+
+Page 22/ MIDI Connections
+
+--- Page 23 ---
+
+In the following configuration. the parameters are set differently,
+but the result is the same. Since both instruments: are trans-
+mitting and receiving MIDI data on channel 1, they will both
+respond to cach other. So notes played on Mirage A will also play
+on Mirage B and notes played on Mirage B will also play on
+Mirage A.
+
+Mio! OUT
+
+81/MIDI OMNI MODE—OFF
+82/MIDI CHANNEL —1
+
+81 /MIDI OMNI MODE —OFF
+82/MID! CHANNEL —1
+
+If the channels weren't set the same, the two Mirages would
+ignore each other,
+
+In this configuration, Miraye’A will accept inputs only on channel
+one, where Mirage B will accept information on all channels. So
+notes played on Mirage A will also play on Mirage B, but notes
+played on Mirage B will be ignored by Mirage A.
+
+MIDI OUT Midi OUT
+
+MIDI IN
+
+- Mirage B
+
+81/MIDI OMNI MODE—OFF 81/MIC! OMNI MODE—ON
+82/MIDI CHANNEL —1 82/MIDI CHANNEL —any channe} other then 1
+
+Mirage sequencers car also be syne'd together via MIDI. A
+recorded sequence on Mirage A can-be sync’d to an altogether dif
+ferent sequence recorded on Mirage 8. Note that in this configura
+lion notes played on either Mirage will he ignored by the other
+since the channels are different. MIDI clocks are transinitted on
+all channels, so the sequencers will sync.
+
+MIDE IN MIB} OUT
+
+Miragee
+
+81/MIDI OMNI MODE—OFF
+82/MIDI CHANNEL —2
+85/EXTERNAL CLOCK—ON
+86/ JACK SELECT—OFF
+
+81/MID| OMNI MODE—OFF
+82/MIDI CHANNEL —1
+85/EXTERNAL CLOCK —OFF
+
+MIDI allows multiple keyboards to be syne’d to multi track
+sequencers in such a way that different sequencer tracks drive dif-
+ferent keyboards. In the following configuration, track | of the
+sequencer will only play on Mirage A and track 2 of the sequencer
+will only play on Mirage 8.
+
+MIDI OUT
+
+Transmits Track 1 data
+on MIDI channel |, Track
+2 data on MIDI channel 2
+and so on.
+
+miD} OUT
+
+Mirage A
+
+81/MID! OMNI MODE — OFF
+82/MIDI CHANNEL —1
+83/MIDI THRU—ON
+
+81/MIDi OMNI MODE—OFF
+82/ MIDI CHANNEL —2
+
+MID) Connections! Page 23
+
+--- Page 24 ---
+
+Sabey~
+
+\
+
+Amplitude — xpressed as sound pressure or voltage,
+itude is the measured amount Of a signal, Sounds
+with greater amplitude are louder.
+Atlack —‘he first part of a note. in the Mirage
+envelope, it is a linear rate that starts-as the key is
+depressed and ends at the PEAK level, and is adjustable
+from instantaneous 1 very gradual.
+Attack Velocity —The Mirage gives you the opuon of
+controlling the steepness of the attack curve througli key
+hourd velocity. Increased key velocity will increase the race
+of the attack.
+Bend —o gradually raise or lower the pitch by using
+te PITCH BEND WHEEL
+Boundary — ‘the sampling parameters divide the
+Mirage memory into’256 SEGMENIS of 256 SAMPLES cach.
+‘The beginning and ending poimts of each segment are
+called the boundaries.
+Chorusing —A sound. richening effect that simulates
+the sounds af several voices when onc key is: played. ‘The
+Mirage allows you to shift the pitch of one of the owo
+oscillators assigned 19 each voice 40 achieve this effect
+Clock —A timing control devier used to syne digitally
+controlled units. Clock pulses are used to control the
+Mirage sequemer,
+Coarse Tune— A parameter used to make large and
+rapid tuning changes,
+Cutoff Frequency —We frequency point at which
+a filter begins to attenuate an audio signal.
+Dead Band — ‘he acca of wavel near the center of
+rotation of the PITCH BEND WHEEL where there is no
+effect on the sound so that it can be-more easily returned
+to its mid position
+Decay —\s the Mirage envelope, it a the exponential
+rate that the amplitude of a sound (or cutoff frequency of
+a filter} falls from the PEAK level to the SUSTAIN level
+
+Page 24/ Glossary
+
+Default—r value or condition that the Mirage auto-
+matically sets itself to. When a diskette is inserted into the
+disk drive, Sound #1 is automatically loaded to both key-
+hoard halves with program #1 being current. ‘The Mirage
+has many default values for programming, sampling and
+sequencing. While these values are automatic, they can be
+changed at any time you desire.
+
+Detune— in normal playing, the Mirage uses two ascil
+lators per key. By using the detume parameter (33)_.one
+of the oscillators can he tuned slightly off pitch from the
+other. Slight pitch changes will result in a CHORUSING
+sound.
+
+1— in audio, the digital system uses information
+in the form of binary numbers rather than waveforms and
+voltages when recording. processing and playing hack
+sound. ‘the digital playback is processed through a digital-
+to-analog converter where it is changed into voltage values
+that can then be treated like any ather analog signal,
+Digital Oscillator —A waveform generator where
+the output is a séries of numbers rather than 2 voltage.
+Digital oscillators. can generate complex waveforms with
+much more uccuracy than analog oscillators
+Digital —A system of sound recording
+where an analog sound is converted into digital informa-
+tion and stored in computer memory or on 2 disk In the
+Mirage, sampled: sounds are given pitch control via the
+keyboard permitting any recorded sound to he played back
+as music.
+
+Digital Sequencer —. sequencer that records and
+oe. notes based on iatormoiie about key strikes,
+key velocity, and pitch and mod wheel positions rather
+thary recording sound output,
+
+Envelope —A term used to describe the amplitude
+contour Or filter cutoff frequency contour as a function of
+time. Acoustic sounds have natural cnvclopes as vibrations
+attenuate over time. Electronic instruments have envelope
+yeneritors 10 create this effect,
+
+fe—The symbol. for cutoff frequency, af that frequency
+at which the sound begins to be attenuated
+
+Fine Tune —A contro used to make small adjust-
+ments in pitch. Vhe Mirage fine tune parameter permits
+pitch changes as small as '/» semitone.
+
+Formatied Diskette —\ Mirage diskette that oon-
+tains’a framework for sound informatin, but no actual
+information. Used to store Sampled sounds, programs and
+
+Hexadecimal—a form of mathematical notation
+called “base: 16”. As used in the Mirage display. it permits
+the display of all 256 “pages” of waveiable storage using
+tinly two digits in the display. Numbers 0 through 9 are.
+represented by themselves while numbers 10 through 15
+are represented by the letters “A” through “F”
+
+Input —A signal entering an instrament. Also the point
+at which it enters,
+
+Interface —Vierally, the place where any wwo things
+come together. Io musicianspeak it is commonly under-
+stood to be the linking of two pieces of electronic equip
+ment together
+
+Keyboard —s controller used to give pitch and
+dynamic control of a musical instrument to the player.
+Keyboard Tracking —ssigoing 2 different value
+@ parameter based on which key of the keyboard is
+depressed. For cxample, the cutoff frequency of a filter
+can move. up as higher keys are played.
+
+LFO— tow frequency oscillator. These oscillators usually
+operate in the sub-audio range and control the frequency
+of effects such as vibrato.
+
+Line Level —An audio signal whose strength is at
+least 800mV. Also an audio input that requires a level of
+atleast 80UmY in operate at a specified. signal-to-noise
+ati.
+
+Load—\n the Mirage, 1 term used to describe the
+transfer of information from diskette to the internal
+Loop —A term used to describe the connecting of the
+end of a signal or sequence Lo the beginning point or
+some intermediate point along its duration. As it applies
+to # sequencer, it means that the sequence: will start over
+immediately after it finishes. As it applies to sampling, it
+means creating a continuous sound by connecting two
+points in the wavesample.
+
+Lowpass Filter —A filter thay auenuates the {re
+quencies above the cutoff frequency.
+
+Memory — The sum total of locations where informa
+tion can) be stored. The Mitage has-GiK (65,536 locations)
+of memory for each keyboard half ‘The sampling param
+eters divide the memory into 256 SEGMENTS of 256
+SAMPLES each. The beginning and ending points of cach
+segment ary cilled the BOUNDARIES.
+
+Mic Level—Audiv signals with a strength below 50my.
+
+--- Page 25 ---
+
+MIDI— Musical instrument |igital Interface. An indus-
+try-wide set of computer communications standards that
+enables instruments and other equipment to “talk” 10
+each other and issue and-obey commands:
+
+Mix Mode—n the Mirage, a parameter that assigns
+two consecutive wayesamples to cach key on the keyboard.
+‘The balance between the two sounds can be controlled by
+a balance parameter, the velocity sensitivity of the key-
+hoard or tw modulation wheel.
+
+Modulation — the process of introducing a periodic
+alteration to a sound ‘source such as vibrato, so 4s to
+change the character of the audio. signal,
+
+Mono, Mode —in the Mirage it is a control
+mode that assigns one voice to each half of the keybourd
+Ifa second key is depressed while the first key is still
+down the voior iy “stolen” from the first key, but the
+envelope is not re-triggered. Liseful for duplicating the
+sound of monophonic instruments such as-xaxophone
+Omni Mode —s ivi operational mode where an
+instrument responds to information recived over any of
+MIDI's 16 charinels.
+
+Oscillator —A deview thar creates a repeating electrical
+wave. Mirage uscillators are digital ascillajors that use a
+wavetable based on actual acoustic sounds rather than
+basic waves,
+
+Parameter —Any changeable setting, switch or com-
+mand of the Mirage is called 4 parameter. The Mirage uses
+a multi-function control panel through which parameters.
+can be selected and controlled. 'Taning, filter frequency
+cutoff, sample time, velocity sensitivity and LEO frequency
+are all examples of parameters,
+
+Pitch Bend —To change the pitch in a continvous
+manner using the pitch bend wheel.
+
+Poly Mode— A0i operating mode where an
+instrument responds to information received only on a:
+specific MIDI channel.
+
+— Capable of producing-more than one
+itch or voice simultancously. The Mirage can play up to
+eight different voices at the same time.
+
+mm —A set-of playback paranieter values applied
+to a particular wavetable that results in a particular sound.
+‘The Mirage has four available programs for cach sound
+
+—Filter resonance. It is possible to adjust the lowpass
+iter in the Mirage to introduce a narrow resonant peak
+just hefore rolloff occurs, The resultant sound shows +2
+
+noticeable emphasis of a narrow frequency band
+
+Release —The final portion of an envelope that begins
+when the key iy lifted. It is an exponential rate that drops
+the amplitude or filter fe from the sustain level wo zero-in
+the casi: of amplitude or to the original fc setting in the
+case of the filter
+
+Release Velocity —The speed with which the key is
+lifted. Release velocity can be used to control the release
+rate, with high velocities shortening the release and low
+velocities extending Ue release
+
+Resonance —Sev Q
+
+Rolloff Slope—The starpacss of the cutoff fre
+guency expressed in dB per octave. The higher the ratio
+(dh) number, the sharper the attenuation, The Mitage fil
+ters have 2 rolioff slope of 24dB per octave.
+
+Sample —n the Mirage memory, each location is
+seférred to usw sample. 256 samples make up one
+SEGMENT
+
+Sampling Rate — Toe wamlxr of times per second
+that a deed record is made of an audio wave form The
+Mirage samples at 30,000 samples per second.
+Save — the process of transferring information from’ the
+internal memory of the Mirage to a Formatted Diskette for
+Permanent storage The opposite of loading.
+Segment — the Mirage memory has 64K memory loca-
+tions divided into 256 segments of 256 SAMPLES each. Thi:
+beginning and ending points of each segment are called
+the BOUNDARIES
+
+Sequence —A set of keystroke commands stored itt a
+sequencer.
+
+Sequencer —the Mirage uses 2433-note digital
+sequencer, See Digital Sequencer.
+
+Sequence Loop—a function of a sequencer where
+the- recorded sequence is played over and over until
+instructed Lo stop.
+
+Sound —in the Mirage, a sound is. defined as a WAVE-
+TABLE (comprised of up 8 WAVESAMPLES} plus a PRO-
+GRAM (the collection of all the program parameter values )
+
+Sound Diskettes —Ensonig makes avaiable pre-
+programmed sampled sounds on mini-diskettes. Each of
+these Sound Diskettes contains three distinct sampled
+sounds, with cach sound having four programs.
+
+Split Ke —The Mirage features what is called
+a split key . The keyboard is divided into two sections
+(usually, 31 keys fower, 30 keys upper). Different sounds
+‘of different programs of the same sound can be loaded
+into each keyboard half.
+
+generate simple waveforms (5
+
+Sustain —The: ampliude or fier level held from the
+
+end of the decay slope to key release.
+
+Fe Pan (wo or more units together so that
+lock pulses permit them to play together in a Synchron-
+
+ized fashion. The most common sync connections involve
+
+sequencers and drum machines connected to keyboards.
+
+Touch Sensitive — (See Velocity Sensitive)
+
+Value — Rather than have knobs, sliders and switches,
+the Miragéuses @ system of parameters and values to
+change and modify sounds. Expressed in numbers. (cither
+decimal or hexadecimal), values represent: amplitudes. fre
+quencies, balances and other conditions. depending an the
+parameter selected,
+
+Velocity Sensitivity —\ system of sensors thas ean
+determine how hard-and fast.a key is played. This infor-
+mation can be applied to control amplitude, filter
+frequency, envelope functions and oscillator balance.
+Voice —A comple: sound controlled by a single key.
+The Mirage features eight distinct voices with two oscilla-
+tors for each voice.
+
+Volatile Memory — Ao internal memory that wall
+HOL Telain any information if the power to the unit is
+turned off. The Mirage has a volatile memory, so we
+recommend that you save sounds and programs you create
+to diskette as shon as your sampling or programming
+session is completed
+
+Waveform —he shape of a sound wave shown as a
+function of amplitude and time: Synthesizer oscillators
+
+" p, Unangke, etc.) and com-
+bine them to create sound Digital sampling keyboards
+such as Uh: Mirage generate complex waveforms hased on
+actual sounds that-have been recorded (sampled) into
+TeCTOTY
+
+Wavesample—A wavelorm that has been sampled
+inty the Mirige memory Once in memory, the keyboard
+controls the pitch of Uw wavesample, The Mirage can ac-
+commodate up to eight separate wavesamples per key-
+board hall Singe acoustic instruments change dynamic and
+harmonic character with pitch, the Mirage is capable of
+very accurate reproduction,
+
+Wavesample Interval—the number of keys on
+the keyboard assigned Lo cach wavesumple,
+
+. Wavetable— the sum of all the wavesamptes ‘on a
+
+keyboard half,
+
+Glossary! Page 25
+
+--- Page 26 ---
+
+Yams
+ee
+
+PROGRAM PARAMETERS (01, 02, 03. 04)
+These parameters are used to select one of the four programs
+assigned to each sound on-each keyboard half, You must first
+press the 0/PROG button which will display the current progeam
+number and the keyboard half it is assigned to. Pressing, the
+0/PROG button again will display the program number on the
+other keyboard half When sounds are loaded, Program | is
+automatically assigned,
+
+11/SAVE LOWER KEYBOARD SOUND (SL)
+12/SAVE UPPER KEYBOARD SOUND {SU}
+13/SAVE BOTH KEYBOARD SOUNDS {SA}
+
+Command parameters that will tell the Mirage that you Wish to
+save the current keyboard sounds on diskette, The saving process
+will tequire you to press 1,2, or 3 on the SELECT keypad to
+indicate the location on the diskette that you wish the sound
+transferred tx. Pressing ENTER/ START will initiate the saving
+process, Pressing CANCEL/STOP will abort the procedure and
+return the Mirage to its previous. status, with the SAVE command
+parameter selected
+
+14/SAVE CONFIGURATION PARAMETERS {SP)
+This command parameter will permit you to save your own con
+figuration parameters in place of the default values. The values
+saved on diskette will be those of parameter #'s 21 through 25,
+73 through 77, 81 through 89 and 91 and 92. In order to reload
+these parameters into the Mirage memory will require you to turn
+the Mirage off for.a few seconds, thea turn it back on and load
+the diskette on which the configuration parameters have been
+saved.
+
+15/COPY PROGRAM TO LOWER (CL)
+16/COPY PROGRAM TO UPPER (Cu)
+‘These ate command parameters that will tell the Mirage thar you
+wish to copy current program parameter values into another
+program location. This will allow you to duplicate a program
+parameter configuration you ve personally created into another
+program location on either the upper or lower keyboard half. It
+will also permit you t apply current parameter values to another
+sound.
+
+Page 26/ Parameter Appendix
+
+21/MASTER TUNE (00-99)
+‘The MASTER TUNE will autonsatically set itself to 4940. (VALUE
+50). It is adjustable over a five semitone range in increments of
+1/20 semitone,
+
+22/PITCH BEND RANGE (00-34)
+‘The PITCH BEND RANGE will automatically set itself (default) to
+4 minor 3rd (VALUE 8), It is adjustable over-a wide range
+
+in increments of 1/20 semitone,
+
+23/KEYBOARD VELOCITY SENSITIVITY (00-63)
+The KEYBOARD VELOCITY SENSITIVITY will automatically set itself
+(default) to the touch of the average player (VALUE 30). Players
+with a heavier than average touch should use the lower values
+and players with a light touch should use the higher values.
+
+24/KEYBOARD BALANCE (00-63)
+The KEYBOARD BALANCE will autommatically set equal levels for
+the upper and lower halves of the keyboard (VALUE 50). The
+parameter works very much like 4 pan pot with the higher
+numbers favoring the upper keyboard and lower numbers favoring
+the lower keyboard
+
+25/UPPER/LOWER PROGRAM LINK
+
+A switching parameter that will allow you Lo-connect the 0/PROG
+button to both keyboard halves simultancously. With the parameter
+ON, a program change made on one keyboard half will also take
+place on the other keyboard half When OFF, you will be able to
+choose different programs for the upper and lower halves.
+28/MIX MODE (ON-OFF)
+Each Mirage key is assigned two oscillators, When this Switching
+parameter is OFF. the nwo oscillittors will use the same wave-
+sample, When this switch is ON, the oscillators. will use consecu-
+tive wavesamples—one to each oscillator. For the MIX MODE to
+work effectively, odd numbered wavesamples (1, 3. 5, 7) should
+be from a different sound svurce than the even numbered wave-
+samples. The balance between the two oscillatory can be con-
+trolled by parameters 34 and 35.
+
+A typical use of the MIX MODE is to have a sult sound on the
+odd wavesamples and 4 loud sound on the even wavesamples,
+‘This is particularly effective with piano sounds. By using key
+velocity to-control the balance, (VALUE 1, PARAM $5), a realistic
+soft piano sound will he heard when keys are depressed slowly
+and a true loud piano sound will be heard when keys are
+‘depressed firmly,
+
+--- Page 27 ---
+
+29/MONOPHONIC MODE {ON-OFF}
+A switching parameter to choose between polyphonic keybourd
+and monophonic keyboard functions. With the switch OFF. the
+Mirage will play in its asual eight-voice polyphonic splendor. With
+the switch ON, one voice will be. assigned to each kevboard half,
+
+If a key is played while another is still down, the voice will be
+“stolen” from the first key, hut the cavelope will not be
+re-trigyered.
+
+3I/LFO SPEED : (00-99)
+‘The LOW FREQUENCY OSCILLATOR SPEED. parameter will change
+the frequency of the LEO, It is adjustable from 5Hz (VALUE 0) 10
+40Hz (VALUE 99), The LPO affects pitch only.
+
+32/LFO DEPTH ; (00-99)
+The LOW FREQUENCY OSCILLATOR DEPTH parameter controls the
+
+amplitude of the LFO or ¢an assign, the control to the MODULA-
+TION WHEEL (VALUE 0)
+
+33/0.0. DETUNE (00-99)
+The DIGITAL OSCILLAFOR DETUNE parameter controls the fre
+quency difference: between two. oscillators used on the same key
+(see param. 28). It will cause the second oscillator to play sharp
+in THz increments. The VALUE. display will show the exact pitch
+offset in Hertz,
+
+34/0.0. BALANCE (00-63)
+‘The DIGITAL OSCILLATOR BALANCE controls the relative volume
+level of the two oscillators in the MIX MODE or for chorusing
+(param, 28). This parameter automatically sets itself to equal bal
+ance (VALLE 31 and can be adjusted to any proportional balance
+
+35/D.0. BALANCE VS (00-31)
+‘The VELOCITY SENSITIVE BALANCE parameter makes the digital
+oscillator balance dependent on -key velocity. A soft touch on the
+keyboard will favor oscillator 1, a medium touch will balance the
+oscillators equally and a hard touch will favor oscillator 2. The
+D.O, BALANCE (param, 34) will set the initial balance for a soft
+touch: Parameter 35 controls how much the balance changes with
+velocity, with one exception. When the value is ‘0’ the balance is
+controlled by the MODULATION WHEEL instead. Since each oscilla-
+tor can play 4 different wavesample, it is possible to mix between
+two totally different sounds,
+
+36/FILTER Fe (00-99)
+The FILTER CUTOFF FREQUENCY parameter adjusts the initial
+
+“cutoff frequency of the low pass filter. The filter is adjustable
+
+from 50Hz (VALUE 0) t0 ISKIZ (VALUE 99) and: featnres a
+24db/octave: rolloff slope:
+
+37/FILTER Q (00-40)
+The FILTER RESONANCE (()) controls the amplitude: of the
+resonant peak of the filter It is adjustable from no peak (VALUE
+0) to just below oscillation (VALUE 40)
+
+38/FILTER TRACKING (00-04)
+The FILUER KEYBOARD TRACKING parameter allows the note
+played on the keyboard to determine the frequency cutoff of the
+filter— lower notes will have a lower cutoff, higher notes a
+higher cutoff, It is adjustable from no tracking (VALUE 0) w one
+octave in filter cutoff per octave on kevhoard (VALUE 4),
+
+ENVELOPE PARAMETERS
+The Mirage offers you.a wide range of control over’ the amplitude
+and filter envelopes of a sound. In addition to being able w
+create fixed envelopes, you can use the keyhoard velocity sensitiv-
+ity feature to control any or all of the parameters of an envelope.
+Note that many of the envelope parameters interact. The velocity
+sensitive parameters are particularly dependent on the fixed
+envelope parameters.
+
+Filter Envelope Parameters
+
+“40/FILTER ATTACK 00-31)
+
+‘The FILTER ATTACK parameter contfols the rate at which the filter
+frequency will increase from the initial FREQUENCY CUTOFF
+(param. 36). It is-adjustable from instantaneous (VALLE 0) to 48
+seconds (VALUE 31),
+
+41/FILTER PEAK (00-31)
+Controls the maximum cutoff frequeney the filter will reach at the
+top of the attack Slope. It is adjustable from zero (VALUE 0) to 4
+maximum) of I5KHy-(VALUE 31). Note that the peak has no effect
+on the rate of the attack.
+
+42/FILTER DECAY {00-31}
+Controls the rate at which the filter cutoff frequency will descend
+from the PEAK value to the SUSTAIN value. At VALUE 31, it will
+take 30 seconds to reach the sustain level At VALUE 0 it will drop
+instantly to the SUSTAIN level,
+
+Parameter Appendix! Page 27
+
+--- Page 28 ---
+
+43/FILTER SUSTAIN (00-31)
+Controls the cutoff frequency that the filter will hold as long as
+the key is depressed. At VALUE 0 it will be the same as the initial
+cutoff frequency (param. $6). At VALLE 31 it will be maximum.
+
+44/FILTER RELEASE (00-31)
+Gontrols the rate at which the filter frequency will descend from
+the sustain value to the initial cutoff frequency (param. 56). At
+VALUE. $1 it will take 30 seconds to reach the minimum level and
+at VALUE 0 it will release instantly,
+
+45/FILTER ATTACK vs (00-31)
+The VELOCITY SENSETIVE FILTER AVTACK parameter makes the
+filter attack rate dependent on key velocily. At VALUE 0), key veloc-
+ity will not effect the attack rate. Increasing the value will make
+the attack rate more sensitive to keyboard velocity (increased key
+velocity will increase the attack rate)
+
+46/FILTER PEAK vs (00-31)
+The VELOCITY SENSITIVE FILTER PEAK parameter makes the max
+imum filter frequency peak level dependent on the key velocity. At
+VALUE 0. key velocity will not effect the peak. Increasing the value
+will make the peak level more sensitive to key velocity (increased
+key velocity will raise the peak frequency).
+
+47/FILTER DECAY— KEYBOARD SCALED (00-31)
+A parameter that makes the decay cate of the filter cavelope
+dependent on key number. This permits the filler to have a
+longer decay rate on lower notes than on higher notes. At VALUE
+0, it will have no effect on the decay setting. Increasing the value
+number will both lengthen the decay rate of lower notes and
+shorten the decay rate of higher notes.
+
+48/FILTER SUSTAIN vs (00-31)
+The VELOCITY SENSITIVE FILTER SUSTAIN parameter makes the
+sustain level dependent on key velocity, At VALUE 0), key velocity
+will have no effect on filter frequency sustain. Increasing the
+value will make the frequency sustain more sensitive to key
+velocity (increased key velocity will raise the sustain frequency)
+
+49/FILTER RELEASE vs (00-31)
+The VELOCITY SENSITIVE FILTER RELEASE parameter ‘makes the
+release rate of the filter frequency dependent on key-up velocity.
+Increasing the value will make the release rate more sensitive
+
+to key-up velocity (increased key-up velocity will shorten the
+release rate).
+
+Page 28) Parameter Appendix
+
+Amplitude Envelope Parameters
+
+50/ATTACK RATE (00-31)
+Controls the rate at whieh the volume will rise to the peak when
+a key is played. At VALUE 0 it is instant and-at VALUE 31 the
+amplitude will take 30 seconds. fo reach the peak.
+
+51/PEAK LEVEL (00-31)
+Controls the maximum ‘amplitude that will be reached at the top
+of the attack slope. It is-adjustable from no sound at VALUE 0 to
+maximum output at VALUE 31,
+
+52/DECAY RATE (00-31)
+Controls the rate at which the amplitude descends from the peak
+level to the sustain level, At VALUE 31 it will take 30 seconds for
+the amplitude to fall to the sustain level. At VALUE 0 it will drop
+instantly to the SUSTAIN level,
+
+53/SUSTAIN LEVEL (00-31)
+Seis the amplitude level between the decay slope and key release.
+At VALUE 0 there will be no output after the decay and at VALUE
+31 the sustain will be at the maximum level.
+
+54/RELEASE RATE (80-31)
+Controls the rate at which the’amplitude descends to () after the
+key is released. At VALUE 31 it will take 30 seconds to reach 0
+and at VALUE @ the amplitude will fall instantly to 0
+
+55/ATTACK vs (00-31)
+Makes the ATTACK RATE dependent on key velocity. At VALUE 0
+key velocity will not effect the attack rate. Inercasing the value
+will make the attack rate more sensitive to keyboard velocity
+(increased key velocity will increase the attack rate ).
+
+56/PEAK LEVEL vs (00-31)
+The VELOCITY SENSITIVE PEAK LEVEL parameter makes the
+avaximum peak level dependent on key velocity: At VALUE 0. key
+velocity will not effect the peak level. Increasing the value will
+make the peak level more sensitive Lo key velocity (inercased
+velocity will raise the peak level. )
+
+57/DECAY—KEYBOARD SCALED (00-31)
+A parameter that will alter the decay rate inversely to key
+number. This parameter permits the cavelope to have a long
+decay on lower notes and shorter decay on higher notes, At
+VALLE 0) it will have no effect ow the decay setting, Increasing the
+value will both lengthen the decay rate of low notes and shorten
+the decay rate of higher notes.
+
+--- Page 29 ---
+
+58/SUSTAIN LEVEL vs (00-31)
+The VELOCITY SENSITIVE SUSTAIN LEVEL parameter makes the
+sustain level dependent on key velocity. At VALUE 0, key velocity
+will have no effect on sustain level. Increasing the value will make
+the sustain level more sensitive to key velocity (increased velocity
+will raise the sustain level).
+
+59/RELEASE RATE vs (00-31)
+The VELOCITY SENSITIVE RELEASE RATE parameter makes the
+release rate dependent on key velocity, At VALEE 0 key. velocity
+will have no effect on release rate. Increasing the value will make
+the release rate more sensitive to key-up velocity (increased
+key-up velocity will shorten the release rate
+
+SAMPLING PARAMETERS
+The sampling parameters (60 through 77) will control the entry
+and manipulation of the wavesample selected by parameter 26,
+Since Mirage sampling is a computer driven function, very specific
+directions must be given to the Mirage to obtain the best samples
+Yet sampling is an art as much us it is a science, At Ensoniq.
+many hours of effort and many dollars worth of sophisticated
+equipment are used to-create sounds provided on Ensoniq Sound
+Diskettes. Don't be disappointed if your initial samples aren't
+quite up to snuff. The Advanced Sampler’s Guide, available from
+your authorized Ensoniq dealer, combined with vour increasing
+experience, will help you get better sounds.
+26/WAVESAMPLE SELECT (1-8)
+A sampling parameter that will select one of cight possible wave
+samples for each keyboard half. Once selected, this wavesample
+will be controlled by parameters 60 through 75 until the next
+wavesample is se ;
+27/INITIAL WAVESAMPLE (1-8)
+This parameter will select the wayesample number used by the
+lowest key of a keyboard half Except in certain advanced sam-
+pling situations, this parameter should remain set to “1”.
+60/WAVESAMPLE START (00-FF)
+Samipling parameter to select the starting segment in the Mirage
+memory for the currcal wavesample. If the wavesample iy #1, the
+start yalue-will usually be 00. Subsequent wavesamples (2, 3,
+etc.) will usually start one segment (one digit) after the end of
+the previous wavesample The WAVESAMPLE START values are in
+hexadecimal (00-FF)
+
+61/WAVESAMPLE END (00-FF)
+Sampling parameter to select the ending segment in the Mirage
+memory for the current wavesample. The value will be determined
+by the number of wavesamples in the wavetable. The value table
+in the sampling section will give you suggested ending and start
+ing values:
+
+LOOPING
+Rather than assign valuable memory space to a portion of a
+wavesample that simply repeats, the Mirage uses a technique
+called “looping” to extend the decay and sustain portions of 4
+sound.
+Most acoustic sounds stablize in character rather quickly. In less
+than 4 second, an acoustic guitar note has settled down to some-
+thing resembling a sine wave. By looping the Jast portion of a \s
+second acoustic guitar sample, a very true guitar sound with long
+sustain Can be created while using a minimum amount of memory
+62/LO0P START (00-FF)
+A sampling parameter to select the segment at which the looping
+process will begin. To create an effective loop; the LOOP START
+should be a point sometime after the initial attack portion of the
+wavesample has been completed. Like other starting and ending
+parameters, LOOP START is memory segment number expressed
+in hexadecimal.
+63/LO0P END (00-FF)
+A sampling parameter to select the segment where a loop will end
+and recycle to connect with the LOOP START: The LOOP END may
+or may not coincide with the WAVESAMPLE END. LOOP END ix a
+memory segment expressed in hexadecimal.
+
+64/LOOP END FINE ADJUST (00-FF)
+This parameter will allow you to adjust the LOOP END in individ-
+ual samples within the chosen loop end segment, This fine
+adjustment will help you match the loop end to the loop start as
+smoothly as possible: (See MEMORY in GLOSSARY).
+
+65/LOOP SWITCH (ON-OFF)
+Turns the looping function on and off. When OFF, the wavesampic
+will play back from beginning to end and then stop, When ON,
+
+the wavesample will play back from beginning to LOOP END and
+then continue immediately from LOOP START, looping as long as
+the key is depressed. Note that amplitude envelope parameters
+will control the decay, sustain and release functions of the note.
+
+Parameter Appendix! Page 29
+
+--- Page 30 ---
+
+66/WAVESAMPLE ROTATE (00-FF)
+This parameter will “move” or “rotate” the current wavesampic
+within the Mirage memory one sample at a time. It is used to
+eliminate “dead space” at the beginning of a wavesample or to
+align an appropriate LOOP START point with « segment boundary.
+Pressing the AV value button will move the wave one sam-
+ple to the right in memory. Pressing the Ww button will move the
+wavesample one sample to the left. This parameter is called
+ROTATE because rather than becoming “lost”, values at the wave-
+sample boundary will shift to the opposite end of the wavesample
+as they are moved.
+
+67/RELATIVE TUNING —COARSE (00-07)
+Alters the pitch of the current wavesample in octave increments.
+68/RELATIVE TUNING —FINE (00-FF)
+
+Alters the pitch of the current wavesample in 1/20 semitone
+increments. There are 256 increments expressed in hexadecimal,
+
+69/RELATIVE AMPLITUDE (00-63)
+
+Adjusts the amplitude of the current wavesample only. This allows
+you to match the volume levels of several different wavesamples.
+
+70/RELATIVE FILTER FREQUENCY (00-99)
+Adjusts the cutoff frequency of the filter for the current wave-
+sample, relative to the other wavesamples in the wavetable.
+
+71/MAXIMUM FILTER FREQUENCY (00-99)
+Sets the upper limit of the cutoff frequency for the current wave-
+sample, regardless of any other filter value (program, envelope,
+
+velocity }
+
+72/TOP KEY (01-61)
+Selects the highest key that will use the current wavesample. The
+TOP KEY values will determine how many keys will use the wave-
+sample. The highest TOP KEY of the lower keyboard will deter-
+mine the split point.
+
+73/SAMPLE TIME ADJUST (30-99)
+Sets the time between individual samples for the current wave-
+sample. Combined with the SAMPLE START and SAMPLE END
+parameters, it will determine the duration of the current wave-
+sample. The value is expressed in microseconds with VALUE 34
+corresponding to the maximum sample rate of 29kHz and VALUE
+99 corresponding to the minimum sample rate of 1OKHz,
+
+Page 30/ Parameter Appendix
+
+74/INPUT FILTER FREQUENCY (00-99)
+Filter cutoff frequency adjustment that will determine the maxi
+mum frequency that the Mirage will samiple for the current wave-
+sample, It is adjustable from 50Hz at VALUE 0 to 15kIIz at VALUE
+99.
+
+75/LINE LEVEL INPUT {ON-OFF}
+Switching parameter to match the Mirage input to the sound
+source to be sampled in the current wavesample. At VALUE OFF
+the input will accept mic level signals. At VALLE ON the input will
+accept line level inputs.
+
+76/SAMPLING THRESHOLD (00-63)
+Adjusts the threshold level for the current wavesample. Pressing
+the SAMPLE UPPER or SAMPLE LOWER switch will put the Mirage
+in the “level detect” mode. Playing the sound to be sampled
+should light the middle bar in the display. If the middle bar does
+not light, pressing CANCEL/STOP and then lowering the value
+number of this parameter will lower the sampling threshold. After
+ENTER/START has been pressed. the first signal above this
+threshold will automatically begin the sampling process.
+
+77/USER MULTISAMPLING (ON-OFF)
+Switching parameter to choose between user-selected sampling
+parameters and Mirage default values, If this parameter is set to
+OFF, when sampling is selected, the Mirage will automatically set
+up all the parameters necessary to create a wavetable made up of
+a single wavesample. When more than one wavesample will make
+up a wavetuble, you will have t set your own set of parameters,
+after setting this switch to ON,
+
+MIDI PARAMETERS
+81/MIDI OMNI MODE/ON-OFF (ON-OFF)
+Switch parameter to choose between MIDI Omni and Poly modes
+of operation. When the switch is ON, the Mirage will operate in
+the MIDI Omni Mode, When the switch is OFF, the Mirage will
+operate in the MIDI Poly Mode. In the Omni Mode, the Mirage
+will receive MIDI data on all 16 MIDI channels. In the Poly Mode.
+the Mirage will transmit and receive MIDI data on only the chan-
+nel selected by parameter 82.
+82/MIDI CHANNEL SELECT (01-16)
+In the MIDI Poly Mode, you must select one of 1 MIDI channels
+on which to receive MIDI data. When a channel is selected, the
+
+Mirage will accept and transmit data on only that channel. Any
+MIDI data received on any other channel will be ignored.
+
+--- Page 31 ---
+
+83/MIDI THRU MODE (ON-OFF)
+
+Switching ‘parameter to determine whether or not the Mirage will
+
+“pass along” MIDI data it receives. When ON, the Mirage will echo
+
+all MIDI data it receives regardless of channel. When OFF, the
+
+Mirage will not echo any data it receives, except clocks, but will
+
+send data it creates.
+
+84/MIDI CONTROLLER ENABLE ON-OFF)
+
+Selects whether or not the Mirage will send and receive PITCH
+
+BEND and MODULATION WHEEL data via MIDI
+
+ON—Pitch and Mod Wheel data sent and received.
+
+OFF—Pitch and Mod Wheel data not sent or received.
+SEQUENCER PARAMETERS
+
+85/EXTERNAL SEQUENCER CLOCK (ON-OFF)
+
+To connect the Mirage sequencer with the clock of an external
+
+unit such as a drum machine or other sequencer
+
+On— External Clock Off—Internal Clock
+
+86/EXTERNAL CLOCK JACK SELECT (ON-OFF)
+Selects which input jack will be used to connect to the external
+clock.
+
+ON—Syne Jack OFF— MIDI In: fuck
+
+NOTE: The sequencer will always put outa MIDI clock to the
+
+MIDE OUT jack regardless. of clock input.
+
+87/INTERNAL CLOCK RATE (00-99)
+Changing the internal clock rate will speed up or slow down the
+playback of a recorded sequence without changing the pitch of the
+notes, The real time recording speed is always “25” on the
+parameter value. Increasing the value number will increase the
+speed up to 4 times.
+
+88/SEQUENCER LOOP SWITCH (ON-OFF)
+‘Yells the Sequencer whether to play a recorded sequence once or
+to keep repeating it indefinitely
+
+ON—Sequence will keep playing until STOP is pressed.
+OFF—Sequence will play through once then stop automatically.
+
+89/SUSTAIN PEDAL/FOOTSWITCH SELECT (ON-OFF)
+Changes the function of the footswitch between sustain pedal and
+remote sequencer switch.
+
+ON—In the record function, the footswitch operates the same as
+the sequencer PLAY switch. In the play function it operates 4s 4
+remote START/STOP switch. In neither case does it disable the
+PLAY button.
+
+OFF — As-a sustain pedal the switch holds the sustain value of the
+notes played —same as keeping keys depressed,
+
+98/DISK ERROR CODE (01-08)
+This parameter will display information about problems that may
+he occuring in the disk system, The value of this parameter cor: ~
+responds to error messages or codes which will often appear
+automaticly when you ask the Mirage to do something that is
+not possible or reflects a problem with the disk drive or diskettes
+themselves.
+
+Disk Error Codes
+
+0} di—Disk Drive Erro¢—This usually indicates.a serious
+mechanical problem
+
+02-05 nF—Not Found —The information you have requested ts
+not inthe requested location on the diskette.
+
+66 ud—Unformatted Disk—tnlormation cannot be saved on
+the current diskette because it is not formatted for the
+Mirage,
+
+07 ad—No Diskette —The Mirage can’t save or load because
+there is no diskette in the drive.
+
+08 Pd—Protected Disk—Information cannot he saved on the
+current diskette hecause the write-protect tab is set
+
+99/DISK CONTROLLER STATUS CODE
+
+‘This parameter is used by service personnel to diapnose disk drive
+rélated problems: should they occur,
+
+Q1/EXTERNAL COMPUTER PORT ENABLE {ON-OFF}
+With certain special equipment and instructions, you will be able
+té connect a personal computer to the Mirage. This switching
+parameter will permit information to pass in and out of the
+Mirage EXTERNAL COMPUTER PORT.
+
+92/SERIAL PORT BAUD RATE SWITCH (ON-OFF)
+Switching parameter to change the baud rate of the SERIAL
+(MIDE) POR. When the switch is ON the baud rate will be RS
+232 compatible (4800). When the switch is OFF the baud rate will
+be MIDI compatible (31.25k Baud)
+
+97/SOFTWARE VERSION NUMBER (00-99)
+The “value” of this parameter is the version number of the soft-
+ware currcatly loaded into the Mirage. Ensoniq Sound Diskettes
+will be updated from time to time and the version number will be
+your way of determining the exact software you have.
+
+Parameter Appendix! Page 31
+
+--- Page 32 ---
+
+/
+’ “This eque-irenl geneutes and uses radio feaqancy enesgy and If not insisilec and used property; that is, in strat
+
+Cations ti Suspart fof Pant 150! FOC utes,
+
+farincé in  residentie! imeitanon. Hownver, there is no gueraniee that inpvtererias will hot occur in & parieular
+instaiation, thes equipment does quis misrterance tp radio a tnlvvEion reception Which o2n be cefermined by
+huning he equipment off snd on, ifte ser & encouraged 10 try to correct tne Charforence bi crear mone ot Me j
+foeowirgy mageures.
+
+~fetocate the metrumant with respect in she reveiMer
+- nove the mstument away foe! the receiver
+
+«ple He Instrument into & diffeednt oulet So that the instrumarrt and receiver are on diferent branch circturts,
+
+Hinecossary, the user should! consult the desir or an experienced radio television technician or sdiiitonal supe:
+
+sfons_ The user may find the tollowing booket prapered by tha Faders! Communications Commission hattul:
+
+“How 20 igo ty and Resolve Radto- 1 intertersrice Protieirs ~ This bookielis avaiable trom the &.S. Gosemmant /
+Printing Ollie, Washington, DC 20402. Stock No. 004-000-00345-4"
+
+Jn onder 40 fulfill waranty requirements. the Mbrags Digital Samplitg. Keyboard shmwid be sarvicad onty by et
+Authorized Ensong Repair Staton,
+
+ENSONIO* Corp - 263. Great Valley Parkway - Malvern, PA 19355
+ENSONIO * Europe PVBA - Ave Stalingrad, 65+ 1000 Sruxeiles - Belgique
+Sakata Shokai - Minam! Morimachi - Chu-O Building - 6-2: Higashi-Tenma, 2-Chome + Kita-ku, Osaka. 530, Japan
+
+Gonosp! and Gapy... Associates & 1684 ENSONIO Corp. All dahts reserved.
+Design andillusteton Pat Giligan Designs, Inc Mey oie reeset oie %
+
+MM1-~1.2-985-100M PartNo. 9310000207
