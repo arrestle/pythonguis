@@ -19,10 +19,11 @@ from PySide6.QtWidgets import (
 )
 
 from mirage_parm.diagnostics import show_diagnostics_dialog
+from shared.diagnostics_report import collect_diagnostics_text
 from mirage_parm.parameters import CARDS, CardSpec
 from mirage_parm.widgets import PanelKind, ParameterCard
-from shared.config import MIDI_PORT_NAME
-from shared.midi import open_midi_output_port
+from shared.config import MIDI_ECHO_PORT_NAME, MIDI_PORT_NAME
+from shared.midi import open_midi_output_port, open_midi_output_port_optional
 
 # Window title (parameter-card layout)
 WINDOW_TITLE = "Ensoniq Mirage — Parameter cards"
@@ -50,6 +51,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(WINDOW_TITLE)
 
         self._midi_port, self.midi_port_name = open_midi_output_port(MIDI_PORT_NAME)
+        self._midi_echo_port, self.midi_echo_port_name = open_midi_output_port_optional(
+            MIDI_ECHO_PORT_NAME
+        )
 
         menu_bar = QMenuBar(self)
         self.setMenuBar(menu_bar)
@@ -76,7 +80,11 @@ class MainWindow(QMainWindow):
         help_menu = menu_bar.addMenu("&Help")
         act_diagnostics = QAction("&Diagnostics…", self)
         act_diagnostics.triggered.connect(
-            lambda: show_diagnostics_dialog(self, opened_output_name=self.midi_port_name)
+            lambda: show_diagnostics_dialog(
+                self,
+                opened_output_name=self.midi_port_name,
+                opened_echo_output_name=self.midi_echo_port_name,
+            )
         )
         help_menu.addAction(act_diagnostics)
 
@@ -128,6 +136,7 @@ class MainWindow(QMainWindow):
                     panel=panel,
                     show_play_preview=spec.card_id in ("sampling", "program"),
                     midi_port_name=self.midi_port_name,
+                    midi_echo_port=self._midi_echo_port,
                 )
                 if cid in _COMPACT_HEADER_IDS:
                     wrap = QWidget()
@@ -164,6 +173,7 @@ class MainWindow(QMainWindow):
                     panel="default",
                     show_play_preview=card.card_id in ("sampling", "program"),
                     midi_port_name=self.midi_port_name,
+                    midi_echo_port=self._midi_echo_port,
                 )
             )
 
@@ -274,6 +284,13 @@ class MainWindow(QMainWindow):
 def main() -> None:
     app = QApplication(sys.argv)
     win = MainWindow()
+    print(
+        collect_diagnostics_text(
+            opened_output_name=win.midi_port_name,
+            opened_echo_output_name=win.midi_echo_port_name,
+        ),
+        end="",
+    )
     win.showFullScreen()
     sys.exit(app.exec())
 

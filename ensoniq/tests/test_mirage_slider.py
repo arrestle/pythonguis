@@ -55,8 +55,9 @@ def test_send_midi_message(qapp, mock_midi_port):
     slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
     slider.send_midi_message(50)
 
-    # Check that the MIDI message is sent
+    # Check that the MIDI message is sent (§3.2.1 program parameter: 0D + kbd/prog + param + val LS/MS)
     assert mock_midi_port.send.called
     midi_message = mock_midi_port.send.call_args[0][0]
-    assert midi_message.type == 'sysex'
-    assert list(midi_message.data[1:]) == [0x01, 0x42, 50]
+    assert midi_message.type == "sysex"
+    # param 0x42, value 50 (0x32): nybble bytes 0x02, 0x03; lower keyboard, program 0 -> 0x00
+    assert list(midi_message.data) == [0x0F, 0x01, 0x0D, 0x00, 0x42, 0x02, 0x03]

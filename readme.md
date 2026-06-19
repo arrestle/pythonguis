@@ -25,6 +25,12 @@
 
 You can also run the original UI directly: `uv run python -m mirage_orig.main`.
 
+### Pinecone (vector DB / RAG)
+
+**Canonical home for Pinecone work:** this repo (**`pythonguis`**). Put **ingestion**, **indexes**, and **RAG** experiments that touch Mirage docs, Python tooling, and GUIs **here** (alongside **`Mirage-docs/`**, **`mirage_parm/`**, etc.).
+
+The sibling repo **`aws-training`** keeps a thin **[`docs/pinecone`](../aws-training/docs/pinecone/README.md)** page: official Pinecone links, AWS e-book pointers, and cross-repo notes—not a second place to grow long-lived Pinecone **code**.
+
 ---
 
 ## 1. QT and Pyside6: [PythonGUIs](https://www.pythonguis.com) GUI applications with Python

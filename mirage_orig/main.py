@@ -14,6 +14,7 @@ from PySide6.QtWidgets import (
 
 from mirage_orig.mirage_slider import MirageSlider
 from shared.config import MIDI_PORT_NAME, TITLE
+from shared.diagnostics_report import collect_diagnostics_text
 from shared.midi import open_midi_output_port
 
 
@@ -103,6 +104,7 @@ class MirageMain:
 def main():
     app = QApplication(sys.argv)
     window = MainWindow()
+    print(collect_diagnostics_text(opened_output_name=window.midi_port_name), end="")
     window.show()
     sys.exit(app.exec())
 

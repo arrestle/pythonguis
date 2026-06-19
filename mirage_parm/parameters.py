@@ -10,7 +10,9 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
+
+SysexKind = Literal["program", "wavesample"]
 
 
 @dataclass(frozen=True)
@@ -22,6 +24,8 @@ class ParmSpec:
     min_value: int = 0
     max_value: int = 127
     range_note: str | None = None  # card text e.g. "30-99", "On/Off", "00-FF"
+    # §3.2.1 (0x0D) vs §3.2.2 (0x0E) in Advanced Samplers Guide
+    sysex_kind: SysexKind = "program"
 
 
 @dataclass(frozen=True)
@@ -41,10 +45,23 @@ class CardSpec:
     sections: tuple[PanelSectionSpec, ...] | None = None  # if set, JSON "params" is flattened into params
 
 
-def _param_from_dict(d: dict[str, Any]) -> ParmSpec:
+def _default_sysex_kind_for_card(card_id: str) -> SysexKind:
+    if "wavesample" in card_id:
+        return "wavesample"
+    return "program"
+
+
+def _param_from_dict(d: dict[str, Any], *, card_id: str) -> ParmSpec:
     cid = int(d["id"])
     label = str(d["label"])
     kind = d.get("kind", "linear")
+    sk = d.get("sysex")
+    if sk is not None:
+        if sk not in ("program", "wavesample"):
+            raise ValueError(f"Invalid sysex kind {sk!r} for parameter {cid}")
+        sysex_kind: SysexKind = "program" if sk == "program" else "wavesample"
+    else:
+        sysex_kind = _default_sysex_kind_for_card(card_id)
 
     if kind == "toggle":
         return ParmSpec(
@@ -53,6 +70,7 @@ def _param_from_dict(d: dict[str, Any]) -> ParmSpec:
             min_value=0,
             max_value=1,
             range_note=d.get("range_note", "On/Off"),
+            sysex_kind=sysex_kind,
         )
 
     min_v = int(d.get("min", 0))
@@ -66,11 +84,13 @@ def _param_from_dict(d: dict[str, Any]) -> ParmSpec:
         min_value=min_v,
         max_value=max_v,
         range_note=str(range_note),
+        sysex_kind=sysex_kind,
     )
 
 
 def _card_from_dict(d: dict[str, Any]) -> CardSpec:
     raw_sections = d.get("sections")
+    cid = str(d.get("id", ""))
     if isinstance(raw_sections, list) and len(raw_sections) > 0:
         section_specs: list[PanelSectionSpec] = []
         flat: list[ParmSpec] = []
@@ -78,22 +98,24 @@ def _card_from_dict(d: dict[str, Any]) -> CardSpec:
             if not isinstance(s, dict):
                 continue
             subtitle = str(s.get("subtitle", ""))
-            sparams = tuple(_param_from_dict(p) for p in s.get("params") or [])
+            sparams = tuple(
+                _param_from_dict(p, card_id=cid) for p in s.get("params") or []
+            )
             section_specs.append(PanelSectionSpec(subtitle=subtitle, params=sparams))
             flat.extend(sparams)
         return CardSpec(
             title=str(d["title"]),
             description=str(d.get("description", "")),
             params=tuple(flat),
-            card_id=str(d.get("id", "")),
+            card_id=cid,
             sections=tuple(section_specs),
         )
-    params = tuple(_param_from_dict(p) for p in d.get("params") or [])
+    params = tuple(_param_from_dict(p, card_id=cid) for p in d.get("params") or [])
     return CardSpec(
         title=str(d["title"]),
         description=str(d.get("description", "")),
         params=params,
-        card_id=str(d.get("id", "")),
+        card_id=cid,
         sections=None,
     )
 
