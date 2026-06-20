@@ -1,4 +1,4 @@
-"""Ensoniq Mirage parameter SysEx (Advanced Samplers Guide §3.2.1 / §3.2.2)."""
+"""Ensoniq Mirage parameter SysEx — MASOS front-panel command code (§3.1.1 receive format)."""
 
 from __future__ import annotations
 
@@ -11,10 +11,7 @@ import mido
 from shared.config import (
     DEVICE_ID,
     MANUFACTURER_ID,
-    MIRAGE_PROGRAM_SELECT,
     MIRAGE_SYSEX_LOG,
-    MIRAGE_UPPER_KEYBOARD,
-    MIRAGE_WAVESAMPLE_SELECT,
 )
 
 
@@ -24,40 +21,20 @@ def _sysex_log_enabled() -> bool:
         return ev.strip().lower() in ("1", "true", "yes", "on")
     return bool(MIRAGE_SYSEX_LOG)
 
-# Message type bytes (transmit format; same layout used for remote control).
-_SYSEX_PROGRAM_PARAMETER = 0x0D  # §3.2.1 Program parameter message
-_SYSEX_WAVESAMPLE_PARAMETER = 0x0E  # §3.2.2 Wavesample parameter message
+# §3.1.1 Mirage Command Code message type (receive — simulates front-panel keypresses).
+_CMD_CODE_MSG_TYPE = 0x01
+# §3.1.1 Keypad codes (Table 3.3 in MASOS MIDI implementation spec).
+_KEY_PARAM  = 0x0C  # PARAM button
+_KEY_VALUE  = 0x0D  # VALUE button
+_KEY_ENTER  = 0x0E  # ENTER button
+_KEY_UP     = 0x0E  # UP-ARROW (same byte as ENTER in OCR'd table; both 0x0E)
+_KEY_DOWN   = 0x0F  # DOWN-ARROW / CANCEL
+_CMD_END    = 0x7F  # End-of-command marker
 
-
-def _encode_value_nybble_bytes(value: int) -> tuple[int, int]:
-    """
-    Value as LS nybble byte then MS nybble byte (§3.2.1 / §3.2.2; 0–255).
-    Each MIDI data byte carries one hex digit in bits 0–3 (OOO0O0VVVV style).
-    """
-    v = max(0, int(value)) & 0xFF
-    ls = v & 0x0F
-    ms = (v >> 4) & 0x0F
-    return ls, ms
-
-
-def _program_keyboard_byte(
-    *, upper: bool | None = None, program: int | None = None
-) -> int:
-    """OUONOOPP byte: N (upper) in bit 6, PP = program 0–3 in bits 0–1."""
-    u = MIRAGE_UPPER_KEYBOARD if upper is None else upper
-    pp = MIRAGE_PROGRAM_SELECT if program is None else int(program)
-    n_bit = 1 if u else 0
-    return (n_bit << 6) | (pp & 0x03)
-
-
-def _wavesample_scope_byte(
-    *, upper: bool | None = None, wavesample: int | None = None
-) -> int:
-    """OOONOSSS-style byte: N in bit 6, SSS = wavesample 0–7 in bits 0–2."""
-    u = MIRAGE_UPPER_KEYBOARD if upper is None else upper
-    w = MIRAGE_WAVESAMPLE_SELECT if wavesample is None else int(wavesample)
-    n_bit = 1 if u else 0
-    return (n_bit << 6) | (w & 0x07)
+# NOTE: 0x0D (Program Parameter) and 0x0E (Wavesample Parameter) are §3.2 *Transmit*
+# messages — the Mirage sends those to the PC when the user edits the front panel.
+# They are NOT valid receive commands; the Mirage ignores them as input.
+# Use §3.1.1 command-code simulation (above) to set parameters from the PC.
 
 
 def send_mirage_parameter(
@@ -69,35 +46,29 @@ def send_mirage_parameter(
     echo_port: Any | None = None,
 ) -> None:
     """
-    Send one parameter change.
+    Set one Mirage parameter via §3.1.1 MASOS front-panel command code simulation.
 
-    Program parameters (``kind="program"``): ``F0 0F 01 0D <kbd/prog> <param#> <val LS> <val MS> F7``.
+    Sends:  F0 0F 01 01 [PARAM] [param digits] [VALUE] [value digits] [ENTER] 7F F7
 
-    Wavesample parameters (``kind="wavesample"``): ``F0 0F 01 0E <scope> <param#> <val LS> <val MS> F7``.
+    This simulates the user pressing PARAM → <number> → VALUE → <number> → ENTER on
+    the Mirage keypad.  It is the only documented *receive* path for changing individual
+    parameters via SysEx; the 0x0D/0x0E messages are §3.2 *transmit-only* (Mirage→PC).
 
-    ``parameter_number`` is the Mirage parameter index (same as card ``id`` / front-panel number).
-    Keyboard/program and wavesample indices come from ``shared.config``.
+    ``kind`` is accepted for API compatibility but is not used in the message — the Mirage
+    determines program-vs-wavesample from the parameter number and its own current state.
 
-    If ``echo_port`` is set (e.g. MIDI-OX virtual cable), the same SysEx is sent there too.
+    If ``echo_port`` is set, the same SysEx is mirrored there (e.g. for MIDI-OX).
     """
-    param = int(parameter_number) & 0x7F
-    v_lo, v_hi = _encode_value_nybble_bytes(value)
-
-    if kind == "wavesample":
-        scope = _wavesample_scope_byte()
-        msg_type = _SYSEX_WAVESAMPLE_PARAMETER
-    else:
-        scope = _program_keyboard_byte()
-        msg_type = _SYSEX_PROGRAM_PARAMETER
+    param_digits = [int(d) for d in str(int(parameter_number))]
+    val_digits   = [int(d) for d in str(max(0, int(value)))]
+    keypad = [_KEY_PARAM] + param_digits + [_KEY_VALUE] + val_digits + [_KEY_ENTER]
 
     data = [
         MANUFACTURER_ID & 0x7F,
         DEVICE_ID & 0x7F,
-        msg_type,
-        scope & 0x7F,
-        param,
-        v_lo & 0x7F,
-        v_hi & 0x7F,
+        _CMD_CODE_MSG_TYPE,
+        *keypad,
+        _CMD_END,
     ]
     msg = mido.Message("sysex", data=data)
     if _sysex_log_enabled():
@@ -105,7 +76,7 @@ def send_mirage_parameter(
         hx = " ".join(f"{b:02X}" for b in raw)
         print(
             f"[mirage sysex] kind={kind!r} param={parameter_number} value={value} "
-            f"scope=0x{scope & 0x7F:02X} -> {hx}",
+            f"-> {hx}",
             file=sys.stderr,
         )
     midi_port.send(msg)

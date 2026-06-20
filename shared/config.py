@@ -16,4 +16,4 @@ MIRAGE_WAVESAMPLE_SELECT = 0  # 0–7; used for 0x0E wavesample-parameter messag
 MIRAGE_DEFAULT_PARAMETER_NUMBER = 21
 
 # Log every parameter SysEx to stderr as hex (F0 … F7). Env MIRAGE_SYSEX_LOG=1 also enables.
-MIRAGE_SYSEX_LOG = False
+MIRAGE_SYSEX_LOG = True

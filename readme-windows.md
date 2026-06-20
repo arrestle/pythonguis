@@ -182,6 +182,20 @@ The **Speakers (Realtek)** vs **monitor HDMI** menu only picks where **most apps
 
 ## Run the Mirage controller GUI
 
+Latest (parameter-card GUI):
+
+```powershell
+python -m mirage_parm.main
+```
+
+or (if `uv` is available):
+
+```powershell
+uv run mirage-parm
+```
+
+Legacy compatibility/original launcher:
+
 ```powershell
 python .\ensoniq\mirage_main.py
 ```
