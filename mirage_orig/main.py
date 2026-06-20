@@ -101,7 +101,8 @@ class MirageMain:
             self.slider.hide()
 
 
-def main():
+def 
+main():
     app = QApplication(sys.argv)
     window = MainWindow()
     print(collect_diagnostics_text(opened_output_name=window.midi_port_name), end="")

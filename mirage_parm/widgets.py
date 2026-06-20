@@ -100,6 +100,8 @@ class ParmRow(QWidget):
         )
         self._slider.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self._slider.setTracking(True)
+        self._slider.sliderPressed.connect(self._on_slider_pressed)
+        self._slider.sliderReleased.connect(self._on_slider_released)
         self._slider.valueChanged.connect(self._on_slider_value)
         if spec.range_note:
             self._slider.setToolTip(spec.range_note)
@@ -134,32 +136,48 @@ class ParmRow(QWidget):
         layout.addWidget(self._value_spin)
         self.setLayout(layout)
         self.setObjectName("ParameterRow")
+        # Tracks the last value successfully sent to the Mirage so we can compute
+        # the UP/DOWN delta on the next change.  Starts at min_value (matching the
+        # slider's initial position); stays in sync as long as this app is the only
+        # editor.  If the Mirage value diverges (e.g. front-panel edits), drag the
+        # slider to the minimum and back up to re-synchronise.
+        self._last_sent_value: int = spec.min_value
+        self._slider_drag_active = False
+
+    def _send_value(self, value: int, *, mode: Literal["delta", "absolute"] = "delta") -> None:
+        print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
+        send_mirage_parameter(
+            self._midi_port,
+            self._spec.command_id,
+            value,
+            previous_value=self._last_sent_value,
+            min_value=self._spec.min_value,
+            max_value=self._spec.max_value,
+            mode=mode,
+            kind=self._spec.sysex_kind,
+            echo_port=self._midi_echo_port,
+        )
+        self._last_sent_value = value
+
+    def _on_slider_pressed(self) -> None:
+        self._slider_drag_active = True
+
+    def _on_slider_released(self) -> None:
+        self._slider_drag_active = False
+        self._send_value(self._slider.value(), mode="absolute")
 
     def _on_slider_value(self, value: int) -> None:
         self._value_spin.blockSignals(True)
         self._value_spin.setValue(value)
         self._value_spin.blockSignals(False)
-        print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
-        send_mirage_parameter(
-            self._midi_port,
-            self._spec.command_id,
-            value,
-            kind=self._spec.sysex_kind,
-            echo_port=self._midi_echo_port,
-        )
+        if not self._slider_drag_active:
+            self._send_value(value)
 
     def _on_spin_value(self, value: int) -> None:
         self._slider.blockSignals(True)
         self._slider.setValue(value)
         self._slider.blockSignals(False)
-        print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
-        send_mirage_parameter(
-            self._midi_port,
-            self._spec.command_id,
-            value,
-            kind=self._spec.sysex_kind,
-            echo_port=self._midi_echo_port,
-        )
+        self._send_value(value)
 
     def _dec(self, checked: bool = False) -> None:
         v = self._slider.value()
