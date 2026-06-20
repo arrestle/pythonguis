@@ -1,0 +1,63 @@
+import pytest
+from unittest.mock import MagicMock
+
+from mirage_orig.mirage_slider import MirageSlider
+
+@pytest.fixture
+def mock_midi_port():
+    """Mock MIDI port for testing."""
+    return MagicMock()
+
+def test_slider_initialization(qapp, mock_midi_port):
+    """Test slider initialization."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    assert slider.title == "Test Slider"
+    assert slider.slider.maximum() == 100
+    assert slider.slider.value() == 0
+
+def test_slider_value_change(qapp, qtbot, mock_midi_port):
+    """Test slider value changes and UI updates."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    qtbot.addWidget(slider)
+
+    slider.slider.setValue(50)
+    assert slider.value_label.text() == "50"
+    assert slider.group_box.title() == "Test Slider  0x42  "
+
+def test_slider_decrement(qapp, qtbot, mock_midi_port):
+    """Test decrementing the slider value."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    qtbot.addWidget(slider)
+
+    slider.slider.setValue(100)
+    slider.decrease_value()
+    assert slider.slider.value() == 99
+
+def test_slider_increment(qapp, qtbot, mock_midi_port):
+    """Test incrementing the slider value."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    qtbot.addWidget(slider)
+
+    slider.slider.setValue(0)
+    slider.increase_value()
+    assert slider.slider.value() == 1
+
+
+def test_tick_interval(qapp, mock_midi_port):
+    """Test the tick interval for the slider."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    assert slider.get_tick_interval(10) == 1
+    assert slider.get_tick_interval(32) == 5
+    assert slider.get_tick_interval(100) == 10
+
+def test_send_midi_message(qapp, mock_midi_port):
+    """Test sending MIDI messages."""
+    slider = MirageSlider(mock_midi_port, 100, "Test Slider", 0x42)
+    slider.send_midi_message(50)
+
+    # Check that the MIDI message is sent (§3.2.1 program parameter: 0D + kbd/prog + param + val LS/MS)
+    assert mock_midi_port.send.called
+    midi_message = mock_midi_port.send.call_args[0][0]
+    assert midi_message.type == "sysex"
+    # param 0x42, value 50 (0x32): nybble bytes 0x02, 0x03; lower keyboard, program 0 -> 0x00
+    assert list(midi_message.data) == [0x0F, 0x01, 0x0D, 0x00, 0x42, 0x02, 0x03]

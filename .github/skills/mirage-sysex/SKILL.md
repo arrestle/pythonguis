@@ -10,11 +10,11 @@ argument-hint: 'Describe the SysEx or parameter issue'
 
 | File | Role |
 |------|------|
-| [shared/sysex.py](../../../../shared/sysex.py) | All SysEx send logic — edit here first |
+| [shared/sysex.py](../../../../shared/sysex.py) | SysEx send logic and pacing — edit here first |
 | [shared/config.py](../../../../shared/config.py) | MIDI port, device ID, upper/lower, program, wavesample |
 | [mirage_parm/parameter_cards.json](../../../../mirage_parm/parameter_cards.json) | Parameter IDs, display ranges, labels |
 | [mirage_parm/parameters.py](../../../../mirage_parm/parameters.py) | JSON → ParmSpec dataclass; sysex_kind per card |
-| [mirage_parm/widgets.py](../../../../mirage_parm/widgets.py) | Slider/spinbox → send_mirage_parameter() |
+| [mirage_parm/widgets.py](../../../../mirage_parm/widgets.py) | Slider/spinbox behavior; release-vs-step sending |
 
 ## MASOS vs Standard OS
 
@@ -22,10 +22,10 @@ The Mirage boots from a disk. Two OS variants matter:
 
 | OS | Boots from | SysEx receive support |
 |----|-----------|----------------------|
-| Standard OS | Sound disk or blank formatted disk | Notes only; no parameter-set receive command |
-| **MASOS** | MASOS disk (included with Advanced Sampler's Guide) | Full SysEx control including §3.1.1 command codes |
+| Standard OS | Sound disk or blank formatted disk | Notes only; parameter-edit receive is not reliable |
+| **MASOS** | MASOS disk (included with Advanced Sampler's Guide) | Parameter edits via command-code SysEx and full program dump support |
 
-**This project targets MASOS.** If the Mirage is not responding to SysEx at all, first confirm it booted from the MASOS disk.
+**This project targets MASOS.** If the Mirage is not responding to parameter SysEx, first confirm it booted from the MASOS disk.
 
 ## Protocol Reference (MASOS MIDI Implementation)
 
@@ -49,7 +49,9 @@ mido.Message("sysex", data=[0x0F, 0x01, <msg-type>, ...])
 
 ### §3.1 — Receive Data (PC → Mirage)
 
-#### §3.1.1 Front-Panel Command Code (the ONLY way to set individual parameters)
+#### §3.1.1 Front-Panel Command Code
+
+Receive path for parameter edits.
 
 ```
 F0 0F 01  01  [keypad bytes, max 5]  7F  F7
@@ -67,27 +69,19 @@ Keypad byte codes (Table 3.3):
 | ENTER | 0x0E | confirms; also UP ARROW in value mode |
 | CANCEL | 0x0F | cancels; also DOWN ARROW in value mode |
 
-**Confirmed working sequence** (two SysEx messages, split to stay within 5-byte limit):
+**Confirmed behavior on hardware:**
+- `PARAM + digits + ENTER` selects the active parameter.
+- `ENTER`/UP ARROW increments the selected parameter by 1.
+- `CANCEL`/DOWN ARROW decrements the selected parameter by 1.
+- Maximum of **5 keypad bytes** per command-code SysEx message; longer messages are ignored.
 
-```python
-# Select parameter 36 (Filter Cutoff), enter value mode
-msg1 = [0x0F, 0x01, 0x01,  0x0C, 0x03, 0x06, 0x0D, 0x09, 0x02]  # PARAM 3 6 VALUE 9 2 — no ENTER, 5 payload bytes
-
-# Confirm
-msg2 = [0x0F, 0x01, 0x01,  0x0E, 0x7F]  # ENTER
-```
-
-**Important constraints discovered through testing:**
-- Maximum 5 keypad bytes per SysEx message.
-- Messages exceeding 5 keypad bytes are silently ignored.
-- State may or may not be preserved between messages — test before relying on it.
-- Sending VALUE + digits as a standalone second message causes parameter selection, not value entry.
+**Practical implication:** use a short select message and paced UP/DOWN presses. Slider drags can outrun the Mirage if you send steps too fast.
 
 #### §3.1.2 Program Dump Request
 
 ```
 F0 0F 01  03  F7         (lower keyboard, N=0)
-F0 0F 01  13  F7         (upper keyboard, N=1)
+F0 0F 01 13  F7         (upper keyboard, N=1)
 ```
 
 Mirage responds with §3.2.7 Program Dump Data (625 bytes encoded as nybbles).
@@ -96,7 +90,7 @@ Mirage responds with §3.2.7 Program Dump Data (625 bytes encoded as nybbles).
 
 ```
 F0 0F 01  05  [625 bytes encoded as nybble pairs]  F7   (lower, N=0)
-F0 0F 01  15  [...]  F7                                 (upper, N=1)
+F0 0F 01 15  [...]  F7                                 (upper, N=1)
 ```
 
 See [references/program-dump-format.md](./references/program-dump-format.md) for byte offsets.
@@ -115,8 +109,7 @@ F0 0F 01  0D  <scope>  <param#>  <val-LS>  <val-MS>  F7
 - `param#` = parameter number (decimal, same as card id)
 - Value encoded as two nybble bytes, LS first: value = `val-LS | (val-MS << 4)`
 
-**This is TRANSMIT ONLY.** The Mirage sends this when you edit a parameter on the front panel.
-Sending 0x0D inbound is silently ignored.
+**This is TRANSMIT ONLY.** The Mirage sends this when you edit a parameter on the front panel. Sending 0x0D inbound is ignored.
 
 #### §3.2.2 Wavesample Parameter Message
 
@@ -172,7 +165,18 @@ When parameter changes have no effect on Mirage:
 4. **Enable SysEx logging**: Set `MIRAGE_SYSEX_LOG = True` in [shared/config.py](../../../../shared/config.py) or `$env:MIRAGE_SYSEX_LOG="1"`.
 5. **Replay test**: Capture a front-panel edit with MIDI-OX, then replay the exact bytes from Python.
 6. **5-byte limit**: Command-code SysEx accepts at most 5 keypad bytes per message. Longer sequences are silently ignored.
-7. **Value scaling**: For §3.1.1 command codes, digits typed are the DISPLAY value. For some params (Filter Cutoff etc.) the display value ≠ internal value — use the scaling table.
+7. **Slider pacing**: If slider drags miss steps, use paced UP/DOWN keypresses or release-only commits.
+8. **Value scaling**: Some transmitted params are internally scaled by 2; see the scaling table.
+
+### Pacing and Drift Troubleshooting
+
+If the slider moves the Mirage but lands on the wrong number or races ahead:
+
+1. Prefer release-only commits for drags instead of sending every intermediate position.
+2. Add a small delay between arrow-key SysEx packets when stepping through values.
+3. If the hardware and UI drift apart, re-sync by moving the slider to a known baseline and back.
+4. For large jumps, anchor to a baseline and walk to the target with paced steps.
+5. Keep `MIRAGE_SYSEX_LOG` on while testing so you can compare the intended value to the exact packet stream.
 
 ---
 
@@ -182,6 +186,14 @@ When parameter changes have no effect on Mirage:
 # Activate this repo's venv first: .\.venv\Scripts\Activate.ps1
 # Replay exact captured SysEx (replace bytes as needed):
 python -c "import mido; p=next(x for x in mido.get_output_names() if 'UMC204HD' in x); o=mido.open_output(p); o.send(mido.Message('sysex', data=[0x0F,0x01,0x0D,0x00,0x24,0x0C,0x05])); o.close(); print('sent')"
+```
+
+## Quick Reference: Increment Test
+
+If a parameter is already selected, this increments it once with the UP-ARROW behavior verified on hardware:
+
+```powershell
+python -c "import mido; p=next(x for x in mido.get_output_names() if 'UMC204HD' in x); o=mido.open_output(p); o.send(mido.Message('sysex', data=[0x0F,0x01,0x01,0x0E,0x7F])); o.close(); print('up')"
 ```
 
 ## See Also
