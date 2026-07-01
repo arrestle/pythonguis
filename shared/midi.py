@@ -27,6 +27,29 @@ def open_midi_output_port(port_name_substring: str) -> tuple[Any, str]:
     )
 
 
+def open_midi_input_port_optional(port_name_substring: str) -> tuple[Any | None, str | None]:
+    """
+    Open the first MIDI input whose name contains ``port_name_substring``.
+    Returns (port, matched_name) or (None, None) if not found or substring is empty.
+    Used to receive the §3.2.7 Program Dump Data response on startup.
+    """
+    s = (port_name_substring or "").strip()
+    if not s:
+        return None, None
+    available_ports = mido.get_input_names()
+    print("Available MIDI Input Ports:", available_ports)
+    for name in available_ports:
+        if s in name:
+            print(f"Using MIDI input: {name!r} (matched {s!r})")
+            return mido.open_input(name), name
+    print(
+        f"MIDI input: no port matching {s!r}; program dump sync disabled. "
+        f"Available: {available_ports}",
+        file=sys.stderr,
+    )
+    return None, None
+
+
 def open_midi_output_port_optional(port_name_substring: str) -> tuple[Any | None, str | None]:
     """
     Open a second MIDI output if ``port_name_substring`` is non-empty; otherwise (None, None).

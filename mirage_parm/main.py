@@ -1,8 +1,9 @@
 """Parameter-card Mirage UI entrypoint."""
 
 import sys
+import time
 
-from PySide6.QtCore import QEvent, QMargins, Qt
+from PySide6.QtCore import QEvent, QMargins, Qt, QTimer
 from PySide6.QtGui import QAction, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QApplication,
@@ -21,9 +22,10 @@ from PySide6.QtWidgets import (
 from mirage_parm.diagnostics import show_diagnostics_dialog
 from shared.diagnostics_report import collect_diagnostics_text
 from mirage_parm.parameters import CARDS, CardSpec
-from mirage_parm.widgets import PanelKind, ParameterCard
-from shared.config import MIDI_ECHO_PORT_NAME, MIDI_PORT_NAME
-from shared.midi import open_midi_output_port, open_midi_output_port_optional
+from mirage_parm.widgets import PanelKind, ParameterCard, ParmRow
+from shared.config import MIDI_ECHO_PORT_NAME, MIDI_PORT_NAME, MIRAGE_UPPER_KEYBOARD
+from shared.midi import open_midi_output_port, open_midi_output_port_optional, open_midi_input_port_optional
+from shared.sysex import request_program_dump, receive_program_dump, parse_parameter_message
 
 # Window title (parameter-card layout)
 WINDOW_TITLE = "Ensoniq Mirage — Parameter cards"
@@ -54,6 +56,23 @@ class MainWindow(QMainWindow):
         self._midi_echo_port, self.midi_echo_port_name = open_midi_output_port_optional(
             MIDI_ECHO_PORT_NAME
         )
+        self._midi_input_port, _ = open_midi_input_port_optional(MIDI_PORT_NAME)
+
+        initial_values: dict[int, int] = {}
+        if self._midi_input_port is not None:
+            time.sleep(0.15)  # let rtmidi finish wiring up the input callback before we send
+            request_program_dump(self._midi_port, upper=MIRAGE_UPPER_KEYBOARD)
+            result = receive_program_dump(
+                self._midi_input_port, upper=MIRAGE_UPPER_KEYBOARD, timeout=2.0
+            )
+            if result:
+                initial_values = result
+                print(f"[mirage dump] {len(result)} parameters synced from Mirage.")
+            else:
+                print(
+                    "[mirage dump] No response (timeout). Sliders start at defaults.",
+                    file=sys.stderr,
+                )
 
         menu_bar = QMenuBar(self)
         self.setMenuBar(menu_bar)
@@ -137,6 +156,7 @@ class MainWindow(QMainWindow):
                     show_play_preview=spec.card_id in ("sampling", "program"),
                     midi_port_name=self.midi_port_name,
                     midi_echo_port=self._midi_echo_port,
+                    initial_values=initial_values,
                 )
                 if cid in _COMPACT_HEADER_IDS:
                     wrap = QWidget()
@@ -174,6 +194,7 @@ class MainWindow(QMainWindow):
                     show_play_preview=card.card_id in ("sampling", "program"),
                     midi_port_name=self.midi_port_name,
                     midi_echo_port=self._midi_echo_port,
+                    initial_values=initial_values,
                 )
             )
 
@@ -186,6 +207,28 @@ class MainWindow(QMainWindow):
 
         self._apply_card_style()
         self._update_full_screen_menu_actions()
+
+        # Build a command_id → [ParmRow] lookup for incoming Mirage messages.
+        self._parm_row_by_id: dict[int, list[ParmRow]] = {}
+        for row in self.findChildren(ParmRow):
+            self._parm_row_by_id.setdefault(row._spec.command_id, []).append(row)
+
+        # Poll the MIDI input every 30 ms for §3.2.1/§3.2.2 messages and update sliders.
+        if self._midi_input_port is not None:
+            self._midi_poll_timer = QTimer(self)
+            self._midi_poll_timer.timeout.connect(self._poll_midi_input)
+            self._midi_poll_timer.start(30)
+
+    def _poll_midi_input(self) -> None:
+        for msg in self._midi_input_port.iter_pending():
+            if msg.type != "sysex":
+                continue
+            parsed = parse_parameter_message(msg.data)
+            if parsed is None:
+                continue
+            param_num, display_value = parsed
+            for row in self._parm_row_by_id.get(param_num, []):
+                row.set_value(display_value)
 
     def changeEvent(self, event: QEvent) -> None:
         super().changeEvent(event)

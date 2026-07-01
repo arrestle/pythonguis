@@ -45,6 +45,7 @@ class ParmRow(QWidget):
         compact: bool = False,
         narrow: bool = False,
         narrow_columns: int = 2,
+        initial_value: int | None = None,
         parent=None,
     ):
         super().__init__(parent)
@@ -143,6 +144,31 @@ class ParmRow(QWidget):
         # slider to the minimum and back up to re-synchronise.
         self._last_sent_value: int = spec.min_value
         self._slider_drag_active = False
+
+        if initial_value is not None:
+            clamped = max(spec.min_value, min(spec.max_value, initial_value))
+            self._slider.blockSignals(True)
+            self._value_spin.blockSignals(True)
+            self._slider.setValue(clamped)
+            self._value_spin.setValue(clamped)
+            self._slider.blockSignals(False)
+            self._value_spin.blockSignals(False)
+            self._last_sent_value = clamped
+
+    def set_value(self, value: int) -> None:
+        """Update slider and spinbox from an incoming Mirage §3.2.1/§3.2.2 message.
+
+        Does NOT send any SysEx — the Mirage already has this value.
+        Updates _last_sent_value so subsequent UP/DOWN steps start from the right base.
+        """
+        clamped = max(self._spec.min_value, min(self._spec.max_value, value))
+        self._slider.blockSignals(True)
+        self._value_spin.blockSignals(True)
+        self._slider.setValue(clamped)
+        self._value_spin.setValue(clamped)
+        self._slider.blockSignals(False)
+        self._value_spin.blockSignals(False)
+        self._last_sent_value = clamped
 
     def _send_value(self, value: int, *, mode: Literal["delta", "absolute"] = "delta") -> None:
         print(f"{self._spec.label} 0x{self._spec.command_id:02X} = {value}")
@@ -328,11 +354,16 @@ def _add_reference_card_columns(
     grid_color: str,
     *,
     midi_echo_port=None,
+    initial_values: dict[int, int] | None = None,
 ) -> None:
     """SAMPLING CONFIG, COMMAND, CONFIGURATION (2 cols); WAVESAMPLE sampling (3 cols); etc."""
     if ncols < 2:
         for p in params:
-            outer.addWidget(ParmRow(midi_port, p, midi_echo_port=midi_echo_port))
+            outer.addWidget(ParmRow(
+                midi_port, p,
+                midi_echo_port=midi_echo_port,
+                initial_value=initial_values.get(p.command_id) if initial_values else None,
+            ))
         return
     chunks = _split_params_evenly(params, ncols)
     row = QHBoxLayout()
@@ -350,6 +381,7 @@ def _add_reference_card_columns(
                     midi_echo_port=midi_echo_port,
                     narrow=True,
                     narrow_columns=ncols,
+                    initial_value=initial_values.get(p.command_id) if initial_values else None,
                 ),
             )
         col.addStretch(1)
@@ -371,13 +403,18 @@ def _add_envelope_filter_amplitude_columns(
     grid_color: str,
     *,
     midi_echo_port=None,
+    initial_values: dict[int, int] | None = None,
 ) -> None:
     """Two columns: first half of ``params`` FILTER (strip 'FILTER — '), second half AMPLITUDE."""
     n = len(params)
     mid = n // 2
     if mid < 1 or n != mid * 2:
         for p in params:
-            outer.addWidget(ParmRow(midi_port, p, midi_echo_port=midi_echo_port))
+            outer.addWidget(ParmRow(
+                midi_port, p,
+                midi_echo_port=midi_echo_port,
+                initial_value=initial_values.get(p.command_id) if initial_values else None,
+            ))
         return
 
     filter_params = params[:mid]
@@ -421,6 +458,7 @@ def _add_envelope_filter_amplitude_columns(
                     midi_echo_port=midi_echo_port,
                     display_label=short,
                     compact=True,
+                    initial_value=initial_values.get(p.command_id) if initial_values else None,
                 ),
                 0,
                 Qt.AlignmentFlag.AlignTop,
@@ -452,6 +490,7 @@ class ParameterCard(QGroupBox):
         show_play_preview: bool = False,
         midi_port_name: str | None = None,
         midi_echo_port=None,
+        initial_values: dict[int, int] | None = None,
         parent=None,
     ):
         super().__init__(spec.title, parent)
@@ -508,6 +547,7 @@ class ParameterCard(QGroupBox):
                 spec.params,
                 _panel_inner_grid_color(panel),
                 midi_echo_port=midi_echo_port,
+                initial_values=initial_values,
             )
         elif spec.card_id == "wavesample_program":
             # One column, narrow rows — fits the slim yellow column next to ENVELOPE.
@@ -520,6 +560,7 @@ class ParameterCard(QGroupBox):
                         midi_echo_port=midi_echo_port,
                         narrow=True,
                         narrow_columns=2,
+                        initial_value=initial_values.get(p.command_id) if initial_values else None,
                     ),
                 )
         elif spec.sections:
@@ -543,6 +584,7 @@ class ParameterCard(QGroupBox):
                     sec.params,
                     grid,
                     midi_echo_port=midi_echo_port,
+                    initial_values=initial_values,
                 )
         elif spec.card_id in _REFERENCE_CARD_COLUMN_COUNTS:
             _add_reference_card_columns(
@@ -552,10 +594,15 @@ class ParameterCard(QGroupBox):
                 _REFERENCE_CARD_COLUMN_COUNTS[spec.card_id],
                 _panel_inner_grid_color(panel),
                 midi_echo_port=midi_echo_port,
+                initial_values=initial_values,
             )
         else:
             for p in spec.params:
-                outer.addWidget(ParmRow(midi_port, p, midi_echo_port=midi_echo_port))
+                outer.addWidget(ParmRow(
+                    midi_port, p,
+                    midi_echo_port=midi_echo_port,
+                    initial_value=initial_values.get(p.command_id) if initial_values else None,
+                ))
 
         self._midi_port = midi_port
         self._midi_port_name = midi_port_name
